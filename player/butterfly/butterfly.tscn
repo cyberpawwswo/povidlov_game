@@ -1,11 +1,36 @@
 [gd_scene format=3 uid="uid://dapbscxj5pqni"]
 
 [ext_resource type="Script" uid="uid://b060107oyddew" path="res://player/butterfly/butterfly.gd" id="1_hbfln"]
+[ext_resource type="Texture2D" uid="uid://bx40bofn7yy27" path="res://icon.svg" id="2_5ry03"]
+[ext_resource type="Shader" uid="uid://cpsch0ntftr1l" path="res://player/butterfly/butterfly.gdshader" id="2_pp3c8"]
+[ext_resource type="Texture2D" uid="uid://4dhcgn3tyikj" path="res://player/butterfly/vector-forest-landscape-illustration.jpg" id="5_1wyui"]
+
+[sub_resource type="Curve" id="Curve_cm705"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hbfln"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d3v2e"]
+shader = ExtResource("2_pp3c8")
+shader_parameter/blur_direction = Vector2(0, 0)
+shader_parameter/samples = 32
+
 [node name="Butterfly" type="CharacterBody2D" unique_id=1538932803]
 script = ExtResource("1_hbfln")
+blur_curve = SubResource("Curve_cm705")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1500706233]
 shape = SubResource("RectangleShape2D_hbfln")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=182794511]
+drag_vertical_enabled = true
+
+[node name="Blur" type="Sprite2D" parent="." unique_id=1641660121]
+material = SubResource("ShaderMaterial_d3v2e")
+position = Vector2(5.0000305, 5.000046)
+scale = Vector2(3.7114286, 3.5183673)
+texture = ExtResource("5_1wyui")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=785625005]
+texture = ExtResource("2_5ry03")
