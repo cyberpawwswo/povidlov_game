@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dapbscxj5pqni"]
+
+[ext_resource type="Script" uid="uid://b060107oyddew" path="res://player/butterfly/butterfly.gd" id="1_hbfln"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbfln"]
+
+[node name="Butterfly" type="CharacterBody2D" unique_id=1538932803]
+script = ExtResource("1_hbfln")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1500706233]
+shape = SubResource("RectangleShape2D_hbfln")
