@@ -13,12 +13,14 @@ var tween : Tween
 @onready var blur_component := $Blur
 @onready var blur_mat = blur_component.material as ShaderMaterial
 
+var is_pollinates := false
+
 func _ready() -> void:
 	blur_mat.set_shader_parameter('samples', blur_samples)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and not is_pollinates:
 		velocity += get_gravity() * delta
 		pass
 

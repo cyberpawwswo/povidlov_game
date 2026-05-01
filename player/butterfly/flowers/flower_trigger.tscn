@@ -5,6 +5,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_w6ncd"]
 radius = 140.00357
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_o11o5"]
+radius = 23.0
+
 [node name="Flower" type="Node2D" unique_id=2047706209]
 script = ExtResource("1_o11o5")
 
@@ -13,4 +16,10 @@ script = ExtResource("1_o11o5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerAnimation" unique_id=281202476]
 shape = SubResource("CircleShape2D_w6ncd")
 
+[node name="StopAnimation" type="Area2D" parent="." unique_id=1044327247]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StopAnimation" unique_id=237218359]
+shape = SubResource("CircleShape2D_o11o5")
+
 [connection signal="body_entered" from="TriggerAnimation" to="." method="_on_trigger_animation_body_entered"]
+[connection signal="body_entered" from="StopAnimation" to="." method="_on_stop_animation_body_entered"]

@@ -10,6 +10,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hbfln"]
+size = Vector2(129, 130)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d3v2e"]
 shader = ExtResource("2_pp3c8")
@@ -22,6 +23,7 @@ blur_curve = SubResource("Curve_cm705")
 metadata/_custom_type_script = "uid://b060107oyddew"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1500706233]
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_hbfln")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=182794511]
