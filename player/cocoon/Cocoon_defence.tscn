@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://c7hqggo64f517"]
+
+[ext_resource type="PackedScene" uid="uid://blqbn0vmqc1kt" path="res://player/cocoon/pupa.tscn" id="1_d101h"]
+[ext_resource type="Script" uid="uid://bjlfkjx0wqx23" path="res://player/cocoon/cocoon.gd" id="2_cocoon_script"]
+
+[sub_resource type="Curve" id="Curve_wrdih"]
+_data = [Vector2(0.5311203, 0.36479253), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_smhya"]
+_data = [Vector2(0.58506215, 0.208166), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_7qo2u"]
+_data = [Vector2(0.75103724, 0.12115133), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_c36ng"]
+curve_x = SubResource("Curve_wrdih")
+curve_y = SubResource("Curve_smhya")
+curve_z = SubResource("Curve_7qo2u")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f00xg"]
+size = Vector2(614, 28)
+
+[node name="CocoonDefence" type="Node2D" unique_id=1072979385]
+script = ExtResource("2_cocoon_script")
+
+[node name="Pupa" parent="." unique_id=2096588259 instance=ExtResource("1_d101h")]
+position = Vector2(552, 321)
+
+[node name="Platform" type="Area2D" parent="." unique_id=1664626800]
+position = Vector2(554, 390)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform" unique_id=1464779399]
+modulate = Color(1, 1, 0.9843137, 1)
+position = Vector2(-307, -14)
+scale = Vector2(2.3984375, 28.5)
+texture = SubResource("CurveXYZTexture_c36ng")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform" unique_id=316887522]
+shape = SubResource("RectangleShape2D_f00xg")
