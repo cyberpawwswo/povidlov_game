@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://blqbn0vmqc1kt"]
+
+[ext_resource type="Texture2D" uid="uid://bx40bofn7yy27" path="res://icon.svg" id="1_6agdk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g6jpx"]
+radius = 31.0
+height = 108.0
+
+[node name="Pupa" type="Node2D" unique_id=2096588259]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1685953005]
+modulate = Color(0.44313726, 1, 0.43529412, 1)
+scale = Vector2(0.5, 0.8671875)
+texture = ExtResource("1_6agdk")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=785991895]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=998068732]
+shape = SubResource("CapsuleShape2D_g6jpx")

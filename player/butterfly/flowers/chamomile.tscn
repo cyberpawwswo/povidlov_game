@@ -9,24 +9,25 @@ script = ExtResource("1_f5sn6")
 metadata/_custom_type_script = "uid://0jocyet2h7uo"
 
 [node name="Flw" type="Sprite2D" parent="." unique_id=1434307768]
-position = Vector2(171, 465)
+position = Vector2(5.5, -593.5)
 texture = ExtResource("4_kedsi")
 region_enabled = true
 region_rect = Rect2(0, 0, 1033.0166, 1451)
 
 [node name="Flower" parent="." unique_id=2047706209 instance=ExtResource("2_jadqc")]
+position = Vector2(-165.5, -1058.5)
 
 [node name="Flower2" parent="." unique_id=1884232983 instance=ExtResource("2_jadqc")]
-position = Vector2(294, 297)
+position = Vector2(128.5, -761.5)
 
 [node name="Flower3" parent="." unique_id=506738595 instance=ExtResource("2_jadqc")]
-position = Vector2(-3, 571)
+position = Vector2(-168.5, -487.5)
 
 [node name="Flower4" parent="." unique_id=139063344 instance=ExtResource("2_jadqc")]
-position = Vector2(-206, 328)
+position = Vector2(-371.5, -730.5)
 
 [node name="Flower5" parent="." unique_id=885970161 instance=ExtResource("2_jadqc")]
-position = Vector2(282, -60)
+position = Vector2(116.5, -1118.5)
 
 [node name="Flower6" parent="." unique_id=1973367040 instance=ExtResource("2_jadqc")]
-position = Vector2(567, 280)
+position = Vector2(401.5, -778.5)
