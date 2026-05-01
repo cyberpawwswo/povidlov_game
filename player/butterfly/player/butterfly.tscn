@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dapbscxj5pqni"]
 
 [ext_resource type="Script" uid="uid://b060107oyddew" path="res://player/butterfly/player/butterfly.gd" id="1_hbfln"]
-[ext_resource type="Texture2D" uid="uid://bx40bofn7yy27" path="res://icon.svg" id="2_5ry03"]
 [ext_resource type="Shader" uid="uid://cpsch0ntftr1l" path="res://player/butterfly/player/butterfly.gdshader" id="2_pp3c8"]
+[ext_resource type="Texture2D" uid="uid://b0v1shkqakxu5" path="res://player/butterfly/player/bttfly.png" id="4_0hvfw"]
 [ext_resource type="Texture2D" uid="uid://4dhcgn3tyikj" path="res://player/butterfly/player/vector-forest-landscape-illustration.jpg" id="5_1wyui"]
 
 [sub_resource type="Curve" id="Curve_cm705"]
@@ -10,12 +10,34 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hbfln"]
-size = Vector2(129, 130)
+size = Vector2(49, 43)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d3v2e"]
 shader = ExtResource("2_pp3c8")
 shader_parameter/blur_direction = Vector2(0, 0)
 shader_parameter/samples = 32
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppyi0"]
+atlas = ExtResource("4_0hvfw")
+region = Rect2(0, 0, 465, 547)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnwdg"]
+atlas = ExtResource("4_0hvfw")
+region = Rect2(465, 0, 465, 547)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0hvfw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppyi0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnwdg")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
 
 [node name="Butterfly" type="CharacterBody2D" unique_id=636950088]
 script = ExtResource("1_hbfln")
@@ -23,7 +45,7 @@ blur_curve = SubResource("Curve_cm705")
 metadata/_custom_type_script = "uid://b060107oyddew"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1500706233]
-position = Vector2(0.5, 0)
+position = Vector2(-0.5, 9.5)
 shape = SubResource("RectangleShape2D_hbfln")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=182794511]
@@ -35,5 +57,7 @@ position = Vector2(5.0000305, 5.000046)
 scale = Vector2(3.7114286, 3.5183673)
 texture = ExtResource("5_1wyui")
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=785625005]
-texture = ExtResource("2_5ry03")
+[node name="Body" type="AnimatedSprite2D" parent="." unique_id=954996585]
+scale = Vector2(0.13118276, 0.13118276)
+sprite_frames = SubResource("SpriteFrames_0hvfw")
+animation = &"fly"
