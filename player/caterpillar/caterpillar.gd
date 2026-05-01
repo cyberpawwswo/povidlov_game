@@ -1,16 +1,32 @@
 extends CharacterBody2D
 class_name Caterpillar
 @onready var right_end: Marker2D =%right_end
+@onready var right_end_2: Marker2D = %right_end2
+
+@onready var mid: Marker2D = %mid
 @onready var left_end: Marker2D = %left_end
-@onready var animator: AnimationPlayer = $AnimationPlayer
+@onready var left_end_2: Marker2D = %left_end2
+
+@onready var animator: AnimationPlayer = %AnimationPlayer
 
 @onready var body: CollisionShape2D = $CollisionShape2D
+
+@onready var lsegment: Sprite2D = $"../Lsegment"
+@onready var lsegment_2: Sprite2D = $"../Lsegment2"
+@onready var msegment: Sprite2D = $"../msegment"
+@onready var rsegment: Sprite2D = $"../Rsegment"
+@onready var rsegment_2: Sprite2D = $"../Rsegment2"
+@onready var head: Sprite2D = $"../Rsegment/head"
+
+
+
 
 var tw: Tween
 var body_pos_right = Vector2(30,0)
 var body_pos_left = Vector2(-30,0)
 @export var speed:float = 10.0
-const JUMP_VELOCITY = -400.0
+@export var stretch_limit = 0.5
+
 #STATES
 @onready var state_machine: Node = $state_machine
 var current_state: CaterpillarState = null
@@ -45,7 +61,12 @@ func _physics_process(delta: float) -> void:
 	#elif Input.is_action_just_released("ui_left"):
 		#move_left()
 	move_and_slide()
-
+func _process(delta: float) -> void:
+	lsegment.global_position = left_end.global_position
+	lsegment_2.global_position = left_end_2.global_position
+	rsegment.global_position = right_end.global_position
+	rsegment_2.global_position = right_end_2.global_position
+	msegment.global_position = mid.global_position
 func handle_gravity(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -60,11 +81,11 @@ func stretch_left(delta):
 func move_right():
 	reset_tween()
 	tw.tween_property(self, "scale:x", 1.0, 0.5)
-	tw.parallel().tween_property(self, "global_position", right_end.global_position, 0.5)
+	tw.parallel().tween_property(self, "global_position", right_end.global_position-Vector2(22,0), 0.5)
 func move_left():
 	reset_tween()
 	tw.tween_property(self, "scale:x", 1.0, 0.5)
-	tw.parallel().tween_property(self, "global_position", left_end.global_position, 0.5)
+	tw.parallel().tween_property(self, "global_position", left_end.global_position+Vector2(22,0), 0.5)
 
 func stretch_up(delta):
 	rotation = 90
