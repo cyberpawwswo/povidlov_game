@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 		set_frame(0)
 		create_tween().tween_callback(set_frame.bind(1)).set_delay(0.1)
 
-		velocity.y = JUMP_VELOCITY
+		velocity.y = JUMP_VELOCITY# / -velocity.y / 5
 		rotation = randf_range(-PI/5, PI/5)
 		if direction:
 			velocity.x = direction * SPEED
