@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://xlh1ol11q7kg"]
+
+[ext_resource type="Script" uid="uid://dn46yknix2g76" path="res://player/caterpillar/disappearing_walls.gd" id="1_pr75c"]
+[ext_resource type="Texture2D" uid="uid://bmb1bhdfym24k" path="res://player/caterpillar/sprites/props etc/branches tiles.png" id="2_6fupq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4565o"]
+atlas = ExtResource("2_6fupq")
+region = Rect2(32, 8, 128, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3o32"]
+size = Vector2(134, 18)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wjtnw"]
+
+[sub_resource type="Gradient" id="Gradient_imw0t"]
+offsets = PackedFloat32Array(0.63235295, 0.68235296)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f3735"]
+gradient = SubResource("Gradient_imw0t")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.52136755, 0.36752138)
+
+[sub_resource type="Curve" id="Curve_5tybl"]
+_data = [Vector2(0, 1), 0.0, -0.19024408, 0, 0, Vector2(1, 0), -1.6088896, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dsfph"]
+curve = SubResource("Curve_5tybl")
+
+[sub_resource type="Gradient" id="Gradient_oivga"]
+colors = PackedColorArray(0.20392157, 0.09019608, 0.09019608, 1, 0.49019608, 0.30588236, 0.28235295, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qdnnu"]
+gradient = SubResource("Gradient_oivga")
+
+[sub_resource type="Gradient" id="Gradient_0pwn6"]
+offsets = PackedFloat32Array(0, 0.9966216)
+colors = PackedColorArray(0.6429938, 0.38663974, 0.3545853, 1, 0.20784314, 0.11372549, 0.11372549, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0yder"]
+gradient = SubResource("Gradient_0pwn6")
+
+[sub_resource type="Curve" id="Curve_63pj5"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.9596273, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_83mvf"]
+curve = SubResource("Curve_63pj5")
+
+[sub_resource type="Curve" id="Curve_oj4d8"]
+_data = [Vector2(0, 0.45093173), 0.0, 0.92258036, 0, 0, Vector2(0.7484472, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qu2nv"]
+curve = SubResource("Curve_oj4d8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kvccc"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(60.775, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 70.116
+initial_velocity_min = 119.46
+initial_velocity_max = 255.56999
+gravity = Vector3(0, 700, 0)
+tangential_accel_min = -2.2351742e-06
+tangential_accel_max = -2.2351742e-06
+damping_curve = SubResource("CurveTexture_83mvf")
+scale_curve = SubResource("CurveTexture_qu2nv")
+color_ramp = SubResource("GradientTexture1D_0yder")
+color_initial_ramp = SubResource("GradientTexture1D_qdnnu")
+alpha_curve = SubResource("CurveTexture_dsfph")
+
+[node name="disappearing_walls" type="Node2D" unique_id=1472457041]
+script = ExtResource("1_pr75c")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=240731898]
+texture = SubResource("AtlasTexture_4565o")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=411262083]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=100588881]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_r3o32")
+one_way_collision = true
+
+[node name="leaves_die_particles" type="GPUParticles2D" parent="." unique_id=1819958308]
+material = SubResource("CanvasItemMaterial_wjtnw")
+position = Vector2(0, -4)
+emitting = false
+amount = 25
+texture = SubResource("GradientTexture2D_f3735")
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_kvccc")

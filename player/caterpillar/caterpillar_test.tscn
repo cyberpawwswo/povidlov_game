@@ -1,13 +1,33 @@
 [gd_scene format=4 uid="uid://ccn2ojb8e1rve"]
 
+[ext_resource type="Script" uid="uid://bdthwla63ifw" path="res://player/caterpillar/caterpillar_level.gd" id="1_exrom"]
 [ext_resource type="PackedScene" uid="uid://b8nby1anuwnip" path="res://player/caterpillar/caterpillar_container.tscn" id="2_4g6k1"]
+[ext_resource type="Texture2D" uid="uid://csifpp5v552u" path="res://textures/sky/sk.png" id="2_ksnq2"]
 [ext_resource type="Texture2D" uid="uid://bmb1bhdfym24k" path="res://player/caterpillar/sprites/props etc/branches tiles.png" id="3_4g6k1"]
+[ext_resource type="Shader" uid="uid://nh33wfro05oh" path="res://player/caterpillar/shaders/canvas_group_outline.gdshader" id="3_mvc6e"]
 [ext_resource type="PackedScene" uid="uid://c6gm6lta86cjg" path="res://player/caterpillar/leaf/leaf.tscn" id="3_qjol6"]
 [ext_resource type="Script" uid="uid://b2m61sels1qvw" path="res://player/caterpillar/camera_2d.gd" id="5_4g6k1"]
+[ext_resource type="PackedScene" uid="uid://bf2ywits3xo18" path="res://player/caterpillar/button.tscn" id="6_tnvyp"]
+[ext_resource type="PackedScene" uid="uid://bv3lmb78uwadu" path="res://player/caterpillar/door.tscn" id="7_otjxb"]
 [ext_resource type="Script" uid="uid://cubyrgjyf88nj" path="res://player/caterpillar/score.gd" id="7_tnvyp"]
+[ext_resource type="PackedScene" uid="uid://xlh1ol11q7kg" path="res://player/caterpillar/disappearing_walls.tscn" id="8_otjxb"]
+[ext_resource type="Texture2D" uid="uid://dl8a8f8q1xolf" path="res://textures/sky/cloude_sprite/cloude_small02.png" id="11_m4tr5"]
+[ext_resource type="Texture2D" uid="uid://dckbh2483ti7n" path="res://textures/sky/cloude_sprite/double_cloude_01.png" id="12_exrom"]
+[ext_resource type="Texture2D" uid="uid://bh2c0ft35h27f" path="res://textures/sky/cloude_sprite/cloude_small01.png" id="13_x47cf"]
+[ext_resource type="Texture2D" uid="uid://dqcxnmfa0bjmb" path="res://textures/sky/cloude_sprite/cloude_small.png" id="14_0rfbj"]
+[ext_resource type="Texture2D" uid="uid://wjchxmsst46" path="res://textures/sky/cloude_sprite/cloud_big.png" id="15_0clec"]
+[ext_resource type="Texture2D" uid="uid://d2b1yrs5nvwy" path="res://textures/sky/cloude_sprite/Без имени.png" id="16_7cuid"]
+[ext_resource type="Texture2D" uid="uid://de8n3gn35jyw2" path="res://textures/sky/sk0.png" id="17_jrfm4"]
+[ext_resource type="Texture2D" uid="uid://bhvap01ybkbgi" path="res://textures/sky/cloude_sprite/cloude_ground.png" id="18_8kssm"]
+[ext_resource type="Texture2D" uid="uid://chcdailcte54a" path="res://textures/sky/cloude_sprite/cloude_ground01.png" id="19_ubdc5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_otjxb"]
 font_size = 64
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_id7i2"]
+shader = ExtResource("3_mvc6e")
+shader_parameter/line_colour = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 4
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_apk75"]
 texture = ExtResource("3_4g6k1")
@@ -187,19 +207,169 @@ texture_region_size = Vector2i(32, 32)
 1:2/0/terrain_set = 0
 1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -8, 16, 8, -4, 4, -12, 4, -12, -8)
 1:2/0/terrains_peering_bit/right_side = 0
+1:0/0 = 0
+1:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -8, 16, -8, 16, 16, -16, 16)
+1:0/0/physics_layer_1/polygon_0/one_way = true
+2:0/0 = 0
+2:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -8, 16, -8, 16, 16, -16, 16)
+2:0/0/physics_layer_1/polygon_0/one_way = true
+3:0/0 = 0
+3:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -8, 16, -8, 16, 16, -16, 16)
+3:0/0/physics_layer_1/polygon_0/one_way = true
+4:0/0 = 0
+4:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -8, 16, -8, 16, 16, -16, 16)
+4:0/0/physics_layer_1/polygon_0/one_way = true
 
 [sub_resource type="TileSet" id="TileSet_tnvyp"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
+physics_layer_1/collision_layer = 2
+physics_layer_1/collision_mask = 0
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_apk75")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4g6k1"]
-size = Vector2(211, 144)
+size = Vector2(264.5, 144)
 
 [node name="Node2D" type="Node2D" unique_id=1073081039]
+texture_filter = 1
+script = ExtResource("1_exrom")
+
+[node name="ParallaxBack" type="Parallax2D" parent="." unique_id=1279937860]
+modulate = Color(0.69, 0.9379999, 1, 0.70980394)
+z_index = -1
+scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0.5, 0.5)
+scroll_offset = Vector2(3410, -335)
+repeat_size = Vector2(3105.27, 0)
+
+[node name="CloudeSmall03" type="Sprite2D" parent="ParallaxBack" unique_id=1655673606]
+position = Vector2(909, 49)
+texture = ExtResource("11_m4tr5")
+
+[node name="DoubleCloude01" type="Sprite2D" parent="ParallaxBack" unique_id=578266428]
+position = Vector2(2522, 404)
+texture = ExtResource("12_exrom")
+
+[node name="CloudeSmall04" type="Sprite2D" parent="ParallaxBack" unique_id=32176455]
+position = Vector2(-636, 1839)
+texture = ExtResource("13_x47cf")
+
+[node name="ParallaxMidlle" type="Parallax2D" parent="." unique_id=1743693182]
+modulate = Color(1, 1, 1, 0.78039217)
+scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0.7, 0.7)
+scroll_offset = Vector2(5155, 144)
+repeat_size = Vector2(2757.51, 0)
+repeat_times = 2
+
+[node name="CloudeSmall" type="Sprite2D" parent="ParallaxMidlle" unique_id=1354046285]
+position = Vector2(-252, 285)
+texture = ExtResource("14_0rfbj")
+
+[node name="CloudBig3" type="Sprite2D" parent="ParallaxMidlle" unique_id=2017883155]
+position = Vector2(645.0002, 88.00006)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("15_0clec")
+
+[node name="CloudeMini" type="Sprite2D" parent="ParallaxMidlle" unique_id=1699705706]
+position = Vector2(199, 54)
+texture = ExtResource("16_7cuid")
+
+[node name="CloudeSmall03" type="Sprite2D" parent="ParallaxMidlle" unique_id=1323328721]
+position = Vector2(1342.4, 2098)
+texture = ExtResource("13_x47cf")
+
+[node name="CloudeSmall01" type="Sprite2D" parent="ParallaxMidlle" unique_id=1847154043]
+position = Vector2(3602.4, 1143)
+texture = ExtResource("13_x47cf")
+
+[node name="ParrallaxForward" type="Parallax2D" parent="." unique_id=166893154]
+scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0.8, 0.8)
+scroll_offset = Vector2(3029, 872)
+repeat_size = Vector2(5377.205, 0)
+
+[node name="Sk1" type="Sprite2D" parent="ParrallaxForward" unique_id=1132884109]
+visible = false
+texture_repeat = 2
+position = Vector2(-3204.2856, 435.71423)
+scale = Vector2(2.1278558, 2.1278558)
+texture = ExtResource("17_jrfm4")
+region_enabled = true
+region_rect = Rect2(0, 0, 9538.267, 1238)
+
+[node name="CanvasGroup" type="CanvasGroup" parent="ParrallaxForward" unique_id=1361774395]
+position = Vector2(6.2050776, 16.999998)
+scale = Vector2(0.7, 0.7)
+
+[node name="CloudeSmall04" type="Sprite2D" parent="ParrallaxForward/CanvasGroup" unique_id=1486085744]
+position = Vector2(-3222.857, 334.2858)
+scale = Vector2(1.7719771, 1.7719771)
+texture = ExtResource("11_m4tr5")
+
+[node name="CloudeGround" type="Sprite2D" parent="ParrallaxForward/CanvasGroup" unique_id=511311170]
+position = Vector2(109.6275, 97.1427)
+scale = Vector2(1.4285712, 1.4285712)
+texture = ExtResource("18_8kssm")
+
+[node name="CloudeGround2" type="Sprite2D" parent="ParrallaxForward/CanvasGroup" unique_id=952623966]
+position = Vector2(-2666.0864, 245.71411)
+rotation = 3.1415927
+scale = Vector2(0.99999994, -0.99999994)
+texture = ExtResource("18_8kssm")
+
+[node name="CloudeGround01" type="Sprite2D" parent="ParrallaxForward/CanvasGroup" unique_id=866613352]
+texture_repeat = 2
+position = Vector2(-101.42859, -431.42865)
+scale = Vector2(1.3185729, 1.3031385)
+texture = ExtResource("19_ubdc5")
+region_enabled = true
+region_rect = Rect2(-530.104, 0, 5381.7593, 1238)
+
+[node name="CloudeSmall2" type="Sprite2D" parent="ParrallaxForward/CanvasGroup" unique_id=2049001237]
+position = Vector2(-2370.3726, 494.28552)
+scale = Vector2(1.4285712, 1.4285712)
+texture = ExtResource("14_0rfbj")
+
+[node name="CloudBig" type="Sprite2D" parent="ParrallaxForward/CanvasGroup" unique_id=1310935130]
+position = Vector2(1422.4844, 241.42859)
+scale = Vector2(1.4285712, 1.4285712)
+texture = ExtResource("15_0clec")
+
+[node name="CloudeMini" type="Sprite2D" parent="ParrallaxForward/CanvasGroup" unique_id=1304071503]
+position = Vector2(1806.7703, 227.1427)
+scale = Vector2(1.4285713, 1.4285713)
+texture = ExtResource("16_7cuid")
+
+[node name="CloudeMini2" type="Sprite2D" parent="ParrallaxForward/CanvasGroup" unique_id=1456357137]
+position = Vector2(-5031.4287, 608.5714)
+scale = Vector2(1.4285713, 1.4285713)
+texture = ExtResource("16_7cuid")
+
+[node name="CloudeSmall03" type="Sprite2D" parent="ParrallaxForward/CanvasGroup" unique_id=43102876]
+position = Vector2(-1366.0867, -8.571411)
+scale = Vector2(1.4285713, 1.4285713)
+texture = ExtResource("11_m4tr5")
+
+[node name="skybox" type="CanvasLayer" parent="." unique_id=998119323]
+layer = -4
+follow_viewport_enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="skybox" unique_id=1614335233]
+z_index = -10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -534.0
+offset_top = -295.0
+offset_right = 534.0
+offset_bottom = 295.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ksnq2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=339015903]
 
@@ -223,28 +393,118 @@ vertical_alignment = 1
 uppercase = true
 metadata/_edit_use_anchors_ = true
 
-[node name="branches" type="TileMapLayer" parent="." unique_id=211459792 groups=["wall"]]
-tile_map_data = PackedByteArray("AAABAAUAAAABAAEAAAACAAUAAAACAAcAAAADAAUAAAADAAEAAAAEAAUAAAACAAcAAAAFAAUAAAACAAIAAAAGAAUAAAAEAAUAAAAHAAUAAAAEAAEAAAAAAAwAAAABAAEAAAABAAwAAAACAAIAAAACAAwAAAACAAEAAAADAAwAAAACAAcAAAAEAAwAAAAFAAMAAAAEAA0AAAAFAAQAAAAEAA4AAAABAAYAAAAEAA8AAAAFAAYAAAAEABAAAAADAAcAAAADABAAAAABAAIAAAAFABAAAAACAAUAAAAGABAAAAACAAIAAAAHABAAAAADAAIAAAAIABAAAAADAAEAAAAJABAAAAAEAAUAAAAKABAAAAAEAAMAAAALABAAAAAFAAMAAAAMABIAAAAEAAUAAAANABIAAAACAAEAAAAOABIAAAACAAIAAAAPABIAAAACAAUAAAAQABIAAAAEAAcAAAARABIAAAAFAAcAAAALABIAAAACAAIAAAAKABIAAAABAAEAAAA=")
+[node name="platforms" type="CanvasGroup" parent="." unique_id=1759144103]
+material = SubResource("ShaderMaterial_id7i2")
+
+[node name="platforms" type="Node2D" parent="platforms" unique_id=1140814713]
+
+[node name="platf" parent="platforms/platforms" unique_id=1920261022 instance=ExtResource("8_otjxb")]
+position = Vector2(740, 375)
+
+[node name="platf2" parent="platforms/platforms" unique_id=1472457041 instance=ExtResource("8_otjxb")]
+position = Vector2(726, 444)
+
+[node name="platf3" parent="platforms/platforms" unique_id=599179312 instance=ExtResource("8_otjxb")]
+position = Vector2(909, 304)
+
+[node name="branches" type="CanvasGroup" parent="." unique_id=1743534373]
+material = SubResource("ShaderMaterial_id7i2")
+
+[node name="door2" parent="branches" unique_id=1022031169 instance=ExtResource("7_otjxb")]
+position = Vector2(1002, 381)
+rotation = -1.5707964
+
+[node name="door" parent="branches" unique_id=1029145735 instance=ExtResource("7_otjxb")]
+position = Vector2(437, 474)
+rotation = -3.1415925
+
+[node name="disappearing_wall" parent="branches" unique_id=1457421688 instance=ExtResource("8_otjxb")]
+position = Vector2(626, 368)
+
+[node name="branches" type="TileMapLayer" parent="branches" unique_id=211459792 groups=["wall"]]
+position = Vector2(4, 0)
+tile_map_data = PackedByteArray("AAABAAUAAAABAAEAAAACAAUAAAACAAcAAAADAAUAAAADAAEAAAAEAAUAAAACAAcAAAAFAAUAAAACAAIAAAAGAAUAAAAEAAUAAAAHAAUAAAAEAAEAAAAEABAAAAAEAAUAAAADABAAAAAEAAcAAAAFABAAAAACAAUAAAAGABAAAAACAAIAAAAHABAAAAADAAMAAAAIABAAAAADAAEAAAAJABAAAAAEAAUAAAAKABAAAAAEAAMAAAALABAAAAACAAMAAAABABAAAAACAAIAAAACABAAAAACAAIAAAAAABAAAAABAAEAAAAMABAAAAACAAcAAAANABAAAAAEAAUAAAAOABAAAAACAAIAAAAAAAwAAAABAAEAAAABAAwAAAAEAAMAAAACAAwAAAAEAAUAAAADAAwAAAACAAUAAAAEAAwAAAAEAAEAAAAHABEAAAADAAQAAAAHABIAAAABAAcAAAAIABIAAAAEAAEAAAATABAAAAACAAEAAAAUABAAAAADAAIAAAAQABAAAAACAAEAAAAPABAAAAADAAEAAAAVABAAAAACAAEAAAAWABAAAAADAAEAAAANAAsAAAABAAcAAAAOAAsAAAAEAAMAAAAPAAsAAAACAAEAAAAQAAsAAAAEAAcAAAARAAsAAAAEAAcAAAAVAAsAAAAFAAMAAAANAAYAAAADAAMAAAAOAAYAAAAEAAEAAAAVAA0AAAAFAAcAAAAUAA0AAAADAAIAAAATAA0AAAABAAIAAAAVAAwAAAABAAQAAAAXABAAAAACAAUAAAAYABAAAAAEAAMAAAAZABAAAAAEAAMAAAANAAoAAAABAAYAAAANAAkAAAABAAQAAAANAAgAAAABAAQAAAANAAcAAAABAAQAAAARABAAAAACAAEAAAASABAAAAADAAMAAAAMAAYAAAABAAcAAAAMAAUAAAADAAYAAAAaABAAAAACAAcAAAAbABAAAAACAAUAAAAcABAAAAACAAUAAAAdABAAAAAFAAcAAAAdAA8AAAABAAQAAAAdAA4AAAAFAAUAAAAdAA0AAAAFAAYAAAAdAAwAAAABAAQAAAAdAAsAAAADAAYAAAAdAAoAAAADAAYAAAAdAAkAAAABAAMAAAAeAAkAAAACAAEAAAAfAAkAAAADAAEAAAAgAAkAAAACAAEAAAAhAAkAAAAEAAUAAAAiAAkAAAACAAIAAAAjAAkAAAAFAAcAAAAcAA4AAAAEAAUAAAAbAA4AAAADAAEAAAAaAA4AAAABAAIAAAAMAAQAAAAFAAYAAAAMAAMAAAAFAAMAAAALAAMAAAABAAIAAAASABEAAAADAAYAAAASABIAAAABAAQAAAASABMAAAADAAcAAAARABMAAAABAAMAAAAQABQAAAABAAMAAAAQABUAAAADAAYAAAAQABYAAAAFAAcAAAAPABYAAAABAAIAAAATABMAAAAEAAEAAAARABQAAAAFAAcAAAA=")
 tile_set = SubResource("TileSet_tnvyp")
 
-[node name="leaf" parent="." unique_id=794154945 instance=ExtResource("3_qjol6")]
+[node name="TileMapLayer" type="TileMapLayer" parent="branches" unique_id=1994599854 groups=["wall"]]
+position = Vector2(81, 0)
+scale = Vector2(4.045, 1)
+tile_map_data = PackedByteArray("AAD//xAAAAAFAAQAAAD//w8AAAAFAAQAAAD//w4AAAAFAAQAAAD//w0AAAAFAAQAAAD//wwAAAAFAAQAAAD//wsAAAAFAAQAAAD//woAAAAFAAQAAAD//wkAAAAFAAQAAAD//wgAAAAFAAQAAAD//wcAAAAFAAQAAAD//wYAAAAFAAQAAAD//wUAAAAFAAQAAAD//wQAAAAFAAQAAAD//wMAAAAFAAQAAAD//wIAAAAFAAQAAAD//wAAAAAFAAQAAAD//wEAAAAFAAQAAAD/////AAAFAAQAAAD//xEAAAAFAAQAAAD//xIAAAAFAAQAAAD//xMAAAAFAAQAAAD//xQAAAAFAAQAAAD//xUAAAAFAAQAAAD///7/AAAFAAQAAAD///3/AAAFAAQAAAD///z/AAAFAAQAAAD///v/AAAFAAQAAAD///r/AAAFAAQAAAD///n/AAAFAAQAAAA=")
+tile_set = SubResource("TileSet_tnvyp")
+
+[node name="leafs" type="Node2D" parent="." unique_id=377383396]
+z_index = -1
+
+[node name="leaf" parent="leafs" unique_id=794154945 instance=ExtResource("3_qjol6")]
 position = Vector2(227, 153)
 
+[node name="leaf2" parent="leafs" unique_id=1184471629 instance=ExtResource("3_qjol6")]
+position = Vector2(133, 425)
+rotation = -3.1135063
+
+[node name="leaf4" parent="leafs" unique_id=798217262 instance=ExtResource("3_qjol6")]
+position = Vector2(713, 413.99997)
+rotation = 2.449491
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="leaf3" parent="leafs" unique_id=1750239687 instance=ExtResource("3_qjol6")]
+position = Vector2(471, 505)
+
+[node name="leaf5" parent="leafs" unique_id=145964858 instance=ExtResource("3_qjol6")]
+position = Vector2(624, 407)
+
+[node name="leaf6" parent="leafs" unique_id=631092823 instance=ExtResource("3_qjol6")]
+position = Vector2(882, 284)
+
+[node name="leaf7" parent="leafs" unique_id=300889757 instance=ExtResource("3_qjol6")]
+position = Vector2(795.99994, 353.00003)
+rotation = 0.077876925
+scale = Vector2(-1, 1)
+
+[node name="leaf8" parent="leafs" unique_id=1789961106 instance=ExtResource("3_qjol6")]
+position = Vector2(863.9999, 442)
+rotation = -0.1922983
+
+[node name="buttons" type="Node2D" parent="." unique_id=1042622700]
+
+[node name="button" parent="buttons" unique_id=1540223482 node_paths=PackedStringArray("targets") instance=ExtResource("6_tnvyp")]
+position = Vector2(115, 416)
+rotation = -3.1415925
+targets = [NodePath("../../branches/door"), null]
+
+[node name="button2" parent="buttons" unique_id=1783996244 node_paths=PackedStringArray("targets") instance=ExtResource("6_tnvyp")]
+position = Vector2(447, 342)
+rotation = 1.5707964
+targets = [NodePath("../../branches/disappearing_wall"), NodePath("../../branches/door2")]
+
 [node name="caterpillar_container" parent="." unique_id=1297587781 instance=ExtResource("2_4g6k1")]
-position = Vector2(324, 244)
-
-[node name="Area2D" type="Area2D" parent="." unique_id=1409538889]
-visible = false
-position = Vector2(331, 446)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1005106555]
-shape = SubResource("RectangleShape2D_4g6k1")
+position = Vector2(133, 133)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1613938633]
-position = Vector2(321, 121)
+position = Vector2(395, 151)
 zoom = Vector2(1.5, 1.5)
+limit_left = 9
 script = ExtResource("5_4g6k1")
 
-[connection signal="body_entered" from="Area2D" to="Camera2D" method="_on_area_2d_body_entered"]
+[node name="camera_switches" type="Node2D" parent="." unique_id=1036652181]
+
+[node name="1" type="Area2D" parent="camera_switches" unique_id=1409538889]
+position = Vector2(230, 449)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="camera_switches/1" unique_id=1005106555]
+position = Vector2(1.75, 0)
+shape = SubResource("RectangleShape2D_4g6k1")
+
+[node name="2" type="Area2D" parent="camera_switches" unique_id=266672149]
+position = Vector2(583, 448)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="camera_switches/2" unique_id=59154539]
+position = Vector2(26.75, 0)
+shape = SubResource("RectangleShape2D_4g6k1")
+
+[node name="switchables" type="Node2D" parent="." unique_id=1167304900]
+
+[connection signal="body_entered" from="camera_switches/1" to="Camera2D" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="camera_switches/2" to="Camera2D" method="_on_second_body_entered"]
 
 [editable path="caterpillar_container"]
