@@ -11,13 +11,14 @@ class_name Caterpillar
 
 @onready var body: CollisionShape2D = $CollisionShape2D
 
-@onready var lsegment: Sprite2D = $"../Lsegment"
-@onready var lsegment_2: Sprite2D = $"../Lsegment2"
-@onready var msegment: Sprite2D = $"../msegment"
-@onready var rsegment: Sprite2D = $"../Rsegment"
-@onready var rsegment_2: Sprite2D = $"../Rsegment2"
-@onready var head: Sprite2D = $"../Rsegment/head"
+@onready var lsegment: Sprite2D = %Lsegment
+@onready var lsegment_2: Sprite2D = %Lsegment2
+@onready var msegment: Sprite2D = %msegment
+@onready var rsegment: Sprite2D = %Rsegment
+@onready var rsegment_2: Sprite2D = %Rsegment2
+@onready var head: Sprite2D = %head
 
+@export var is_horizontal:bool = true
 
 
 
@@ -86,7 +87,9 @@ func move_left():
 	reset_tween()
 	tw.tween_property(self, "scale:x", 1.0, 0.5)
 	tw.parallel().tween_property(self, "global_position", left_end.global_position+Vector2(22,0), 0.5)
-
+func reset_scale():
+	reset_tween()
+	tw.tween_property(self, "scale:x", 1.0, 0.5)
 func stretch_up(delta):
 	rotation = 90
 	

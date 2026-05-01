@@ -1,0 +1,515 @@
+[gd_scene format=3 uid="uid://b8nby1anuwnip"]
+
+[ext_resource type="Shader" uid="uid://nh33wfro05oh" path="res://player/caterpillar/shaders/canvas_group_outline.gdshader" id="1_gakhs"]
+[ext_resource type="Texture2D" uid="uid://qaa4n5fhlbam" path="res://player/caterpillar/sprites/segment.png" id="2_wx7ip"]
+[ext_resource type="Script" uid="uid://cn30tqlxx0shl" path="res://player/caterpillar/caterpillar.gd" id="3_kfal4"]
+[ext_resource type="Texture2D" uid="uid://clh0sfs8p5gmt" path="res://player/caterpillar/sprites/гусеница (4).png" id="4_vis5h"]
+[ext_resource type="Script" uid="uid://dcq618u6kfspo" path="res://player/caterpillar/state_machine_caterpillar.gd" id="5_hi2w6"]
+[ext_resource type="Script" uid="uid://cpg68vvsx483i" path="res://player/caterpillar/idle.gd" id="6_hd0bw"]
+[ext_resource type="Script" uid="uid://08u8rfewcp1r" path="res://player/caterpillar/stretch_right.gd" id="7_2pwg1"]
+[ext_resource type="Script" uid="uid://bjfmnuc80rufl" path="res://player/caterpillar/stretch_left.gd" id="8_esfjd"]
+[ext_resource type="Script" uid="uid://cma0gccuwokia" path="res://player/caterpillar/stretch_up.gd" id="9_gfveg"]
+[ext_resource type="Script" uid="uid://wbr7bftw2pf6" path="res://player/caterpillar/move_right.gd" id="10_f7v5e"]
+[ext_resource type="Script" uid="uid://bvhv7fnyuq637" path="res://player/caterpillar/move_left.gd" id="11_i87gu"]
+[ext_resource type="Script" uid="uid://dbg1r47e2mtyq" path="res://player/caterpillar/move_up.gd" id="12_ymfgj"]
+[ext_resource type="Script" uid="uid://3f1k1m1uju3o" path="res://player/caterpillar/fall.gd" id="13_wx7ip"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5fres"]
+shader = ExtResource("1_gakhs")
+shader_parameter/line_colour = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 2
+
+[sub_resource type="Shader" id="Shader_wx7ip"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kfal4"]
+render_priority = 0
+shader = SubResource("Shader_wx7ip")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_id7i2"]
+load_path = "res://.godot/imported/гусеница1.png-63f13aad87b0ebe9938e4a8ea8aa7caf.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvbmr"]
+atlas = SubResource("CompressedTexture2D_id7i2")
+region = Rect2(528, 32, 388, 328)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4g6k1"]
+size = Vector2(44, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apk75"]
+atlas = ExtResource("4_vis5h")
+region = Rect2(84, 173, 795, 346)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gakhs"]
+size = Vector2(49, 23)
+
+[sub_resource type="Animation" id="Animation_otjxb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("CollisionShape2D/left_end:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-13, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CanvasGroup/Lsegment2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CanvasGroup/msegment:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../CanvasGroup/Rsegment2:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../CanvasGroup/Rsegment:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:is_horizontal")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ksnq2"]
+resource_name = "horiz"
+length = 0.16666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(20, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.5707963267948966, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("CollisionShape2D/left_end:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.10006257),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-13, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CanvasGroup/Lsegment2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CanvasGroup/msegment:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../CanvasGroup/Rsegment2:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../CanvasGroup/Rsegment:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:is_horizontal")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_mvc6e"]
+resource_name = "vert"
+length = 0.16666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(20, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5707963267948966]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("CollisionShape2D/left_end:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-15.734985, 0.005004883)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CanvasGroup/Lsegment2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5707964]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CanvasGroup/msegment:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5707964]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CanvasGroup/Rsegment2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5707964]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../CanvasGroup/Rsegment:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5707964]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:is_horizontal")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_id7i2"]
+_data = {
+&"RESET": SubResource("Animation_otjxb"),
+&"horiz": SubResource("Animation_ksnq2"),
+&"vert": SubResource("Animation_mvc6e")
+}
+
+[node name="caterpillar_container" type="Node2D" unique_id=1297587781]
+
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=2124779368]
+material = SubResource("ShaderMaterial_5fres")
+
+[node name="Lsegment" type="Sprite2D" parent="CanvasGroup" unique_id=234435947]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(-27.258678, 0.33794403)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_wx7ip")
+offset = Vector2(0, 20.01)
+
+[node name="ray_left" type="RayCast2D" parent="CanvasGroup/Lsegment" unique_id=581759313]
+position = Vector2(-46.76651, -4.2243004)
+scale = Vector2(1.1250001, 12.937503)
+target_position = Vector2(-300, 0)
+
+[node name="Lsegment2" type="Sprite2D" parent="CanvasGroup" unique_id=2094226277]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(-18.25874, 0.33794403)
+scale = Vector2(0.095, 0.095)
+texture = ExtResource("2_wx7ip")
+offset = Vector2(0, -6.745)
+
+[node name="msegment" type="Sprite2D" parent="CanvasGroup" unique_id=1678649073]
+unique_name_in_owner = true
+texture_filter = 1
+material = SubResource("ShaderMaterial_kfal4")
+position = Vector2(-8.523693, 0.33300114)
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("2_wx7ip")
+offset = Vector2(0, -20.6)
+
+[node name="Rsegment2" type="Sprite2D" parent="CanvasGroup" unique_id=665340036]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(0.7413211, 0.33794403)
+scale = Vector2(0.095, 0.095)
+texture = ExtResource("2_wx7ip")
+offset = Vector2(0, -7.45)
+
+[node name="Rsegment" type="Sprite2D" parent="CanvasGroup" unique_id=1538547260]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(9.741322, 0.33794403)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("2_wx7ip")
+
+[node name="head" type="Sprite2D" parent="CanvasGroup/Rsegment" unique_id=1175822364]
+unique_name_in_owner = true
+texture_filter = 1
+use_parent_material = true
+scale = Vector2(1.0000001, 1.0000001)
+texture = SubResource("AtlasTexture_gvbmr")
+offset = Vector2(111.36, -102.95)
+
+[node name="ray_right" type="RayCast2D" parent="CanvasGroup/Rsegment" unique_id=766864883]
+scale = Vector2(1.0000001, 11.500002)
+target_position = Vector2(358.43, 0)
+
+[node name="caterpillar" type="CharacterBody2D" parent="." unique_id=600846969 groups=["caterpillar"]]
+position = Vector2(-0.16482735, 0.33296967)
+script = ExtResource("3_kfal4")
+speed = 20.0
+stretch_limit = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="caterpillar" unique_id=2014668242]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_4g6k1")
+
+[node name="SquareFill2" type="Sprite2D" parent="caterpillar/CollisionShape2D" unique_id=1734202017]
+visible = false
+texture_filter = 1
+scale = Vector2(0.09, 0.09)
+texture = SubResource("AtlasTexture_apk75")
+
+[node name="right_end" type="Marker2D" parent="caterpillar/CollisionShape2D" unique_id=549230958]
+unique_name_in_owner = true
+position = Vector2(18.265015, 0.005004883)
+
+[node name="right_end2" type="Marker2D" parent="caterpillar/CollisionShape2D" unique_id=1710878056]
+unique_name_in_owner = true
+position = Vector2(9.265015, 0.005004883)
+
+[node name="mid" type="Marker2D" parent="caterpillar/CollisionShape2D" unique_id=290457612]
+unique_name_in_owner = true
+
+[node name="left_end" type="Marker2D" parent="caterpillar/CollisionShape2D" unique_id=63221401]
+unique_name_in_owner = true
+position = Vector2(-18.734985, 0)
+
+[node name="left_end2" type="Marker2D" parent="caterpillar/CollisionShape2D" unique_id=2113753366]
+unique_name_in_owner = true
+position = Vector2(-9.734985, 0.005004883)
+
+[node name="Area2D" type="Area2D" parent="caterpillar/CollisionShape2D" unique_id=979874256 groups=["caterpillar"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="caterpillar/CollisionShape2D/Area2D" unique_id=2023492269]
+position = Vector2(-0.23498535, 0.5050049)
+shape = SubResource("RectangleShape2D_gakhs")
+
+[node name="state_machine" type="Node" parent="caterpillar" unique_id=1852672813]
+script = ExtResource("5_hi2w6")
+
+[node name="idle" type="Node" parent="caterpillar/state_machine" unique_id=1120363754]
+script = ExtResource("6_hd0bw")
+metadata/_custom_type_script = "uid://dpwjrksjt1osr"
+
+[node name="stretch_right" type="Node" parent="caterpillar/state_machine" unique_id=637549506]
+script = ExtResource("7_2pwg1")
+metadata/_custom_type_script = "uid://dpwjrksjt1osr"
+
+[node name="stretch_left" type="Node" parent="caterpillar/state_machine" unique_id=1787692612]
+script = ExtResource("8_esfjd")
+metadata/_custom_type_script = "uid://dpwjrksjt1osr"
+
+[node name="stretch_up" type="Node" parent="caterpillar/state_machine" unique_id=428078735]
+script = ExtResource("9_gfveg")
+metadata/_custom_type_script = "uid://dpwjrksjt1osr"
+
+[node name="move_right" type="Node" parent="caterpillar/state_machine" unique_id=35633753]
+script = ExtResource("10_f7v5e")
+metadata/_custom_type_script = "uid://dpwjrksjt1osr"
+
+[node name="move_left" type="Node" parent="caterpillar/state_machine" unique_id=703143892]
+script = ExtResource("11_i87gu")
+metadata/_custom_type_script = "uid://dpwjrksjt1osr"
+
+[node name="move_up" type="Node" parent="caterpillar/state_machine" unique_id=1903996386]
+script = ExtResource("12_ymfgj")
+metadata/_custom_type_script = "uid://dpwjrksjt1osr"
+
+[node name="fall" type="Node" parent="caterpillar/state_machine" unique_id=1798826525]
+script = ExtResource("13_wx7ip")
+metadata/_custom_type_script = "uid://dpwjrksjt1osr"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="caterpillar" unique_id=1428520391]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_id7i2")
