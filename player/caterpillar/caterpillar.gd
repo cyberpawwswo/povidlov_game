@@ -41,11 +41,14 @@ func change_state(next_state):
 		current_state.enter_state()
 
 func _ready() -> void:
+	CaterpillarGlobal.connect("leaf_eat", add_stretch_limit)
 	for state in state_machine.get_children():
 		state.states = state_machine
 		state.player = self
 	current_state = state_machine.idle
 	previous_state = state_machine.idle
+func add_stretch_limit():
+	stretch_limit+=0.2
 func reset_tween():
 	if tw:
 		tw.kill()
@@ -63,6 +66,7 @@ func _physics_process(delta: float) -> void:
 		#move_left()
 	move_and_slide()
 func _process(_delta: float) -> void:
+
 	
 	lsegment.global_position = left_end.global_position
 	lsegment_2.global_position = left_end_2.global_position

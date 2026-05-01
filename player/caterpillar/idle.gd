@@ -4,6 +4,14 @@ extends CaterpillarState
 
 func enter_state():
 	pass
+		#for i in canvas_group.get_children():
+			#var tw = create_tween().set_trans(Tween.TRANS_BOUNCE)
+			#var init_scale = i.scale
+			#tw.tween_property(i,"scale:x", (i.scale.x*1.5), 0.1)
+			#tw.parallel().tween_property(i, "scale:y", (i.scale.y*0.5),0.05)
+			#tw.tween_property(i,"scale", init_scale, 0.05)
+			#i.scale = init_scale
+	
 
 func update(delta):
 	player.handle_gravity(delta)

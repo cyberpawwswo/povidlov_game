@@ -24,7 +24,7 @@ func update(delta: float):
 	if !anim_finish:
 		return
 	time += delta
-	if time >= player.stretch_limit:
+	if player.scale.x >= player.stretch_limit:
 		stretch_finish = true
 	if ray_right.is_colliding():
 		if ray_right.get_collider().is_in_group("wall"):

@@ -25,7 +25,7 @@ func update(delta: float):
 		player.scale.x += 0.1 *delta*player.speed
 	elif Input.is_action_just_released("ui_left"):
 		stretch_finish = true
-	if time >= player.stretch_limit:
+	if player.scale.x >= player.stretch_limit:
 		stretch_finish = true
 	if stretch_finish:
 		player.change_state(states.move_left)
