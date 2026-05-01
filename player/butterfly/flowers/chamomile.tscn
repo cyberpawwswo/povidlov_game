@@ -14,5 +14,3 @@ metadata/_custom_type_script = "uid://0jocyet2h7uo"
 position = Vector2(1, 86.00001)
 rotation = 0.7853982
 texture = ExtResource("3_dva0l")
-
-[editable path="Flower"]

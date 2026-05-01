@@ -49,6 +49,7 @@ position = Vector2(-0.5, 9.5)
 shape = SubResource("RectangleShape2D_hbfln")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=182794511]
+drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="Blur" type="Sprite2D" parent="." unique_id=1641660121]

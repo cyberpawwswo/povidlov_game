@@ -18,6 +18,8 @@ var tween : Tween
 
 var is_pollinates := false
 
+var chroma_point := 0
+
 
 func _ready() -> void:
 	blur_mat.set_shader_parameter('samples', blur_samples)
@@ -49,8 +51,8 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * SPEED
 			animation_spite.flip_h = bool(direction-1)
 
-	if not direction:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	#if not direction:
+		#velocity.x = move_toward(velocity.x, 0, SPEED)
 
 
 	if get_real_velocity().length() > minimun_velosity_blur*1000:
