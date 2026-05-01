@@ -32,6 +32,9 @@ load_path = "res://.godot/imported/гусеница1.png-63f13aad87b0ebe9938e4a8
 atlas = SubResource("CompressedTexture2D_id7i2")
 region = Rect2(528, 32, 388, 328)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_wx7ip"]
+radius = 247.34717
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4g6k1"]
 size = Vector2(44, 20)
 
@@ -430,15 +433,24 @@ scale = Vector2(1.0000001, 1.0000001)
 texture = SubResource("AtlasTexture_gvbmr")
 offset = Vector2(111.36, -102.95)
 
+[node name="Area2D" type="Area2D" parent="CanvasGroup/Rsegment/head" unique_id=878644982]
+scale = Vector2(0.99999994, 0.99999994)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasGroup/Rsegment/head/Area2D" unique_id=954195427]
+shape = SubResource("CircleShape2D_wx7ip")
+
 [node name="ray_right" type="RayCast2D" parent="CanvasGroup/Rsegment" unique_id=766864883]
 scale = Vector2(1.0000001, 11.500002)
 target_position = Vector2(358.43, 0)
 
 [node name="caterpillar" type="CharacterBody2D" parent="." unique_id=600846969 groups=["caterpillar"]]
 position = Vector2(-0.16482735, 0.33296967)
+collision_mask = 3
 script = ExtResource("3_kfal4")
-speed = 20.0
-stretch_limit = 1.0
+speed = 18.0
+stretch_limit = 0.9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="caterpillar" unique_id=2014668242]
 unique_name_in_owner = true

@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://bv3lmb78uwadu"]
+
+[ext_resource type="Script" uid="uid://ddumwjodw1r7b" path="res://player/caterpillar/door.gd" id="1_u1x4b"]
+[ext_resource type="Texture2D" uid="uid://bx40bofn7yy27" path="res://icon.svg" id="2_1rdbw"]
+[ext_resource type="Texture2D" uid="uid://bmb1bhdfym24k" path="res://player/caterpillar/sprites/props etc/branches tiles.png" id="2_ersva"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oysef"]
+atlas = ExtResource("2_ersva")
+region = Rect2(32, 8, 128, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvc6e"]
+size = Vector2(30, 128)
+
+[sub_resource type="Animation" id="Animation_id7i2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gvbmr"]
+resource_name = "close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -126), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bcd5j"]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -120)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5fres"]
+_data = {
+&"RESET": SubResource("Animation_id7i2"),
+&"close": SubResource("Animation_gvbmr"),
+&"open": SubResource("Animation_bcd5j")
+}
+
+[node name="door" type="Node2D" unique_id=1029145735]
+script = ExtResource("1_u1x4b")
+
+[node name="body" type="StaticBody2D" parent="." unique_id=749676510 groups=["wall"]]
+
+[node name="Sprite2D2" type="Sprite2D" parent="body" unique_id=1841762767]
+position = Vector2(-3, 0)
+rotation = -1.5707964
+texture = SubResource("AtlasTexture_oysef")
+
+[node name="Sprite2D3" type="Sprite2D" parent="body" unique_id=253970786]
+position = Vector2(4, 0)
+rotation = -1.5707964
+texture = SubResource("AtlasTexture_oysef")
+flip_h = true
+flip_v = true
+
+[node name="Sprite2D" type="Sprite2D" parent="body" unique_id=1077347640]
+visible = false
+scale = Vector2(0.24218735, 1)
+texture = ExtResource("2_1rdbw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body" unique_id=783340392]
+shape = SubResource("RectangleShape2D_mvc6e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1192412162]
+libraries/ = SubResource("AnimationLibrary_5fres")
