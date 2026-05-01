@@ -40,6 +40,7 @@ animations = [{
 }]
 
 [node name="Butterfly" type="CharacterBody2D" unique_id=636950088]
+collision_layer = 2
 script = ExtResource("1_hbfln")
 blur_curve = SubResource("Curve_cm705")
 metadata/_custom_type_script = "uid://b060107oyddew"
@@ -62,4 +63,4 @@ texture = ExtResource("5_1wyui")
 scale = Vector2(0.13118276, 0.13118276)
 sprite_frames = SubResource("SpriteFrames_0hvfw")
 animation = &"fly"
-frame_progress = 0.44752032
+frame = 1

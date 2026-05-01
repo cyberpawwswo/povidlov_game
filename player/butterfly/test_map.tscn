@@ -1,22 +1,22 @@
 [gd_scene format=3 uid="uid://d28gpixrx8jg6"]
 
-[ext_resource type="Texture2D" uid="uid://4dhcgn3tyikj" path="res://player/butterfly/player/vector-forest-landscape-illustration.jpg" id="1_biaqq"]
 [ext_resource type="PackedScene" uid="uid://dapbscxj5pqni" path="res://player/butterfly/player/butterfly.tscn" id="2_u3mhw"]
 [ext_resource type="PackedScene" uid="uid://buwossh8o61xo" path="res://player/butterfly/flowers/chamomile.tscn" id="3_s2hvg"]
 [ext_resource type="PackedScene" uid="uid://d0d7c0n874qmm" path="res://player/butterfly/frog/frog.tscn" id="4_4c37m"]
+[ext_resource type="Texture2D" uid="uid://de8n3gn35jyw2" path="res://textures/sky/sk0.png" id="4_8ftm8"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8ftm8"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8ftm8"]
+load_path = "res://.godot/imported/sk.png-ab0b6c9e05160f88c0d7121d620a8861.ctex"
+
 [node name="TestMap" type="Node2D" unique_id=1487573391]
 
-[node name="VectorForestLandscapeIllustration" type="Sprite2D" parent="." unique_id=218167782]
-texture_repeat = 2
-position = Vector2(2652, 1424)
-scale = Vector2(1.6471429, 1.3122449)
-texture = ExtResource("1_biaqq")
-region_enabled = true
-region_rect = Rect2(63.728622, -14.026863, 3224.29, 2177.0444)
-region_filter_clip_enabled = true
+[node name="Sk0" type="Sprite2D" parent="." unique_id=1560337974]
+z_index = -1
+position = Vector2(1876.0002, 901.99994)
+scale = Vector2(1.6873873, 1.4725363)
+texture = ExtResource("4_8ftm8")
 
 [node name="Chamomile" parent="." unique_id=1191199222 instance=ExtResource("3_s2hvg")]
 position = Vector2(1739, 619)
@@ -32,3 +32,27 @@ position = Vector2(1603, 1518)
 
 [node name="Butterfly" parent="." unique_id=636950088 instance=ExtResource("2_u3mhw")]
 position = Vector2(1332, 374)
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1788940893]
+z_index = 1
+
+[node name="Sk" type="Sprite2D" parent="Parallax2D" unique_id=1097286182]
+texture_repeat = 3
+position = Vector2(902, 178.00002)
+scale = Vector2(0.2972536, 0.29725364)
+texture = SubResource("CompressedTexture2D_8ftm8")
+region_enabled = true
+region_rect = Rect2(0, 0, 6050.63, 1238)
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=283648070]
+scale = Vector2(0.7, 0.7)
+scroll_scale = Vector2(0.33, 0.33)
+scroll_offset = Vector2(28, 52)
+
+[node name="Sk" type="Sprite2D" parent="Parallax2D2" unique_id=2119191182]
+texture_repeat = 3
+position = Vector2(902, 178.00002)
+scale = Vector2(0.2972536, 0.29725364)
+texture = SubResource("CompressedTexture2D_8ftm8")
+region_enabled = true
+region_rect = Rect2(0, 0, 6050.63, 1238)

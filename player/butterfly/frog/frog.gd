@@ -46,7 +46,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func _on_timer_attack_timeout() -> void:
 	if player:
-		attack()
+		create_tween().tween_callback(attack).set_delay(randf_range(0.5, 2))
 	create_tween().tween_callback($TimerAttack.start).set_delay(randf())
 
 
