@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csifpp5v552u"
-path="res://.godot/imported/sk.png-ab0b6c9e05160f88c0d7121d620a8861.ctex"
+uid="uid://c2esq17gw4mug"
+path="res://.godot/imported/sk01.png-086d12a980bb7578dccc5c0b01ae972e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/sky/sk.png"
-dest_files=["res://.godot/imported/sk.png-ab0b6c9e05160f88c0d7121d620a8861.ctex"]
+source_file="res://textures/sky/sk01.png"
+dest_files=["res://.godot/imported/sk01.png-086d12a980bb7578dccc5c0b01ae972e.ctex"]
 
 [params]
 
