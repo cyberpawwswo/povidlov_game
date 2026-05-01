@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Butterfly
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -200.0
@@ -30,6 +30,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("but_fly_up"):
 		tween = create_tween()
+		tween.set_trans(Tween.TRANS_QUINT)
 		tween.tween_property($Camera2D, 'zoom', Vector2(0.95, 0.95), 0.05)
 		tween.tween_property($Camera2D, 'zoom', Vector2(1, 1), 0.1)
 
@@ -43,13 +44,9 @@ func _physics_process(delta: float) -> void:
 
 	if get_real_velocity().length() > minimun_velosity_blur*1000:
 		var blur_direction = get_real_velocity().normalized()
-		
 		var stage = get_real_velocity().length()/(minimun_velosity_blur*1000)* 0.1
-		
 		var value = blur_curve.sample(stage)
-		
-		print(stage)
-		
+
 		blur_mat.set_shader_parameter(
 			'blur_direction', 
 			blur_direction * value * blur_max
@@ -59,6 +56,6 @@ func _physics_process(delta: float) -> void:
 			'blur_direction', 
 			Vector2.ZERO
 		)
-	print(blur_mat.get_shader_parameter('blur_direction'))
+
 
 	move_and_slide()

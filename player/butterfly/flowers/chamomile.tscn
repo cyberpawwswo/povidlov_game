@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://buwossh8o61xo"]
+
+[ext_resource type="Script" uid="uid://b8pv0f0swhv8b" path="res://player/butterfly/flowers/chamomile.gd" id="1_f5sn6"]
+[ext_resource type="PackedScene" uid="uid://stns2aupan8t" path="res://player/butterfly/flowers/flower_trigger.tscn" id="2_jadqc"]
+[ext_resource type="Texture2D" uid="uid://bx40bofn7yy27" path="res://icon.svg" id="3_dva0l"]
+
+[node name="Chamomile" type="Node2D" unique_id=1191199222]
+script = ExtResource("1_f5sn6")
+metadata/_custom_type_script = "uid://0jocyet2h7uo"
+
+[node name="Flower" parent="." unique_id=2047706209 instance=ExtResource("2_jadqc")]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1254295697]
+position = Vector2(1, 86.00001)
+rotation = 0.7853982
+texture = ExtResource("3_dva0l")
+
+[editable path="Flower"]

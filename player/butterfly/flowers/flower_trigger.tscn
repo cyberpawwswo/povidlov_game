@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://stns2aupan8t"]
+
+[ext_resource type="Script" uid="uid://cqtaroveve4gt" path="res://player/butterfly/flowers/flower_trigger.gd" id="1_o11o5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w6ncd"]
+radius = 140.00357
+
+[node name="Flower" type="Node2D" unique_id=2047706209]
+script = ExtResource("1_o11o5")
+
+[node name="TriggerAnimation" type="Area2D" parent="." unique_id=2101801003]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerAnimation" unique_id=281202476]
+shape = SubResource("CircleShape2D_w6ncd")
+
+[connection signal="body_entered" from="TriggerAnimation" to="." method="_on_trigger_animation_body_entered"]
