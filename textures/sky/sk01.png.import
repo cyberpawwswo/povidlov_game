@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4dhcgn3tyikj"
-path="res://.godot/imported/vector-forest-landscape-illustration.jpg-3fbbf55af664005f5d5e5921df06b162.ctex"
+uid="uid://c2esq17gw4mug"
+path="res://.godot/imported/sk01.png-086d12a980bb7578dccc5c0b01ae972e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/butterfly/vector-forest-landscape-illustration.jpg"
-dest_files=["res://.godot/imported/vector-forest-landscape-illustration.jpg-3fbbf55af664005f5d5e5921df06b162.ctex"]
+source_file="res://textures/sky/sk01.png"
+dest_files=["res://.godot/imported/sk01.png-086d12a980bb7578dccc5c0b01ae972e.ctex"]
 
 [params]
 

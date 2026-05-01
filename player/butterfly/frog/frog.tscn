@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://d0d7c0n874qmm"]
+
+[ext_resource type="Script" uid="uid://daiqi4hoduiex" path="res://player/butterfly/frog/frog.gd" id="1_3l2fg"]
+[ext_resource type="Texture2D" uid="uid://bx40bofn7yy27" path="res://icon.svg" id="2_wwx0m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3l2fg"]
+size = Vector2(352, 349)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wwx0m"]
+radius = 1028.0647
+
+[node name="Frog" type="CharacterBody2D" unique_id=1394785451]
+collision_layer = 8
+script = ExtResource("1_3l2fg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=985945999]
+position = Vector2(2, 0.5)
+shape = SubResource("RectangleShape2D_3l2fg")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1334415185]
+scale = Vector2(2.765625, 2.765625)
+texture = ExtResource("2_wwx0m")
+
+[node name="Tongue" type="Node2D" parent="." unique_id=751582184]
+position = Vector2(-170, 3)
+rotation = 3.1415927
+
+[node name="ColorRect" type="ColorRect" parent="Tongue" unique_id=797750306]
+offset_top = -19.692308
+offset_right = 40.0
+offset_bottom = 20.307692
+color = Color(1, 0.13999999, 0.13999999, 1)
+
+[node name="PlayerDetection" type="Area2D" parent="." unique_id=473556551]
+scale = Vector2(2.765625, 2.765625)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection" unique_id=1202230917]
+shape = SubResource("CircleShape2D_wwx0m")
+
+[node name="TimerAttack" type="Timer" parent="." unique_id=1074101003]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="TimerJump" type="Timer" parent="." unique_id=454842968]
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="TimerAttack" to="." method="_on_timer_attack_timeout"]
+[connection signal="timeout" from="TimerJump" to="." method="_on_timer_jump_timeout"]
