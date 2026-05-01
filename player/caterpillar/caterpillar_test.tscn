@@ -1,136 +1,18 @@
 [gd_scene format=3 uid="uid://ccn2ojb8e1rve"]
 
 [ext_resource type="Texture2D" uid="uid://3irkx101rj16" path="res://player/caterpillar/placeholders/SquareFill.png" id="1_r5aan"]
-[ext_resource type="Script" uid="uid://cn30tqlxx0shl" path="res://player/caterpillar/caterpillar.gd" id="2_djb6f"]
-[ext_resource type="Script" uid="uid://dcq618u6kfspo" path="res://player/caterpillar/state_machine_caterpillar.gd" id="3_qjol6"]
-[ext_resource type="Script" uid="uid://cpg68vvsx483i" path="res://player/caterpillar/idle.gd" id="4_4g6k1"]
-[ext_resource type="Script" uid="uid://08u8rfewcp1r" path="res://player/caterpillar/stretch_right.gd" id="5_4g6k1"]
-[ext_resource type="Script" uid="uid://bjfmnuc80rufl" path="res://player/caterpillar/stretch_left.gd" id="6_apk75"]
-[ext_resource type="Script" uid="uid://cma0gccuwokia" path="res://player/caterpillar/stretch_up.gd" id="7_tnvyp"]
+[ext_resource type="PackedScene" uid="uid://b8nby1anuwnip" path="res://player/caterpillar/caterpillar_container.tscn" id="2_4g6k1"]
+[ext_resource type="PackedScene" uid="uid://c6gm6lta86cjg" path="res://player/caterpillar/leaf/leaf.tscn" id="3_qjol6"]
+[ext_resource type="Script" uid="uid://cubyrgjyf88nj" path="res://player/caterpillar/score.gd" id="7_tnvyp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjol6"]
 size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4g6k1"]
-size = Vector2(62, 20)
+size = Vector2(64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_apk75"]
-atlas = ExtResource("1_r5aan")
-region = Rect2(32, 32, 63.923355, 64)
-
-[sub_resource type="Animation" id="Animation_otjxb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_ksnq2"]
-resource_name = "horiz"
-length = 0.16666667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(20, 0), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.16666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-1.5707963267948966, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_mvc6e"]
-resource_name = "vert"
-length = 0.16666667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.03333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(20, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.16666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -1.5707963267948966]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_id7i2"]
-_data = {
-&"RESET": SubResource("Animation_otjxb"),
-&"horiz": SubResource("Animation_ksnq2"),
-&"vert": SubResource("Animation_mvc6e")
-}
+[sub_resource type="LabelSettings" id="LabelSettings_otjxb"]
+font_size = 64
 
 [node name="Node2D" type="Node2D" unique_id=1073081039]
 
@@ -144,48 +26,42 @@ texture = ExtResource("1_r5aan")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SquareFill/StaticBody2D" unique_id=548312818]
 shape = SubResource("RectangleShape2D_qjol6")
 
-[node name="caterpillar" type="CharacterBody2D" parent="." unique_id=2035677109]
-position = Vector2(546, 374)
-script = ExtResource("2_djb6f")
+[node name="SquareFill2" type="Sprite2D" parent="." unique_id=486967088]
+position = Vector2(451.0001, 321)
+rotation = 1.5707964
+scale = Vector2(16.890627, 0.46874985)
+texture = ExtResource("1_r5aan")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="caterpillar" unique_id=36011998]
+[node name="StaticBody2D" type="StaticBody2D" parent="SquareFill2" unique_id=52052174 groups=["wall"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SquareFill2/StaticBody2D" unique_id=712460378]
 shape = SubResource("RectangleShape2D_4g6k1")
 
-[node name="SquareFill2" type="Sprite2D" parent="caterpillar/CollisionShape2D" unique_id=1436728501]
-self_modulate = Color(0, 0.6313726, 0.34901962, 1)
-scale = Vector2(0.98412794, 0.3125)
-texture = SubResource("AtlasTexture_apk75")
+[node name="caterpillar_container" parent="." unique_id=1297587781 instance=ExtResource("2_4g6k1")]
+position = Vector2(323, 316)
 
-[node name="right_end" type="Marker2D" parent="caterpillar/CollisionShape2D" unique_id=1087981984]
-unique_name_in_owner = true
-position = Vector2(12, 0)
+[node name="leaf" parent="." unique_id=794154945 instance=ExtResource("3_qjol6")]
+position = Vector2(686, 385)
 
-[node name="left_end" type="Marker2D" parent="caterpillar/CollisionShape2D" unique_id=1298624662]
-unique_name_in_owner = true
-position = Vector2(-12, 0)
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=339015903]
 
-[node name="state_machine" type="Node" parent="caterpillar" unique_id=127388363]
-script = ExtResource("3_qjol6")
-
-[node name="idle" type="Node" parent="caterpillar/state_machine" unique_id=372561589]
-script = ExtResource("4_4g6k1")
-metadata/_custom_type_script = "uid://dpwjrksjt1osr"
-
-[node name="stretch_right" type="Node" parent="caterpillar/state_machine" unique_id=55774427]
-script = ExtResource("5_4g6k1")
-metadata/_custom_type_script = "uid://dpwjrksjt1osr"
-
-[node name="stretch_left" type="Node" parent="caterpillar/state_machine" unique_id=1561228239]
-script = ExtResource("6_apk75")
-metadata/_custom_type_script = "uid://dpwjrksjt1osr"
-
-[node name="stretch_up" type="Node" parent="caterpillar/state_machine" unique_id=974356825]
+[node name="Score" type="Control" parent="CanvasLayer" unique_id=337093336]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("7_tnvyp")
-metadata/_custom_type_script = "uid://dpwjrksjt1osr"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="caterpillar" unique_id=340443499]
-libraries/ = SubResource("AnimationLibrary_id7i2")
+[node name="Label" type="Label" parent="CanvasLayer/Score" unique_id=1520123441]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 23.0
+text = "000"
+label_settings = SubResource("LabelSettings_otjxb")
+vertical_alignment = 1
+uppercase = true
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=1597071334]
-position = Vector2(546, 374)
-rotation = 0.7853982
+[node name="leaf2" parent="." unique_id=531629575 instance=ExtResource("3_qjol6")]
+position = Vector2(686, 262)
