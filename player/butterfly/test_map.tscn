@@ -27,6 +27,7 @@ z_index = -1
 scroll_scale = Vector2(0.5, 0.5)
 scroll_offset = Vector2(-2941, 56)
 repeat_size = Vector2(3105.27, 0)
+autoscroll = Vector2(10, 0)
 
 [node name="CloudeSmall03" type="Sprite2D" parent="ParallaxBack" unique_id=1627297169]
 position = Vector2(909, 49)
@@ -45,6 +46,7 @@ modulate = Color(1, 1, 1, 0.78039217)
 scroll_scale = Vector2(0.7, 0.7)
 scroll_offset = Vector2(-1196, 535)
 repeat_size = Vector2(2757.51, 0)
+autoscroll = Vector2(10, 0)
 repeat_times = 2
 
 [node name="CloudeSmall" type="Sprite2D" parent="ParallaxMidlle" unique_id=1739551148]
@@ -72,6 +74,7 @@ texture = ExtResource("10_cl51e")
 scroll_scale = Vector2(0.8, 0.8)
 scroll_offset = Vector2(-3322, 1263)
 repeat_size = Vector2(5377.205, 0)
+autoscroll = Vector2(10, 0)
 
 [node name="Sk1" type="Sprite2D" parent="ParrallaxForward" unique_id=1903261591]
 visible = false
@@ -164,6 +167,7 @@ scale = Vector2(500, 7.932)
 color = Color(0.22450691, 0.12090386, 0, 1)
 
 [node name="Frog" parent="." unique_id=1394785451 instance=ExtResource("4_4c37m")]
+visible = false
 position = Vector2(1603, 1518)
 
 [node name="Butterfly" parent="." unique_id=636950088 instance=ExtResource("2_u3mhw")]
@@ -174,6 +178,6 @@ layer = -2
 
 [node name="Sk0" type="Sprite2D" parent="CanvasLayer" unique_id=1560337974]
 z_index = -4
-position = Vector2(587.50024, 320.24994)
-scale = Vector2(0.52657646, 0.532714)
+position = Vector2(993.37506, 559.56256)
+scale = Vector2(0.90146405, 0.94901043)
 texture = ExtResource("5_4c37m")

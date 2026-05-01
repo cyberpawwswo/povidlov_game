@@ -10,25 +10,42 @@ radius = 912.27704
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3l2fg"]
 size = Vector2(273, 272)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1gwn"]
+atlas = ExtResource("2_w1gwn")
+region = Rect2(0, 588, 1002, 588)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_nlfhn"]
 atlas = ExtResource("2_w1gwn")
-region = Rect2(0, 588, 988, 588)
+region = Rect2(0, 0, 1002, 588)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g67p6"]
 atlas = ExtResource("2_w1gwn")
-region = Rect2(0, 0, 988, 588)
+region = Rect2(1002, 0, 1002, 588)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wwx0m"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nlfhn")
+"texture": SubResource("AtlasTexture_w1gwn")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
 }, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlfhn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_g67p6")
 }],
 "loop": true,
-"name": &"life",
+"name": &"ready_attack",
 "speed": 5.0
 }]
 
@@ -51,18 +68,18 @@ shape = SubResource("RectangleShape2D_3l2fg")
 position = Vector2(34, 35)
 scale = Vector2(0.43452382, 0.43452382)
 sprite_frames = SubResource("SpriteFrames_wwx0m")
-animation = &"life"
-frame = 1
+animation = &"attack"
 
 [node name="Tongue" type="Node2D" parent="AnimatedSprite2D" unique_id=751582184]
-position = Vector2(94.3562, -80.54794)
+position = Vector2(-9.2054825, 16.109596)
 scale = Vector2(2.301, -2.301)
 
-[node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D/Tongue" unique_id=797750306]
-offset_top = -19.692308
-offset_right = 40.0
-offset_bottom = 20.307692
-color = Color(1, 0.13999999, 0.13999999, 1)
+[node name="Ggg" type="Sprite2D" parent="AnimatedSprite2D/Tongue" unique_id=1308129979]
+position = Vector2(82.01315, -1.0001607)
+scale = Vector2(0.43459365, -0.43459365)
+texture = ExtResource("2_w1gwn")
+region_enabled = true
+region_rect = Rect2(1114.2727, 746.95105, 380.00024, 131.37878)
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1334415185]
 visible = false
