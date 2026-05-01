@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d28gpixrx8jg6"]
 
 [ext_resource type="Texture2D" uid="uid://4dhcgn3tyikj" path="res://player/butterfly/player/vector-forest-landscape-illustration.jpg" id="1_biaqq"]
+[ext_resource type="PackedScene" uid="uid://dapbscxj5pqni" path="res://player/butterfly/player/butterfly.tscn" id="2_u3mhw"]
 [ext_resource type="PackedScene" uid="uid://buwossh8o61xo" path="res://player/butterfly/flowers/chamomile.tscn" id="3_s2hvg"]
 [ext_resource type="PackedScene" uid="uid://d0d7c0n874qmm" path="res://player/butterfly/frog/frog.tscn" id="4_4c37m"]
 
@@ -28,3 +29,6 @@ shape = SubResource("WorldBoundaryShape2D_8ftm8")
 
 [node name="Frog" parent="." unique_id=1394785451 instance=ExtResource("4_4c37m")]
 position = Vector2(1603, 1518)
+
+[node name="Butterfly" parent="." unique_id=636950088 instance=ExtResource("2_u3mhw")]
+position = Vector2(1332, 374)

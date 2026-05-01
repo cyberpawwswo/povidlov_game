@@ -62,3 +62,4 @@ texture = ExtResource("5_1wyui")
 scale = Vector2(0.13118276, 0.13118276)
 sprite_frames = SubResource("SpriteFrames_0hvfw")
 animation = &"fly"
+frame_progress = 0.44752032
