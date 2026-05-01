@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://d28gpixrx8jg6"]
 
 [ext_resource type="Texture2D" uid="uid://4dhcgn3tyikj" path="res://player/butterfly/player/vector-forest-landscape-illustration.jpg" id="1_biaqq"]
-[ext_resource type="PackedScene" uid="uid://dapbscxj5pqni" path="res://player/butterfly/player/butterfly.tscn" id="2_u3mhw"]
 [ext_resource type="PackedScene" uid="uid://buwossh8o61xo" path="res://player/butterfly/flowers/chamomile.tscn" id="3_s2hvg"]
-[ext_resource type="PackedScene" uid="uid://vuvlobm3d5dg" path="res://player/butterfly/bird/bird_spawner.tscn" id="4_8ftm8"]
+[ext_resource type="PackedScene" uid="uid://d0d7c0n874qmm" path="res://player/butterfly/frog/frog.tscn" id="4_4c37m"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8ftm8"]
 
 [node name="TestMap" type="Node2D" unique_id=1487573391]
 
@@ -16,12 +17,14 @@ region_enabled = true
 region_rect = Rect2(63.728622, -14.026863, 3224.29, 2177.0444)
 region_filter_clip_enabled = true
 
-[node name="Butterfly" parent="." unique_id=1538932803 instance=ExtResource("2_u3mhw")]
-z_index = 1
-position = Vector2(1599, 246)
-
 [node name="Chamomile" parent="." unique_id=1191199222 instance=ExtResource("3_s2hvg")]
 position = Vector2(1739, 619)
 
-[node name="BirdSpawner" parent="." unique_id=1706491592 instance=ExtResource("4_8ftm8")]
-position = Vector2(1839, 189)
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1839661695]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=111949248]
+position = Vector2(1593, 1740)
+shape = SubResource("WorldBoundaryShape2D_8ftm8")
+
+[node name="Frog" parent="." unique_id=1394785451 instance=ExtResource("4_4c37m")]
+position = Vector2(1603, 1518)
