@@ -62,7 +62,8 @@ func _physics_process(delta: float) -> void:
 	#elif Input.is_action_just_released("ui_left"):
 		#move_left()
 	move_and_slide()
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
+	
 	lsegment.global_position = left_end.global_position
 	lsegment_2.global_position = left_end_2.global_position
 	rsegment.global_position = right_end.global_position
@@ -90,6 +91,6 @@ func move_left():
 func reset_scale():
 	reset_tween()
 	tw.tween_property(self, "scale:x", 1.0, 0.5)
-func stretch_up(delta):
+func stretch_up(_delta):
 	rotation = 90
 	
