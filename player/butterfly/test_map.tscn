@@ -1,33 +1,80 @@
 [gd_scene format=3 uid="uid://d28gpixrx8jg6"]
 
-[ext_resource type="Texture2D" uid="uid://c2esq17gw4mug" path="res://textures/sky/sk01.png" id="1_on1ns"]
 [ext_resource type="PackedScene" uid="uid://dapbscxj5pqni" path="res://player/butterfly/player/butterfly.tscn" id="2_u3mhw"]
+[ext_resource type="Texture2D" uid="uid://bhvap01ybkbgi" path="res://textures/sky/cloude_sprite/cloude_ground.png" id="3_03xyf"]
 [ext_resource type="PackedScene" uid="uid://buwossh8o61xo" path="res://player/butterfly/flowers/chamomile.tscn" id="3_s2hvg"]
 [ext_resource type="PackedScene" uid="uid://d0d7c0n874qmm" path="res://player/butterfly/frog/frog.tscn" id="4_4c37m"]
 [ext_resource type="Texture2D" uid="uid://de8n3gn35jyw2" path="res://textures/sky/sk0.png" id="4_8ftm8"]
+[ext_resource type="Texture2D" uid="uid://chcdailcte54a" path="res://textures/sky/cloude_sprite/cloude_ground01.png" id="4_prjvx"]
 [ext_resource type="Texture2D" uid="uid://csifpp5v552u" path="res://textures/sky/sk.png" id="5_4c37m"]
+[ext_resource type="Texture2D" uid="uid://byu4op33oay3i" path="res://textures/sky/cloude_sprite/cloude_big02.png" id="9_2soir"]
+[ext_resource type="Texture2D" uid="uid://bh2c0ft35h27f" path="res://textures/sky/cloude_sprite/cloude_small01.png" id="10_cl51e"]
+[ext_resource type="Texture2D" uid="uid://dl8a8f8q1xolf" path="res://textures/sky/cloude_sprite/cloude_small02.png" id="11_dj2he"]
+[ext_resource type="Texture2D" uid="uid://dqcxnmfa0bjmb" path="res://textures/sky/cloude_sprite/cloude_small.png" id="12_jpnwx"]
+[ext_resource type="Texture2D" uid="uid://wjchxmsst46" path="res://textures/sky/cloude_sprite/cloud_big.png" id="13_r81sy"]
+[ext_resource type="Texture2D" uid="uid://dckbh2483ti7n" path="res://textures/sky/cloude_sprite/double_cloude_01.png" id="14_s7hbo"]
+[ext_resource type="Texture2D" uid="uid://c2gjftrs2ccba" path="res://textures/sky/cloude_sprite/sk01.png" id="15_qe2t4"]
+[ext_resource type="Texture2D" uid="uid://d2b1yrs5nvwy" path="res://textures/sky/cloude_sprite/Без имени.png" id="16_s05io"]
+[ext_resource type="Texture2D" uid="uid://d2nmct122ipin" path="res://textures/sky/cloude_big_01.png" id="17_65ik6"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8ftm8"]
 
 [node name="TestMap" type="Node2D" unique_id=1487573391]
 
-[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1788940893]
-z_index = 1
+[node name="ParallaxBack" type="Parallax2D" parent="." unique_id=1788940893]
+modulate = Color(0.69, 0.9379999, 1, 0.70980394)
+z_index = -1
+scroll_scale = Vector2(0.5, 0.5)
+scroll_offset = Vector2(-2941, 56)
+repeat_size = Vector2(3105.27, 0)
 
-[node name="Sk01" type="Sprite2D" parent="Parallax2D" unique_id=222608850]
-texture_repeat = 2
-position = Vector2(2424, 1073)
-texture = ExtResource("1_on1ns")
-region_enabled = true
-region_rect = Rect2(0, 0, 12046.944, 1238)
+[node name="CloudeSmall03" type="Sprite2D" parent="ParallaxBack" unique_id=1627297169]
+position = Vector2(909, 49)
+texture = ExtResource("11_dj2he")
 
-[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=283648070]
-scale = Vector2(0.7, 0.7)
-scroll_scale = Vector2(0.33, 0.33)
-scroll_offset = Vector2(1840, 592)
-repeat_times = 4
+[node name="DoubleCloude01" type="Sprite2D" parent="ParallaxBack" unique_id=316168823]
+position = Vector2(2522, 404)
+texture = ExtResource("14_s7hbo")
 
-[node name="Sk1" type="Sprite2D" parent="Parallax2D2" unique_id=1903261591]
+[node name="CloudeSmall04" type="Sprite2D" parent="ParallaxBack" unique_id=792384609]
+position = Vector2(-636, 1839)
+texture = ExtResource("10_cl51e")
+
+[node name="ParallaxMidlle" type="Parallax2D" parent="." unique_id=2097402699]
+modulate = Color(1, 1, 1, 0.78039217)
+scroll_scale = Vector2(0.7, 0.7)
+scroll_offset = Vector2(-1196, 535)
+repeat_size = Vector2(2757.51, 0)
+repeat_times = 2
+
+[node name="CloudeSmall" type="Sprite2D" parent="ParallaxMidlle" unique_id=1739551148]
+position = Vector2(-252, 285)
+texture = ExtResource("12_jpnwx")
+
+[node name="CloudBig3" type="Sprite2D" parent="ParallaxMidlle" unique_id=401009080]
+position = Vector2(645.0002, 88.00006)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("13_r81sy")
+
+[node name="CloudeMini" type="Sprite2D" parent="ParallaxMidlle" unique_id=1819628462]
+position = Vector2(199, 54)
+texture = ExtResource("16_s05io")
+
+[node name="CloudeSmall03" type="Sprite2D" parent="ParallaxMidlle" unique_id=1927963770]
+position = Vector2(1342.4, 2098)
+texture = ExtResource("10_cl51e")
+
+[node name="CloudeSmall01" type="Sprite2D" parent="ParallaxMidlle" unique_id=988607776]
+position = Vector2(3602.4, 1143)
+texture = ExtResource("10_cl51e")
+
+[node name="ParrallaxForward" type="Parallax2D" parent="." unique_id=283648070]
+scroll_scale = Vector2(0.8, 0.8)
+scroll_offset = Vector2(-3322, 1263)
+repeat_size = Vector2(5377.205, 0)
+
+[node name="Sk1" type="Sprite2D" parent="ParrallaxForward" unique_id=1903261591]
+visible = false
 texture_repeat = 2
 position = Vector2(-3204.2856, 435.71423)
 scale = Vector2(2.1278558, 2.1278558)
@@ -35,24 +82,118 @@ texture = ExtResource("4_8ftm8")
 region_enabled = true
 region_rect = Rect2(0, 0, 9538.267, 1238)
 
-[node name="Sk0" type="Sprite2D" parent="." unique_id=1560337974]
-z_index = -1
-position = Vector2(1876.0002, 901.99994)
-scale = Vector2(1.6873873, 1.4725363)
-texture = ExtResource("5_4c37m")
+[node name="CanvasGroup" type="CanvasGroup" parent="ParrallaxForward" unique_id=2128601345]
+position = Vector2(6.2050776, 16.999998)
+scale = Vector2(0.7, 0.7)
+
+[node name="CloudeSmall04" type="Sprite2D" parent="ParrallaxForward/CanvasGroup" unique_id=580331637]
+position = Vector2(-3222.857, 334.2858)
+scale = Vector2(1.7719771, 1.7719771)
+texture = ExtResource("11_dj2he")
+
+[node name="CloudeGround" type="Sprite2D" parent="ParrallaxForward/CanvasGroup" unique_id=2053343177]
+position = Vector2(109.6275, 97.1427)
+scale = Vector2(1.4285712, 1.4285712)
+texture = ExtResource("3_03xyf")
+
+[node name="CloudeGround2" type="Sprite2D" parent="ParrallaxForward/CanvasGroup" unique_id=175811492]
+position = Vector2(-2666.0864, 245.71411)
+rotation = 3.1415927
+scale = Vector2(0.99999994, -0.99999994)
+texture = ExtResource("3_03xyf")
+
+[node name="CloudeGround01" type="Sprite2D" parent="ParrallaxForward/CanvasGroup" unique_id=707692849]
+texture_repeat = 2
+position = Vector2(-101.42859, -431.42865)
+scale = Vector2(1.3185729, 1.3031385)
+texture = ExtResource("4_prjvx")
+region_enabled = true
+region_rect = Rect2(-530.104, 0, 5381.7593, 1238)
+
+[node name="CloudeSmall2" type="Sprite2D" parent="ParrallaxForward/CanvasGroup" unique_id=981072261]
+position = Vector2(-2370.3726, 494.28552)
+scale = Vector2(1.4285712, 1.4285712)
+texture = ExtResource("12_jpnwx")
+
+[node name="CloudBig" type="Sprite2D" parent="ParrallaxForward/CanvasGroup" unique_id=469467908]
+position = Vector2(1422.4844, 241.42859)
+scale = Vector2(1.4285712, 1.4285712)
+texture = ExtResource("13_r81sy")
+
+[node name="CloudeMini" type="Sprite2D" parent="ParrallaxForward/CanvasGroup" unique_id=828946428]
+position = Vector2(1806.7703, 227.1427)
+scale = Vector2(1.4285713, 1.4285713)
+texture = ExtResource("16_s05io")
+
+[node name="CloudeMini2" type="Sprite2D" parent="ParrallaxForward/CanvasGroup" unique_id=962281563]
+position = Vector2(-5031.4287, 608.5714)
+scale = Vector2(1.4285713, 1.4285713)
+texture = ExtResource("16_s05io")
+
+[node name="CloudeSmall03" type="Sprite2D" parent="ParrallaxForward/CanvasGroup" unique_id=525344407]
+position = Vector2(-1366.0867, -8.571411)
+scale = Vector2(1.4285713, 1.4285713)
+texture = ExtResource("11_dj2he")
 
 [node name="Chamomile" parent="." unique_id=1191199222 instance=ExtResource("3_s2hvg")]
-position = Vector2(1739, 619)
+position = Vector2(1920, 1795)
+scale = Vector2(0.6, 0.6)
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1839661695]
+position = Vector2(1840, 1796)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=111949248]
-position = Vector2(1593, 1740)
 shape = SubResource("WorldBoundaryShape2D_8ftm8")
+
+[node name="ColorRect" type="ColorRect" parent="Ground" unique_id=1100173172]
+offset_left = -10657.0
+offset_top = -2.0000153
+offset_right = -10617.0
+offset_bottom = 37.999985
+scale = Vector2(500, 7.932)
+color = Color(0.22450691, 0.12090386, 0, 1)
 
 [node name="Frog" parent="." unique_id=1394785451 instance=ExtResource("4_4c37m")]
 visible = false
 position = Vector2(1603, 1518)
 
 [node name="Butterfly" parent="." unique_id=636950088 instance=ExtResource("2_u3mhw")]
-position = Vector2(1332, 374)
+position = Vector2(1585, 1684)
+
+[node name="CloudeBig02" type="Sprite2D" parent="." unique_id=552880642]
+position = Vector2(2573.5, 2892)
+texture = ExtResource("9_2soir")
+
+[node name="CloudeSmall02" type="Sprite2D" parent="." unique_id=1182392792]
+position = Vector2(642.5, 3434)
+texture = ExtResource("11_dj2he")
+
+[node name="CloudBig2" type="Sprite2D" parent="." unique_id=1890981662]
+position = Vector2(3818.5, 3070)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("13_r81sy")
+
+[node name="Sk01" type="Sprite2D" parent="." unique_id=598526963]
+position = Vector2(4548, 3463)
+texture = ExtResource("15_qe2t4")
+
+[node name="CloudeMini" type="Sprite2D" parent="." unique_id=1909465168]
+position = Vector2(3372.5, 3036)
+texture = ExtResource("16_s05io")
+
+[node name="CloudeBig01" type="Sprite2D" parent="." unique_id=68891888]
+position = Vector2(-411.5, 3729)
+texture = ExtResource("17_65ik6")
+
+[node name="CloudeSmall2" type="Sprite2D" parent="." unique_id=931551893]
+position = Vector2(488.5, 2965)
+texture = ExtResource("12_jpnwx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=213750285]
+layer = -2
+
+[node name="Sk0" type="Sprite2D" parent="CanvasLayer" unique_id=1560337974]
+z_index = -4
+position = Vector2(587.50024, 320.24994)
+scale = Vector2(0.52657646, 0.532714)
+texture = ExtResource("5_4c37m")
