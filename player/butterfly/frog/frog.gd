@@ -30,7 +30,8 @@ func jump():
 	velocity.x = SPEED * direction
 
 func attack():
-	$Tongue.look_at(player.global_position)
+	if player:
+		$Tongue.look_at(player.global_position)
 
 	var tween = create_tween()
 	tween.tween_property($Tongue, 'scale:x', 34, 0.1)
@@ -45,8 +46,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		player = null
 
 func _on_timer_attack_timeout() -> void:
-	if player:
-		create_tween().tween_callback(attack).set_delay(randf_range(0.5, 2))
+	create_tween().tween_callback(attack).set_delay(randf_range(0.5, 2))
 	create_tween().tween_callback($TimerAttack.start).set_delay(randf())
 
 
