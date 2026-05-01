@@ -17,6 +17,7 @@ region_rect = Rect2(63.728622, -14.026863, 3224.29, 2177.0444)
 region_filter_clip_enabled = true
 
 [node name="Butterfly" parent="." unique_id=1538932803 instance=ExtResource("2_u3mhw")]
+z_index = 1
 position = Vector2(1599, 246)
 
 [node name="Chamomile" parent="." unique_id=1191199222 instance=ExtResource("3_s2hvg")]
