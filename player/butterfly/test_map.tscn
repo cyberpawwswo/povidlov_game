@@ -2,20 +2,20 @@
 
 [ext_resource type="PackedScene" uid="uid://dapbscxj5pqni" path="res://player/butterfly/player/butterfly.tscn" id="2_u3mhw"]
 [ext_resource type="Texture2D" uid="uid://bhvap01ybkbgi" path="res://textures/sky/cloude_sprite/cloude_ground.png" id="3_03xyf"]
-[ext_resource type="PackedScene" uid="uid://buwossh8o61xo" path="res://player/butterfly/flowers/chamomile.tscn" id="3_s2hvg"]
+[ext_resource type="PackedScene" uid="uid://buwossh8o61xo" path="res://player/butterfly/flowers/types/chamomile.tscn" id="3_s2hvg"]
 [ext_resource type="PackedScene" uid="uid://d0d7c0n874qmm" path="res://player/butterfly/frog/frog.tscn" id="4_4c37m"]
 [ext_resource type="Texture2D" uid="uid://de8n3gn35jyw2" path="res://textures/sky/sk0.png" id="4_8ftm8"]
 [ext_resource type="Texture2D" uid="uid://chcdailcte54a" path="res://textures/sky/cloude_sprite/cloude_ground01.png" id="4_prjvx"]
 [ext_resource type="Texture2D" uid="uid://csifpp5v552u" path="res://textures/sky/sk.png" id="5_4c37m"]
-[ext_resource type="Texture2D" uid="uid://byu4op33oay3i" path="res://textures/sky/cloude_sprite/cloude_big02.png" id="9_2soir"]
 [ext_resource type="Texture2D" uid="uid://bh2c0ft35h27f" path="res://textures/sky/cloude_sprite/cloude_small01.png" id="10_cl51e"]
 [ext_resource type="Texture2D" uid="uid://dl8a8f8q1xolf" path="res://textures/sky/cloude_sprite/cloude_small02.png" id="11_dj2he"]
 [ext_resource type="Texture2D" uid="uid://dqcxnmfa0bjmb" path="res://textures/sky/cloude_sprite/cloude_small.png" id="12_jpnwx"]
 [ext_resource type="Texture2D" uid="uid://wjchxmsst46" path="res://textures/sky/cloude_sprite/cloud_big.png" id="13_r81sy"]
 [ext_resource type="Texture2D" uid="uid://dckbh2483ti7n" path="res://textures/sky/cloude_sprite/double_cloude_01.png" id="14_s7hbo"]
-[ext_resource type="Texture2D" uid="uid://c2gjftrs2ccba" path="res://textures/sky/cloude_sprite/sk01.png" id="15_qe2t4"]
+[ext_resource type="PackedScene" uid="uid://ckb1rhicrqso" path="res://player/butterfly/flowers/types/tulip.tscn" id="14_uqu8w"]
+[ext_resource type="PackedScene" uid="uid://6hpjr1vhlb13" path="res://player/butterfly/flowers/types/daisy.tscn" id="15_b6d5v"]
+[ext_resource type="PackedScene" uid="uid://co3jht7k460a1" path="res://player/butterfly/flowers/types/red_flw.tscn" id="16_03xyf"]
 [ext_resource type="Texture2D" uid="uid://d2b1yrs5nvwy" path="res://textures/sky/cloude_sprite/Без имени.png" id="16_s05io"]
-[ext_resource type="Texture2D" uid="uid://d2nmct122ipin" path="res://textures/sky/cloude_big_01.png" id="17_65ik6"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8ftm8"]
 
@@ -135,9 +135,19 @@ position = Vector2(-1366.0867, -8.571411)
 scale = Vector2(1.4285713, 1.4285713)
 texture = ExtResource("11_dj2he")
 
-[node name="Chamomile" parent="." unique_id=1191199222 instance=ExtResource("3_s2hvg")]
-position = Vector2(1920, 1795)
-scale = Vector2(0.6, 0.6)
+[node name="Flowers" type="Node2D" parent="." unique_id=1546450944]
+position = Vector2(2641, 1795)
+
+[node name="Tulip" parent="Flowers" unique_id=119960863 instance=ExtResource("14_uqu8w")]
+
+[node name="Chamomile" parent="Flowers" unique_id=1191199222 instance=ExtResource("3_s2hvg")]
+position = Vector2(-721, 0)
+
+[node name="Daisy" parent="Flowers" unique_id=1222506530 instance=ExtResource("15_b6d5v")]
+position = Vector2(419, 9)
+
+[node name="RedFlw" parent="Flowers" unique_id=522645934 instance=ExtResource("16_03xyf")]
+position = Vector2(-1213, 18)
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1839661695]
 position = Vector2(1840, 1796)
@@ -154,40 +164,10 @@ scale = Vector2(500, 7.932)
 color = Color(0.22450691, 0.12090386, 0, 1)
 
 [node name="Frog" parent="." unique_id=1394785451 instance=ExtResource("4_4c37m")]
-visible = false
 position = Vector2(1603, 1518)
 
 [node name="Butterfly" parent="." unique_id=636950088 instance=ExtResource("2_u3mhw")]
 position = Vector2(1585, 1684)
-
-[node name="CloudeBig02" type="Sprite2D" parent="." unique_id=552880642]
-position = Vector2(2573.5, 2892)
-texture = ExtResource("9_2soir")
-
-[node name="CloudeSmall02" type="Sprite2D" parent="." unique_id=1182392792]
-position = Vector2(642.5, 3434)
-texture = ExtResource("11_dj2he")
-
-[node name="CloudBig2" type="Sprite2D" parent="." unique_id=1890981662]
-position = Vector2(3818.5, 3070)
-scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("13_r81sy")
-
-[node name="Sk01" type="Sprite2D" parent="." unique_id=598526963]
-position = Vector2(4548, 3463)
-texture = ExtResource("15_qe2t4")
-
-[node name="CloudeMini" type="Sprite2D" parent="." unique_id=1909465168]
-position = Vector2(3372.5, 3036)
-texture = ExtResource("16_s05io")
-
-[node name="CloudeBig01" type="Sprite2D" parent="." unique_id=68891888]
-position = Vector2(-411.5, 3729)
-texture = ExtResource("17_65ik6")
-
-[node name="CloudeSmall2" type="Sprite2D" parent="." unique_id=931551893]
-position = Vector2(488.5, 2965)
-texture = ExtResource("12_jpnwx")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=213750285]
 layer = -2

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djgsa3qxbceqp"
-path="res://.godot/imported/flw1.webp-084a44bda9f42155c9f62369d373f1a7.ctex"
+uid="uid://dqhcr8swwg7wj"
+path="res://.godot/imported/flw1.png-3cfbd183480198e0901340270b48306a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/butterfly/flowers/flw1.webp"
-dest_files=["res://.godot/imported/flw1.webp-084a44bda9f42155c9f62369d373f1a7.ctex"]
+source_file="res://player/butterfly/flowers/flw1.png"
+dest_files=["res://.godot/imported/flw1.png-3cfbd183480198e0901340270b48306a.ctex"]
 
 [params]
 

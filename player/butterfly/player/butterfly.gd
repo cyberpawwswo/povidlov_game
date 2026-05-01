@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Butterfly
 
-const SPEED = 500.0
+const SPEED = 150.0
 const JUMP_VELOCITY = -200.0
 
 @onready var animation_spite := $Body
@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("but_fly_up"):
-		tween = create_tween()
+		#tween = create_tween()
 		#tween.set_trans(Tween.TRANS_QUINT)
 		#tween.tween_property($Camera2D, 'zoom', Vector2(0.95, 0.95), 0.05)
 		#tween.tween_property($Camera2D, 'zoom', Vector2(1, 1), 0.1)

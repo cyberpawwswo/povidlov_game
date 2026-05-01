@@ -1,33 +1,47 @@
 [gd_scene format=3 uid="uid://buwossh8o61xo"]
 
-[ext_resource type="Script" uid="uid://b8pv0f0swhv8b" path="res://player/butterfly/flowers/chamomile.gd" id="1_f5sn6"]
+[ext_resource type="Script" uid="uid://b8pv0f0swhv8b" path="res://player/butterfly/flowers/types/chamomile.gd" id="1_f5sn6"]
 [ext_resource type="PackedScene" uid="uid://stns2aupan8t" path="res://player/butterfly/flowers/flower_trigger.tscn" id="2_jadqc"]
+[ext_resource type="Shader" path="res://player/caterpillar/wind_sway.gdshader" id="2_kedsi"]
 [ext_resource type="Texture2D" uid="uid://cgrx2x0d1d8ig" path="res://player/butterfly/flowers/flw.png" id="4_kedsi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yg3xk"]
+shader = ExtResource("2_kedsi")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 1.6400000779
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.0470000022325
+shader_parameter/wind_speed = 0.36400001077023
+shader_parameter/scale = 2.0
 
 [node name="Chamomile" type="Node2D" unique_id=1191199222]
 script = ExtResource("1_f5sn6")
 metadata/_custom_type_script = "uid://0jocyet2h7uo"
 
-[node name="Flw" type="Sprite2D" parent="." unique_id=1434307768]
-position = Vector2(5.5, -593.5)
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=1920678168]
+position = Vector2(6, -359)
+scale = Vector2(0.6, 0.6)
+
+[node name="Flw" type="Sprite2D" parent="CanvasGroup" unique_id=1434307768]
+material = SubResource("ShaderMaterial_yg3xk")
 texture = ExtResource("4_kedsi")
 region_enabled = true
 region_rect = Rect2(0, 0, 1033.0166, 1451)
 
 [node name="Flower" parent="." unique_id=2047706209 instance=ExtResource("2_jadqc")]
-position = Vector2(-165.5, -1058.5)
+position = Vector2(-85, -648)
 
 [node name="Flower2" parent="." unique_id=1884232983 instance=ExtResource("2_jadqc")]
-position = Vector2(128.5, -761.5)
+position = Vector2(91, -464)
 
 [node name="Flower3" parent="." unique_id=506738595 instance=ExtResource("2_jadqc")]
-position = Vector2(-168.5, -487.5)
+position = Vector2(-112, -297)
 
 [node name="Flower4" parent="." unique_id=139063344 instance=ExtResource("2_jadqc")]
-position = Vector2(-371.5, -730.5)
+position = Vector2(-235, -415)
 
 [node name="Flower5" parent="." unique_id=885970161 instance=ExtResource("2_jadqc")]
-position = Vector2(116.5, -1118.5)
+position = Vector2(74, -670)
 
 [node name="Flower6" parent="." unique_id=1973367040 instance=ExtResource("2_jadqc")]
-position = Vector2(401.5, -778.5)
+position = Vector2(251, -472)

@@ -7,6 +7,8 @@ var jumping := false
 
 var player: Butterfly
 
+@onready var tongue = $AnimatedSprite2D/Tongue
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -27,15 +29,19 @@ func jump():
 	var direction: float = [-1,1].pick_random()
 	if player:
 		direction = sign(player.global_position.x - global_position.x)
+	$AnimatedSprite2D.scale.x = direction * abs($AnimatedSprite2D.scale.x)
 	velocity.x = SPEED * direction
 
-func attack():
+func attack(player_pos):
 	if player:
-		$Tongue.look_at(player.global_position)
+		tongue.look_at(player_pos)
+		$AnimatedSprite2D.set_frame(0)
+		create_tween().tween_callback($AnimatedSprite2D.set_frame.bind(1)).set_delay(0.2)
+		print("attack frog")
 
 	var tween = create_tween()
-	tween.tween_property($Tongue, 'scale:x', 34, 0.1)
-	tween.tween_property($Tongue, 'scale:x', 1, 0.1)
+	tween.tween_property(tongue, 'scale:x', 34, 0.1)
+	tween.tween_property(tongue, 'scale:x', 1, 0.1)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Butterfly:
@@ -46,8 +52,10 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		player = null
 
 func _on_timer_attack_timeout() -> void:
-	create_tween().tween_callback(attack).set_delay(randf_range(0.5, 2))
-	create_tween().tween_callback($TimerAttack.start).set_delay(randf())
+	if player:
+		create_tween().tween_callback(attack.bind(player.global_position)).set_delay(randf_range(1, 2))
+		print("ready attack frog")
+		create_tween().tween_callback($TimerAttack.start).set_delay(randf())
 
 
 func _on_timer_jump_timeout() -> void:

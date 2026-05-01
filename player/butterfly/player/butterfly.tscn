@@ -46,7 +46,7 @@ blur_curve = SubResource("Curve_cm705")
 metadata/_custom_type_script = "uid://b060107oyddew"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1500706233]
-position = Vector2(-0.5, 9.5)
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_hbfln")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=182794511]
@@ -60,7 +60,8 @@ scale = Vector2(3.7114286, 3.5183673)
 texture = ExtResource("5_1wyui")
 
 [node name="Body" type="AnimatedSprite2D" parent="." unique_id=954996585]
-scale = Vector2(0.13118276, 0.13118276)
+position = Vector2(0, -1)
+scale = Vector2(0.16666666, 0.16666664)
 sprite_frames = SubResource("SpriteFrames_0hvfw")
 animation = &"fly"
 frame = 1
