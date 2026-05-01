@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://4dhcgn3tyikj" path="res://player/butterfly/player/vector-forest-landscape-illustration.jpg" id="1_biaqq"]
 [ext_resource type="PackedScene" uid="uid://dapbscxj5pqni" path="res://player/butterfly/player/butterfly.tscn" id="2_u3mhw"]
 [ext_resource type="PackedScene" uid="uid://buwossh8o61xo" path="res://player/butterfly/flowers/chamomile.tscn" id="3_s2hvg"]
+[ext_resource type="PackedScene" uid="uid://vuvlobm3d5dg" path="res://player/butterfly/bird/bird_spawner.tscn" id="4_8ftm8"]
 
 [node name="TestMap" type="Node2D" unique_id=1487573391]
 
@@ -20,3 +21,6 @@ position = Vector2(1599, 246)
 
 [node name="Chamomile" parent="." unique_id=1191199222 instance=ExtResource("3_s2hvg")]
 position = Vector2(1739, 619)
+
+[node name="BirdSpawner" parent="." unique_id=1706491592 instance=ExtResource("4_8ftm8")]
+position = Vector2(1839, 189)

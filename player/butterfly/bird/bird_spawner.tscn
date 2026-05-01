@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://vuvlobm3d5dg"]
+
+[ext_resource type="Script" uid="uid://crvgalen20t8b" path="res://player/butterfly/bird/bird_spawner.gd" id="1_0nc1r"]
+[ext_resource type="PackedScene" uid="uid://owiof66t641e" path="res://player/butterfly/bird/bird.tscn" id="2_tpndo"]
+
+[node name="BirdSpawner" type="Node2D" unique_id=1706491592]
+script = ExtResource("1_0nc1r")
+max_time = 5.0
+min_time = 4.0
+bird = ExtResource("2_tpndo")
+
+[node name="Timer" type="Timer" parent="." unique_id=554353322]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
