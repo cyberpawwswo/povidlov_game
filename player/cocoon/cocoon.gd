@@ -2,6 +2,8 @@ extends Node2D
 
 @export var spider_scene: PackedScene = preload("res://player/cocoon/spider.tscn")
 @export var bee_scene: PackedScene = preload("res://player/cocoon/bee.tscn")
+@export var pshik_scene: PackedScene = preload("res://player/cocoon/Pshik.tscn")
+@export var scissors_scene: PackedScene = preload("res://player/cocoon/scissors.tscn")
 
 @export var spider_spawn_y := -50.0
 @export var bee_spawn_margin := 60.0
@@ -11,11 +13,16 @@ extends Node2D
 @export var min_spawn_interval := 0.25
 @export var difficulty_ramp := 0.02 # seconds/second
 
-@export var spray_radius := 500.0
-@export var spray_strength := 900.0
+@export var spray_radius := 600.0
+@export var spray_strength := 1000.0
 
 @onready var pupa: Node2D = $Pupa
 @onready var platform: Node2D = $Platform
+
+var _scissors: Node2D
+var _scissors_sprite: Sprite2D
+var _scissors_prev_mouse: Vector2
+var _scissors_has_prev := false
 
 var _spider_spawn_interval := 1.2
 var _bee_spawn_interval := 1.0
@@ -33,18 +40,21 @@ func _ready() -> void:
 	_platform_top_y = _compute_platform_top_y()
 	_cut_prev_mouse = get_global_mouse_position()
 	_cut_has_prev = false
+	_setup_scissors()
 
 
 func _process(delta: float) -> void:
 	_ramp_difficulty(delta)
 	_tick_spawns(delta)
 	_handle_web_cutting()
+	_update_scissors()
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		var mb := event as InputEventMouseButton
 		if mb.button_index == MOUSE_BUTTON_RIGHT and mb.pressed and not mb.is_echo():
+			_play_pshik(mb.global_position)
 			_spray(mb.global_position)
 
 
@@ -101,6 +111,57 @@ func _spawn_bee() -> void:
 
 	# contract expected by Bee.gd
 	bee.set("target", pupa)
+
+
+func _setup_scissors() -> void:
+	if scissors_scene == null:
+		return
+	_scissors = scissors_scene.instantiate() as Node2D
+	if _scissors == null:
+		return
+	_scissors.visible = false
+	_scissors.z_index = 1000
+	add_child(_scissors)
+	_scissors_sprite = _scissors.get_node_or_null("Scissors") as Sprite2D
+
+
+func _update_scissors() -> void:
+	if _scissors == null:
+		return
+	var pressed := Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+	_scissors.visible = pressed
+	var mouse := get_global_mouse_position()
+	if not pressed:
+		_scissors_has_prev = false
+		return
+
+	if _scissors_has_prev and _scissors_sprite != null:
+		var dx := mouse.x - _scissors_prev_mouse.x
+		if absf(dx) > 0.001:
+			# left->right: mirrored; right->left: original
+			_scissors_sprite.flip_h = dx > 0.0
+
+	_scissors_prev_mouse = mouse
+	_scissors_has_prev = true
+	_scissors.global_position = mouse
+
+
+func _play_pshik(at: Vector2) -> void:
+	if pshik_scene == null:
+		return
+	var fx := pshik_scene.instantiate() as Node2D
+	if fx == null:
+		return
+	add_child(fx)
+	fx.global_position = at
+
+	var ap := fx.get_node_or_null("AnimationPlayer") as AnimationPlayer
+	if ap == null:
+		return
+	ap.play("pshik_anim")
+	ap.animation_finished.connect(func(_name: StringName) -> void:
+		fx.queue_free()
+	, CONNECT_ONE_SHOT)
 
 
 func _spray(cursor: Vector2) -> void:

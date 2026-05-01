@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://da2rmvyw80u6c"]
+
+[ext_resource type="Texture2D" uid="uid://bmrgtjlsys045" path="res://player/cocoon/sprites/scissors.png" id="1_r7h0p"]
+
+[node name="Scissors" type="Node2D" unique_id=1624608218]
+position = Vector2(0, 10)
+
+[node name="Scissors" type="Sprite2D" parent="." unique_id=953038396]
+position = Vector2(0, -1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_r7h0p")
