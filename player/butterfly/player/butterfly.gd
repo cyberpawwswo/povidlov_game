@@ -18,17 +18,37 @@ var tween : Tween
 
 var is_pollinates := false
 
-var chroma_point := 0
+var chroma_point := 0.0
+@export var max_chroma_point := 10.0
+@onready var chroma_bar := $CanvasLayer/Control/ChromaPointBar
 
+@export var max_health := 10.0
+var health := max_health
+
+@onready var health_bar := $CanvasLayer/Control/HealthBar
 
 func _ready() -> void:
 	blur_mat.set_shader_parameter('samples', blur_samples)
 
+	health_bar.max_value = max_health
+	chroma_bar.max_value = max_chroma_point
+
 func _physics_process(delta: float) -> void:
+
+	health_bar.value = health
+	if health <= 0:
+		die()
+
+	chroma_bar.value = chroma_point
+	if chroma_point >= max_chroma_point:
+		win()
+
 	# Add the gravity.
 	if not is_on_floor() and not is_pollinates:
 		velocity += get_gravity() * delta
 		pass
+	elif is_on_floor():
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	var direction := signf(get_local_mouse_position().x)
 
@@ -73,6 +93,11 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func die():
+	print('huh, im die')
+
+func win():
+	print('huh, im win')
 
 func set_frame(frame):
 	animation_spite.frame = frame

@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 CaterpillarGlobal="*uid://c4tn71nilxwhh"
+UI="*uid://b1mc2o11jpukq"
 
 [display]
 
@@ -24,6 +25,12 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor]
+
+movie_writer/ogv/keyframe_interval=63
+movie_writer/movie_file="C:/Users/denis/Documents/Radmir/sebrian_game_jame/game_2/povidlov_game/video_clip/test.avi"
+movie_writer/fps=24
 
 [global_group]
 

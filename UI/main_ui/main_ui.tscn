@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dfnioh7r6fqd0"]
+
+[ext_resource type="Theme" uid="uid://5csefvu52i6y" path="res://UI/styles/simple_theme.tres" id="1_mmo4b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n1ruf"]
+font_size = 70
+
+[node name="MainUi" type="Control" unique_id=1814414020]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_mmo4b")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=475830178]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=450771232]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer" unique_id=169154233]
+layout_mode = 2
+theme_override_constants/margin_top = -200
+theme_override_constants/margin_bottom = 104
+
+[node name="ManuText" type="Label" parent="CenterContainer/VBoxContainer/MarginContainer" unique_id=1422919634]
+layout_mode = 2
+text = "Название игры"
+label_settings = SubResource("LabelSettings_n1ruf")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CenterContainer/VBoxContainer" unique_id=1016486302]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/AspectRatioContainer" unique_id=639582481]
+layout_mode = 2
+
+[node name="StartGame" type="Button" parent="CenterContainer/VBoxContainer/AspectRatioContainer/VBoxContainer" unique_id=1593742264]
+layout_mode = 2
+text = "Играть"
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/AspectRatioContainer/VBoxContainer" unique_id=1852105320]
+layout_mode = 2
+text = "Настройки"
