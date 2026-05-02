@@ -225,6 +225,7 @@ func _start_next_scene() -> void:
 	_tutorial_transition_started = true
 	if next_scene == null:
 		return
+	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_packed(next_scene)
 
 

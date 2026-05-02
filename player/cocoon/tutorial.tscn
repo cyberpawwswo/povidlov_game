@@ -85,3 +85,5 @@ offset_right = 1417.0
 offset_bottom = 997.0
 text = "НАЖИМАЯ ПКМ СДУЙТЕ ОС ЗА ПРЕДЕЛЫ ЭКРАНА"
 label_settings = SubResource("LabelSettings_5oqpi")
+
+[node name="TransitionScreen" type="CanvasLayer" parent="." unique_id=56697226]

@@ -70,6 +70,10 @@ func _physics_process(delta: float) -> void:
 				if abs(dx) <= attack_distance:
 					state = State.ATTACKING
 				else:
+					if dx > 0.0:
+						state_machine.travel("walk_right")
+					elif dx < 0.0:
+						state_machine.travel("walk_left")
 					global_position.x += sign(dx) * walk_speed * delta
 			global_position.y = platform_top_y
 
