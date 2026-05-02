@@ -7,9 +7,14 @@ signal damaged(amount: int, current: int, max_hp: int)
 
 var hp := 100
 
+@onready var hp_bar: ProgressBar = $HpBar
+
 
 func _ready() -> void:
 	hp = max_hp
+	if hp_bar:
+		hp_bar.max_value = max_hp
+		hp_bar.value = hp
 	hp_changed.emit(hp, max_hp)
 
 
@@ -21,3 +26,5 @@ func take_damage(amount: int) -> void:
 		hp = 0
 	damaged.emit(amount, hp, max_hp)
 	hp_changed.emit(hp, max_hp)
+	if hp_bar:
+		hp_bar.value = hp

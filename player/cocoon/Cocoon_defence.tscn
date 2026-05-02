@@ -14,7 +14,13 @@
 [ext_resource type="Texture2D" uid="uid://dul1q5nc0wwqx" path="res://player/cocoon/sprites/232.png" id="12_n8oel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f00xg"]
-size = Vector2(1035, 28)
+size = Vector2(1014, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pmdf6"]
+size = Vector2(516.7542, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svr1r"]
+size = Vector2(458, 20)
 
 [node name="CocoonDefence" type="Node2D" unique_id=1072979385]
 script = ExtResource("2_cocoon_script")
@@ -84,7 +90,18 @@ texture = ExtResource("9_svr1r")
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform" unique_id=316887522]
+position = Vector2(450, 40)
 shape = SubResource("RectangleShape2D_f00xg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform" unique_id=966116775]
+position = Vector2(-285.00006, -93)
+rotation = 0.5166175
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_pmdf6")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Platform" unique_id=1245464297]
+position = Vector2(-734, -219)
+shape = SubResource("RectangleShape2D_svr1r")
 
 [node name="Erfff" type="Sprite2D" parent="." unique_id=241808106]
 position = Vector2(960, 540)
@@ -92,7 +109,7 @@ scale = Vector2(1.9180818, 1.9217081)
 texture = ExtResource("10_8qne8")
 
 [node name="Pupa" parent="." unique_id=2096588259 instance=ExtResource("1_d101h")]
-position = Vector2(966, 755)
+position = Vector2(966, 795)
 
 [node name="232" type="Sprite2D" parent="." unique_id=426258621]
 position = Vector2(959.99994, 540)

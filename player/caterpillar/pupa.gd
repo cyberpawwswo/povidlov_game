@@ -17,4 +17,4 @@ func enter_state():
 	$"../../../pupa_sprite".global_position = player.global_position+Vector2(0, -50)
 	$"../../../pupa_sprite".set_deferred("visible",true)
 	await get_tree().create_timer(2).timeout
-	UI.change_level("res://player/cocoon/Cocoon_defence.tscn")
+	UI.change_level("res://player/cocoon/tutorial.tscn")

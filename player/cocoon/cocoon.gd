@@ -4,7 +4,6 @@ extends Node2D
 @export var bee_scene: PackedScene = preload("res://player/cocoon/bee.tscn")
 @export var pshik_scene: PackedScene = preload("res://player/cocoon/Pshik.tscn")
 @export var scissors_scene: PackedScene = preload("res://player/cocoon/scissors.tscn")
-@export var pupa_hud_scene: PackedScene = preload("res://player/cocoon/PupaHUD.tscn")
 
 @export var spider_spawn_y := -50.0
 @export var bee_spawn_margin := 60.0
@@ -16,6 +15,11 @@ extends Node2D
 
 @export var spray_radius := 650.0
 @export var spray_strength := 1050.0
+
+## Survive this long; then spawning stops and clearing all bees/spiders wins the level.
+@export var survival_seconds := 150.0
+@export var victory_scene: PackedScene = preload("res://player/butterfly/test_map.tscn")
+@export var victory_fade_out_duration := 1.0
 
 @onready var pupa: Node2D = $Pupa
 @onready var platform: Node2D = $Platform
@@ -37,22 +41,32 @@ var _platform_top_y := 0.0
 var _fade_layer: CanvasLayer
 var _fade_rect: ColorRect
 
+var _survival_left: float
+var _spawn_stopped := false
+var _victory_started := false
+var _countdown_layer: CanvasLayer
+var _countdown_label: Label
+
 func _ready() -> void:
+	_survival_left = survival_seconds
 	_spider_spawn_interval = spider_spawn_interval_start
 	_bee_spawn_interval = bee_spawn_interval_start
 	_platform_top_y = _compute_platform_top_y()
 	_cut_prev_mouse = get_global_mouse_position()
 	_cut_has_prev = false
 	_setup_scissors()
-	_setup_hud()
+	_setup_countdown_ui()
 	_play_fade_in()
 
 
 func _process(delta: float) -> void:
-	_ramp_difficulty(delta)
-	_tick_spawns(delta)
+	_tick_survival(delta)
+	if not _spawn_stopped:
+		_ramp_difficulty(delta)
+		_tick_spawns(delta)
 	_handle_web_cutting()
 	_update_scissors()
+	_try_complete_victory()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -66,6 +80,15 @@ func _unhandled_input(event: InputEvent) -> void:
 func _ramp_difficulty(delta: float) -> void:
 	_spider_spawn_interval = max(min_spawn_interval, _spider_spawn_interval - difficulty_ramp * delta)
 	_bee_spawn_interval = max(min_spawn_interval, _bee_spawn_interval - difficulty_ramp * delta)
+
+
+func _tick_survival(delta: float) -> void:
+	if not _spawn_stopped:
+		_survival_left -= delta
+		if _survival_left <= 0.0:
+			_survival_left = 0.0
+			_spawn_stopped = true
+	_update_countdown_label()
 
 
 func _tick_spawns(delta: float) -> void:
@@ -97,6 +120,9 @@ func _spawn_spider() -> void:
 	spider.set("anchor_point", Vector2(x, spider_spawn_y))
 	spider.set("platform_top_y", _platform_top_y)
 	spider.set("target", pupa)
+	spider.set("walking_after_platform_touch", true)
+	spider.set("platform_area", platform)
+	spider.set("max_descend_y", platform.global_position.y + 3000.0)
 
 
 func _spawn_bee() -> void:
@@ -118,6 +144,78 @@ func _spawn_bee() -> void:
 	bee.set("target", pupa)
 
 
+func _setup_countdown_ui() -> void:
+	_countdown_layer = CanvasLayer.new()
+	_countdown_layer.layer = 45
+	add_child(_countdown_layer)
+
+	var root := Control.new()
+	root.set_anchors_preset(Control.PRESET_FULL_RECT)
+	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_countdown_layer.add_child(root)
+
+	_countdown_label = Label.new()
+	_countdown_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_countdown_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
+	_countdown_label.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	_countdown_label.offset_top = 12.0
+	_countdown_label.offset_bottom = 52.0
+	_countdown_label.add_theme_font_size_override("font_size", 32)
+	root.add_child(_countdown_label)
+	_update_countdown_label()
+
+
+func _update_countdown_label() -> void:
+	if _countdown_label == null:
+		return
+	var secs := maxi(0, int(ceilf(_survival_left)))
+	var m: int = int(secs / 60.0)
+	var s: int = secs % 60
+	_countdown_label.text = "%d:%02d" % [m, s]
+
+
+func _count_hostile_enemies() -> int:
+	var n := 0
+	for node in get_tree().get_nodes_in_group("Bee"):
+		if node is Node2D and is_instance_valid(node) and node.is_inside_tree():
+			n += 1
+	for node in get_tree().get_nodes_in_group("spider"):
+		if node is Node2D and is_instance_valid(node) and node.is_inside_tree():
+			n += 1
+	return n
+
+
+func _try_complete_victory() -> void:
+	if not _spawn_stopped or _victory_started:
+		return
+	if _count_hostile_enemies() > 0:
+		return
+	_victory_started = true
+	_play_fade_out_and_win()
+
+
+func _play_fade_out_and_win() -> void:
+	var layer := CanvasLayer.new()
+	layer.layer = 200
+	add_child(layer)
+
+	var rect := ColorRect.new()
+	rect.color = Color.BLACK
+	rect.modulate.a = 0.0
+	rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+	rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	layer.add_child(rect)
+
+	var tween := create_tween()
+	tween.tween_property(rect, "modulate:a", 1.0, victory_fade_out_duration)
+	tween.finished.connect(func() -> void:
+		if victory_scene != null:
+			get_tree().change_scene_to_packed(victory_scene)
+		else:
+			get_tree().change_scene_to_file("res://player/butterfly/test_map.tscn")
+	, CONNECT_ONE_SHOT)
+
+
 func _setup_scissors() -> void:
 	if scissors_scene == null:
 		return
@@ -128,13 +226,6 @@ func _setup_scissors() -> void:
 	_scissors.z_index = 1000
 	add_child(_scissors)
 	_scissors_sprite = _scissors.get_node_or_null("Scissors") as Sprite2D
-
-
-func _setup_hud() -> void:
-	if pupa_hud_scene == null:
-		return
-	var hud := pupa_hud_scene.instantiate()
-	add_child(hud)
 
 
 func _update_scissors() -> void:

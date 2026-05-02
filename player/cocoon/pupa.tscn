@@ -1,11 +1,25 @@
 [gd_scene format=3 uid="uid://blqbn0vmqc1kt"]
 
 [ext_resource type="Texture2D" uid="uid://bx40bofn7yy27" path="res://icon.svg" id="1_6agdk"]
-[ext_resource type="Script" path="res://player/cocoon/pupa.gd" id="2_pupa_script"]
+[ext_resource type="Script" uid="uid://bvwy02e5dj0aa" path="res://player/cocoon/pupa.gd" id="2_pupa_script"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g6jpx"]
 radius = 31.0
 height = 108.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp_bg"]
+bg_color = Color(0.12, 0.12, 0.14, 0.9)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp_fill"]
+bg_color = Color(0.88, 0.3784, 0.87163985, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="Pupa" type="Node2D" unique_id=2096588259]
 script = ExtResource("2_pupa_script")
@@ -19,3 +33,14 @@ texture = ExtResource("1_6agdk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=998068732]
 shape = SubResource("CapsuleShape2D_g6jpx")
+
+[node name="HpBar" type="ProgressBar" parent="." unique_id=284739201]
+offset_left = -70.0
+offset_top = -98.0
+offset_right = 70.0
+offset_bottom = -82.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_hp_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hp_fill")
+value = 100.0
+show_percentage = false
