@@ -1,13 +1,12 @@
 extends CanvasLayer
 
-@onready var black_srene = preload('res://UI/level_to_level/black_scrin.tscn')
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	layer = 100
 
 
-func change_level(next_lvl, scene_change_path = null, action: Callable = _empty) -> void:
+func change_level(next_lvl, scene_change_path = 'res://UI/level_to_level/black_scrin.tscn', action: Callable = _empty) -> void:
 	var changer_node = null
 
 	if scene_change_path is String:
@@ -16,8 +15,6 @@ func change_level(next_lvl, scene_change_path = null, action: Callable = _empty)
 		changer_node = scene_change_path.instantiate()
 	elif scene_change_path is Node:
 		changer_node = scene_change_path
-	elif scene_change_path == null:
-		changer_node = black_srene.instantiate()
 	else:
 		printerr('scene_change_path должен быть String, PackedScene или Node')
 		return
