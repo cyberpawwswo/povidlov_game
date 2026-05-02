@@ -1,6 +1,22 @@
 [gd_scene format=3 uid="uid://cvbhpjpf27kvr"]
 
 [ext_resource type="Script" uid="uid://dpiaj7v7fmo4h" path="res://UI/pause_ui/pause_ui.gd" id="1_ydefs"]
+[ext_resource type="Texture2D" uid="uid://4dhcgn3tyikj" path="res://player/butterfly/player/vector-forest-landscape-illustration.jpg" id="2_fselc"]
+[ext_resource type="Shader" uid="uid://ced0n5gl22ppk" path="res://UI/shaders/blur_ui.gdshader" id="2_xcm8o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fselc"]
+shader = ExtResource("2_xcm8o")
+shader_parameter/blur_radius = 8
+shader_parameter/blur_strength = 2.3900001102651203
+shader_parameter/fade_direction = 2
+shader_parameter/fade_cutoff = 1.0
+shader_parameter/fade_intensity = 0.10000000149012
+
+[sub_resource type="Gradient" id="Gradient_k1gpb"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xcm8o"]
+gradient = SubResource("Gradient_k1gpb")
 
 [sub_resource type="LabelSettings" id="LabelSettings_qliqw"]
 font_size = 70
@@ -9,6 +25,18 @@ font_size = 70
 process_mode = 3
 layer = 95
 script = ExtResource("1_ydefs")
+
+[node name="VectorForestLandscapeIllustration" type="Sprite2D" parent="." unique_id=652493459]
+visible = false
+position = Vector2(968.00006, 557)
+scale = Vector2(2.8991961, 2.331894)
+texture = ExtResource("2_fselc")
+
+[node name="Blur" type="Sprite2D" parent="." unique_id=229780478]
+material = SubResource("ShaderMaterial_fselc")
+position = Vector2(932.4999, 546.5001)
+scale = Vector2(10.144529, 1657.0002)
+texture = SubResource("GradientTexture1D_xcm8o")
 
 [node name="Control" type="Control" parent="." unique_id=726132050]
 process_mode = 3
