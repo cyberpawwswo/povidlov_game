@@ -18,6 +18,7 @@ class_name Caterpillar
 @onready var rsegment_2: Sprite2D = %Rsegment2
 @onready var head: Sprite2D = %head
 
+@export var HP:int = 3
 @export var is_horizontal:bool = true
 
 
@@ -41,6 +42,8 @@ func change_state(next_state):
 		current_state.enter_state()
 
 func _ready() -> void:
+	get_tree().paused = false
+	$"..".process_mode = Node.PROCESS_MODE_PAUSABLE
 	CaterpillarGlobal.connect("leaf_eat", add_stretch_limit)
 	for state in state_machine.get_children():
 		state.states = state_machine
@@ -48,7 +51,8 @@ func _ready() -> void:
 	current_state = state_machine.idle
 	previous_state = state_machine.idle
 func add_stretch_limit():
-	stretch_limit+=0.2
+	stretch_limit+=0.1
+
 func reset_tween():
 	if tw:
 		tw.kill()
@@ -64,10 +68,11 @@ func _physics_process(delta: float) -> void:
 		#move_right()
 	#elif Input.is_action_just_released("ui_left"):
 		#move_left()
+	velocity.x = lerp(velocity.x, 0.0, delta*10)
 	move_and_slide()
 func _process(_delta: float) -> void:
-
-	
+	if HP <= 0:
+		change_state(state_machine.die)
 	lsegment.global_position = left_end.global_position
 	lsegment_2.global_position = left_end_2.global_position
 	rsegment.global_position = right_end.global_position
@@ -97,4 +102,10 @@ func reset_scale():
 	tw.tween_property(self, "scale:x", 1.0, 0.5)
 func stretch_up(_delta):
 	rotation = 90
-	
+
+func hurt(knock_dir):
+	HP -= 1
+	velocity.x += knock_dir *300
+	get_parent().modulate = Color.RED
+	await get_tree().create_timer(0.2).timeout
+	get_parent().modulate = Color.WHITE

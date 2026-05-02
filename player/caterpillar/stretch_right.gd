@@ -5,6 +5,7 @@ var bumped = false
 var time = 0.0
 var stretch_finish:bool = false
 func enter_state():
+	
 	bumped = false
 	stretch_finish = false
 	time = 0.0

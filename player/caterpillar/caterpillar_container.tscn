@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://bvhv7fnyuq637" path="res://player/caterpillar/move_left.gd" id="11_i87gu"]
 [ext_resource type="Script" uid="uid://dbg1r47e2mtyq" path="res://player/caterpillar/move_up.gd" id="12_ymfgj"]
 [ext_resource type="Script" uid="uid://3f1k1m1uju3o" path="res://player/caterpillar/fall.gd" id="13_wx7ip"]
+[ext_resource type="Script" uid="uid://jpahopxj36ae" path="res://player/caterpillar/die.gd" id="14_kfal4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5fres"]
 shader = ExtResource("1_gakhs")
@@ -376,6 +377,7 @@ _data = {
 }
 
 [node name="caterpillar_container" type="Node2D" unique_id=1297587781]
+process_mode = 1
 
 [node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=2124779368]
 material = SubResource("ShaderMaterial_5fres")
@@ -481,7 +483,7 @@ position = Vector2(-18.734985, 0)
 unique_name_in_owner = true
 position = Vector2(-9.734985, 0.005004883)
 
-[node name="Area2D" type="Area2D" parent="caterpillar/CollisionShape2D" unique_id=979874256 groups=["caterpillar"]]
+[node name="Area2D" type="Area2D" parent="caterpillar/CollisionShape2D" unique_id=979874256]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="caterpillar/CollisionShape2D/Area2D" unique_id=2023492269]
 position = Vector2(-0.23498535, 0.5050049)
@@ -520,6 +522,10 @@ metadata/_custom_type_script = "uid://dpwjrksjt1osr"
 
 [node name="fall" type="Node" parent="caterpillar/state_machine" unique_id=1798826525]
 script = ExtResource("13_wx7ip")
+metadata/_custom_type_script = "uid://dpwjrksjt1osr"
+
+[node name="die" type="Node" parent="caterpillar/state_machine" unique_id=700750112]
+script = ExtResource("14_kfal4")
 metadata/_custom_type_script = "uid://dpwjrksjt1osr"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="caterpillar" unique_id=1428520391]

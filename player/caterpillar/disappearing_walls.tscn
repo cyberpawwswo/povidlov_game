@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://xlh1ol11q7kg"]
 
 [ext_resource type="Script" uid="uid://dn46yknix2g76" path="res://player/caterpillar/disappearing_walls.gd" id="1_pr75c"]
-[ext_resource type="Texture2D" uid="uid://bmb1bhdfym24k" path="res://player/caterpillar/sprites/props etc/branches tiles.png" id="2_6fupq"]
+[ext_resource type="Texture2D" uid="uid://cg8mvwi2lwlvb" path="res://player/caterpillar/sprites/props etc/branches tiles2.png" id="2_pr75c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4565o"]
-atlas = ExtResource("2_6fupq")
-region = Rect2(32, 8, 128, 16)
+atlas = ExtResource("2_pr75c")
+region = Rect2(0, 0, 128, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3o32"]
 size = Vector2(134, 18)

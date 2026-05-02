@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://ddumwjodw1r7b" path="res://player/caterpillar/door.gd" id="1_u1x4b"]
 [ext_resource type="Texture2D" uid="uid://bx40bofn7yy27" path="res://icon.svg" id="2_1rdbw"]
-[ext_resource type="Texture2D" uid="uid://bmb1bhdfym24k" path="res://player/caterpillar/sprites/props etc/branches tiles.png" id="2_ersva"]
+[ext_resource type="Texture2D" uid="uid://cg8mvwi2lwlvb" path="res://player/caterpillar/sprites/props etc/branches tiles2.png" id="2_ersva"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oysef"]
 atlas = ExtResource("2_ersva")
-region = Rect2(32, 8, 128, 16)
+region = Rect2(0, 0, 128, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mvc6e"]
 size = Vector2(30, 128)
