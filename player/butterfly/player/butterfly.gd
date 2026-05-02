@@ -53,7 +53,8 @@ func _physics_process(delta: float) -> void:
 	var direction := signf(get_local_mouse_position().x)
 
 	if Input.is_action_just_pressed("ui_accept"):
-		chroma_point = max_chroma_point
+		#chroma_point = max_chroma_point
+		health = 0
 
 	# Handle jump.
 	if Input.is_action_just_pressed("but_fly_up"):
@@ -94,7 +95,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func die():
-	UI.change_level("res://UI/main_ui/main_ui.tscn", "res://UI/level_to_level/lose_scene.tscn")
+	UI.open_lose_ui()
 	#print('huh, im die')
 
 func win():

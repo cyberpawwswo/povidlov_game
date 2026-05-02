@@ -33,10 +33,12 @@ func change_level(next_lvl, scene_change_path = 'res://UI/level_to_level/black_s
 	elif next_lvl is PackedScene:
 		get_tree().change_scene_to_packed(next_lvl)
 	else:
-		printerr('next_lvl должен быть String, Node или PackedScene')
-		return
+		printerr('next_lvl String, Node или PackedScene или null')
 
 	action.call()
+
+func open_lose_ui():
+	PauseUi.open_lose_ui()
 
 func _empty() -> void:
 	pass

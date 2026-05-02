@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bnr32sfuaelui"]
+
+[node name="LoseUi" type="Control" unique_id=649917089]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=280398346]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=232856499]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer" unique_id=1858005633]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/MarginContainer" unique_id=1540864873]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=839455760]
+layout_mode = 2
+
+[node name="Restart" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer" unique_id=528598054]
+layout_mode = 2
+text = "Заного"
+
+[node name="MainUI" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer" unique_id=1906954861]
+layout_mode = 2
+text = "В главное меню"
