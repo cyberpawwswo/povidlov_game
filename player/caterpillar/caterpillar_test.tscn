@@ -786,7 +786,7 @@ rotation = -1.5707964
 targets = [NodePath("../../platforms/platforms/disapparing_platf2")]
 
 [node name="caterpillar_container" parent="." unique_id=1297587781 instance=ExtResource("2_4g6k1")]
-position = Vector2(660, 116)
+position = Vector2(122, 149)
 
 [node name="caterpillar" parent="caterpillar_container" index="1" unique_id=600846969]
 stretch_limit = 1.5
