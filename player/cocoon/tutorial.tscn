@@ -74,7 +74,7 @@ offset_left = 1142.0
 offset_top = 586.0
 offset_right = 1797.0
 offset_bottom = 631.0
-text = "ЗАЖАВ ЛКМ ПЕРЕРЕЖТЕ НИТЬ ПАУТИНЫ "
+text = "ЗАЖАВ ЛКМ ПЕРЕРЕЖЬТЕ НИТЬ ПАУТИНЫ "
 label_settings = SubResource("LabelSettings_1l0aq")
 
 [node name="RBM" type="Label" parent="." unique_id=423653001]
@@ -85,5 +85,3 @@ offset_right = 1417.0
 offset_bottom = 997.0
 text = "НАЖИМАЯ ПКМ СДУЙТЕ ОС ЗА ПРЕДЕЛЫ ЭКРАНА"
 label_settings = SubResource("LabelSettings_5oqpi")
-
-[node name="TransitionScreen" type="CanvasLayer" parent="." unique_id=56697226]

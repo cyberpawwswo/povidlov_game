@@ -31,6 +31,8 @@ var _tutorial_bees_spawned := false
 var _tutorial_bees_alive := 0
 var _tutorial_transition_started := false
 var _pulse_tween: Tween
+var _fade_layer: CanvasLayer
+var _fade_rect: ColorRect
 
 
 func _ready() -> void:
@@ -170,9 +172,9 @@ func _on_tutorial_spider_removed() -> void:
 	if _tutorial_bees_spawned:
 		return
 	_tutorial_bees_spawned = true
+	_spawn_tutorial_bees()
 	var Tween = create_tween()
 	Tween.tween_property(label, "modulate:a", 0.0, 0.5)
-	_spawn_tutorial_bees()
 	_pulse_tween = create_tween()
 	_pulse_tween.set_loops()
 
@@ -217,6 +219,9 @@ func _on_tutorial_bee_exited() -> void:
 	_tutorial_bees_alive = max(0, _tutorial_bees_alive - 1)
 	if _tutorial_bees_spawned and _tutorial_bees_alive == 0:
 		_start_next_scene()
+		#await get_tree().create_timer(1.0).timeout
+		#var Tween = create_tween()
+		#Tween.tween_property(fade_rect, "modulate:a", 1.0, 1.0)
 
 
 func _start_next_scene() -> void:
@@ -225,8 +230,27 @@ func _start_next_scene() -> void:
 	_tutorial_transition_started = true
 	if next_scene == null:
 		return
-	await get_tree().create_timer(1.0).timeout
+	_ensure_fade_overlay()
+	var tween := create_tween()
+	tween.tween_property(_fade_rect, "modulate:a", 1.0, 1.0)
+	await tween.finished
 	get_tree().change_scene_to_packed(next_scene)
+
+
+func _ensure_fade_overlay() -> void:
+	if _fade_layer != null:
+		return
+	_fade_layer = CanvasLayer.new()
+	_fade_layer.layer = 100
+	add_child(_fade_layer)
+
+	_fade_rect = ColorRect.new()
+	_fade_rect.name = "FadeRect"
+	_fade_rect.color = Color.BLACK
+	_fade_rect.modulate.a = 0.0
+	_fade_rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_fade_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_fade_layer.add_child(_fade_rect)
 
 
 func _spray(cursor: Vector2) -> void:

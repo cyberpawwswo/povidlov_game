@@ -34,6 +34,8 @@ var _cut_prev_mouse: Vector2
 var _cut_has_prev := false
 
 var _platform_top_y := 0.0
+var _fade_layer: CanvasLayer
+var _fade_rect: ColorRect
 
 func _ready() -> void:
 	_spider_spawn_interval = spider_spawn_interval_start
@@ -43,6 +45,7 @@ func _ready() -> void:
 	_cut_has_prev = false
 	_setup_scissors()
 	_setup_hud()
+	_play_fade_in()
 
 
 func _process(delta: float) -> void:
@@ -234,3 +237,23 @@ func _compute_platform_top_y() -> float:
 		var rect := cs.shape as RectangleShape2D
 		top_y = platform.global_position.y - rect.size.y * 0.5
 	return top_y
+
+
+func _play_fade_in() -> void:
+	_fade_layer = CanvasLayer.new()
+	_fade_layer.layer = 100
+	add_child(_fade_layer)
+
+	_fade_rect = ColorRect.new()
+	_fade_rect.color = Color.BLACK
+	_fade_rect.modulate.a = 1.0
+	_fade_rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_fade_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_fade_layer.add_child(_fade_rect)
+
+	var tween := create_tween()
+	tween.tween_property(_fade_rect, "modulate:a", 0.0, 1.0)
+	tween.finished.connect(func() -> void:
+		if is_instance_valid(_fade_layer):
+			_fade_layer.queue_free()
+	)
