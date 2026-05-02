@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dapbscxj5pqni"]
 
 [ext_resource type="Script" uid="uid://b060107oyddew" path="res://player/butterfly/player/butterfly.gd" id="1_hbfln"]
+[ext_resource type="Script" uid="uid://bexan1atfsmc7" path="res://player/butterfly/player/camera.gd" id="2_0hvfw"]
 [ext_resource type="Shader" uid="uid://cpsch0ntftr1l" path="res://player/butterfly/player/butterfly.gdshader" id="2_pp3c8"]
 [ext_resource type="Texture2D" uid="uid://b0v1shkqakxu5" path="res://player/butterfly/player/bttfly.png" id="4_0hvfw"]
 
@@ -58,6 +59,7 @@ shape = SubResource("RectangleShape2D_hbfln")
 limit_bottom = 1916
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+script = ExtResource("2_0hvfw")
 
 [node name="Blur" type="Sprite2D" parent="." unique_id=1641660121]
 material = SubResource("ShaderMaterial_d3v2e")

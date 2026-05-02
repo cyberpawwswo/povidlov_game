@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://woktjdyk425t"]
 
 [ext_resource type="Script" uid="uid://bady3341um8dp" path="res://player/cocoon/Spider.gd" id="2_spider_script"]
-[ext_resource type="Texture2D" uid="uid://bcauiidol8l7m" path="res://player/cocoon/sprites/pp.png" id="2_yr6ke"]
+[ext_resource type="Texture2D" uid="uid://d2wnhb8bvqqev" path="res://player/cocoon/sprites/pavuk_vniz.png" id="2_yr6ke"]
+[ext_resource type="Texture2D" uid="uid://diykdbm4cbyqg" path="res://player/cocoon/sprites/pavuk.png" id="3_ic5kd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ic5kd"]
 radius = 24.0
@@ -21,6 +22,54 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pavuk:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pavuk:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.3, 0.3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pavuk:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpiderSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_kmnuu"]
 resource_name = "falling"
@@ -36,6 +85,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpiderSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pavuk:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
 }
 
 [sub_resource type="Animation" id="Animation_ic5kd"]
@@ -54,12 +127,142 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpiderSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pavuk:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+
+[sub_resource type="Animation" id="Animation_j36hq"]
+resource_name = "walk_left"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pavuk:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.5, 0.76666665),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [2, 0, 1, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pavuk:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-0.3, 0.3), Vector2(-0.3, 0.3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pavuk:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpiderSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+
+[sub_resource type="Animation" id="Animation_h0v33"]
+resource_name = "walk_right"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pavuk:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.5, 0.76666665),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [2, 0, 1, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pavuk:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.3, 0.3), Vector2(0.3, 0.3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pavuk:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpiderSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kmnuu"]
 _data = {
 &"RESET": SubResource("Animation_yr6ke"),
 &"falling": SubResource("Animation_kmnuu"),
-&"walk_down": SubResource("Animation_ic5kd")
+&"walk_down": SubResource("Animation_ic5kd"),
+&"walk_left": SubResource("Animation_j36hq"),
+&"walk_right": SubResource("Animation_h0v33")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ic5kd"]
@@ -68,17 +271,26 @@ animation = &"falling"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yr6ke"]
 animation = &"walk_down"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kmnuu"]
+animation = &"walk_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h0v33"]
+animation = &"walk_right"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_yr6ke"]
 states/falling/node = SubResource("AnimationNodeAnimation_ic5kd")
-states/falling/position = Vector2(582.8, 97.44)
+states/falling/position = Vector2(423.59998, 100.1792)
 states/walk_down/node = SubResource("AnimationNodeAnimation_yr6ke")
-states/walk_down/position = Vector2(418.8, 98.4)
+states/walk_down/position = Vector2(315.59998, 97.76)
+states/walk_left/node = SubResource("AnimationNodeAnimation_kmnuu")
+states/walk_left/position = Vector2(525.19995, 95.183365)
+states/walk_right/node = SubResource("AnimationNodeAnimation_h0v33")
+states/walk_right/position = Vector2(638, 94.54669)
 
 [node name="Spider" type="CharacterBody2D" unique_id=1320814939]
 script = ExtResource("2_spider_script")
 
 [node name="SpiderSprite" type="Sprite2D" parent="." unique_id=2095419924]
-modulate = Color(0.42, 0.42, 0.42, 1)
 position = Vector2(0, -0.24999994)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_yr6ke")
@@ -97,3 +309,11 @@ libraries/ = SubResource("AnimationLibrary_kmnuu")
 root_node = NodePath("../..")
 tree_root = SubResource("AnimationNodeStateMachine_yr6ke")
 anim_player = NodePath("..")
+
+[node name="Pavuk" type="Sprite2D" parent="." unique_id=1762737932]
+visible = false
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_ic5kd")
+hframes = 2
+vframes = 2
+frame = 3

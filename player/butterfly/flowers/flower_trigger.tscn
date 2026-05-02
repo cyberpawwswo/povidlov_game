@@ -5,6 +5,17 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_w6ncd"]
 radius = 49.010204
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o11o5"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 53.9
+angle_min = -47.19999
+angle_max = 39.900013
+gravity = Vector3(0, 98, 0)
+scale_min = 6.04
+scale_max = 6.04
+color = Color(1, 1, 0, 1)
+
 [node name="Flower" type="Node2D" unique_id=2047706209]
 script = ExtResource("1_o11o5")
 
@@ -21,6 +32,10 @@ offset_top = -85.0
 offset_right = 128.0
 offset_bottom = -73.0
 show_percentage = false
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=339426789]
+amount = 17
+process_material = SubResource("ParticleProcessMaterial_o11o5")
 
 [connection signal="body_entered" from="TriggerAnimation" to="." method="_on_trigger_animation_body_entered"]
 [connection signal="body_exited" from="TriggerAnimation" to="." method="_on_trigger_animation_body_exited"]

@@ -37,7 +37,7 @@ func _ready() -> void:
 	_web_line = Line2D.new()
 	_web_line.width = 2.0
 	_web_line.default_color = Color(0.95, 0.95, 0.95, 1.0)
-	_web_line.z_index = -10
+	_web_line.z_index = 200
 	add_child(_web_line)
 	_update_web_line()
 	if _screen_notifier != null:
@@ -70,6 +70,10 @@ func _physics_process(delta: float) -> void:
 				if abs(dx) <= attack_distance:
 					state = State.ATTACKING
 				else:
+					if dx > 0.0:
+						state_machine.travel("walk_right")
+					elif dx < 0.0:
+						state_machine.travel("walk_left")
 					global_position.x += sign(dx) * walk_speed * delta
 			global_position.y = platform_top_y
 
@@ -152,4 +156,4 @@ func _update_web_line() -> void:
 		return
 	_web_line.clear_points()
 	_web_line.add_point(to_local(anchor_point))
-	_web_line.add_point(Vector2.ZERO)
+	_web_line.add_point(Vector2(0.0, -22.0))
