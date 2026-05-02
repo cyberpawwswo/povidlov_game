@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://cvbhpjpf27kvr"]
+
+[ext_resource type="Script" uid="uid://dpiaj7v7fmo4h" path="res://UI/pause_ui/pause_ui.gd" id="1_ydefs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qliqw"]
+font_size = 70
+
+[node name="PauseUi" type="Control" unique_id=91928087]
+process_mode = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ydefs")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2002840627]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1403084288]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer" unique_id=1247618465]
+layout_mode = 2
+theme_override_constants/margin_top = -200
+theme_override_constants/margin_bottom = 69
+
+[node name="PauseName" type="Label" parent="CenterContainer/VBoxContainer/MarginContainer" unique_id=986224]
+layout_mode = 2
+text = "Пауза"
+label_settings = SubResource("LabelSettings_qliqw")
+horizontal_alignment = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CenterContainer/VBoxContainer" unique_id=296923676]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/AspectRatioContainer" unique_id=869649442]
+layout_mode = 2
+
+[node name="Continue" type="Button" parent="CenterContainer/VBoxContainer/AspectRatioContainer/VBoxContainer" unique_id=1732340380]
+layout_mode = 2
+text = "Продолжить"
+
+[node name="MainMenu" type="Button" parent="CenterContainer/VBoxContainer/AspectRatioContainer/VBoxContainer" unique_id=662391449]
+layout_mode = 2
+text = "Выйти в главное меню"
+
+[node name="RestartLevel" type="Button" parent="CenterContainer/VBoxContainer/AspectRatioContainer/VBoxContainer" unique_id=1980815770]
+layout_mode = 2
+text = "Начать уровень заново"
+
+[node name="Settings" type="Button" parent="CenterContainer/VBoxContainer/AspectRatioContainer/VBoxContainer" unique_id=1695980783]
+layout_mode = 2
+text = "Настройки"
+
+[node name="CheckButton" type="CheckButton" parent="." unique_id=1668500456]
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 24.0
+button_pressed = true
+text = "Звук"

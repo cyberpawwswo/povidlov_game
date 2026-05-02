@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 CaterpillarGlobal="*uid://c4tn71nilxwhh"
+UI="*uid://b1mc2o11jpukq"
 
 [display]
 
