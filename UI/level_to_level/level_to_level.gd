@@ -12,7 +12,4 @@ func _ready() -> void:
 
 
 func transition_to_next_level():
-	#print(next_level)
-	#get_tree().change_scene_to_packed(next_level)
 	change_scene.emit()
-#	last_lvl.queue_free()

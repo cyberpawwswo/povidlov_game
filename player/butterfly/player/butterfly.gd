@@ -94,9 +94,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func die():
+	UI.change_level("res://UI/main_ui/main_ui.tscn", "res://UI/level_to_level/lose_scene.tscn")
 	print('huh, im die')
 
 func win():
+	UI.change_level("res://UI/main_ui/main_ui.tscn", "res://UI/level_to_level/win_scene.tscn")
 	print('huh, im win')
 
 func set_frame(frame):

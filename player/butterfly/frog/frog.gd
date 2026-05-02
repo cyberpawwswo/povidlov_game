@@ -77,7 +77,11 @@ func test_keep_player():
 	if cast_tongue.is_colliding():
 		if cast_tongue.get_collider() is Butterfly:
 			var target = cast_tongue.get_collider() as Butterfly
-			create_tween().tween_property(target, 'global_position', tongue.global_position, 0.1)
+
+			var tween := create_tween()
+			tween.tween_property(target, 'global_position', tongue.global_position, 0.1)
+			tween.tween_callback(target.set_velocity.bind(target.velocity + Vector2.UP * 500))
+
 			target.health -= damage
 		print('hello', cast_tongue.get_collider())
 
