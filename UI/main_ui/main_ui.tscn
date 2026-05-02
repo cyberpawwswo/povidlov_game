@@ -1,20 +1,25 @@
 [gd_scene format=3 uid="uid://dfnioh7r6fqd0"]
 
-[ext_resource type="Theme" uid="uid://5csefvu52i6y" path="res://UI/styles/simple_theme.tres" id="1_mmo4b"]
+[ext_resource type="Script" uid="uid://dbrpfn4u7vhud" path="res://UI/main_ui/main_ui.gd" id="2_df82o"]
+[ext_resource type="PackedScene" uid="uid://batxikaw0uoac" path="res://UI/level_to_level/black_scrin.tscn" id="3_622d5"]
+[ext_resource type="PackedScene" uid="uid://ccn2ojb8e1rve" path="res://player/caterpillar/caterpillar_test.tscn" id="3_xi1m5"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_n1ruf"]
+[sub_resource type="LabelSettings" id="LabelSettings_qliqw"]
 font_size = 70
 
-[node name="MainUi" type="Control" unique_id=1814414020]
+[node name="MainUI" type="Control" unique_id=726132050]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_mmo4b")
+script = ExtResource("2_df82o")
+first_lvl = ExtResource("3_xi1m5")
+change_scene = ExtResource("3_622d5")
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=475830178]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2002840627]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,29 +27,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=450771232]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1403084288]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer" unique_id=169154233]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer" unique_id=1247618465]
 layout_mode = 2
 theme_override_constants/margin_top = -200
-theme_override_constants/margin_bottom = 104
+theme_override_constants/margin_bottom = 69
 
-[node name="ManuText" type="Label" parent="CenterContainer/VBoxContainer/MarginContainer" unique_id=1422919634]
+[node name="GameName" type="Label" parent="CenterContainer/VBoxContainer/MarginContainer" unique_id=986224]
 layout_mode = 2
 text = "Название игры"
-label_settings = SubResource("LabelSettings_n1ruf")
+label_settings = SubResource("LabelSettings_qliqw")
+horizontal_alignment = 1
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CenterContainer/VBoxContainer" unique_id=1016486302]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CenterContainer/VBoxContainer" unique_id=296923676]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/AspectRatioContainer" unique_id=639582481]
+[node name="Play" type="Button" parent="CenterContainer/VBoxContainer/AspectRatioContainer" unique_id=1732340380]
+process_mode = 3
 layout_mode = 2
+text = "Начать игру"
 
-[node name="StartGame" type="Button" parent="CenterContainer/VBoxContainer/AspectRatioContainer/VBoxContainer" unique_id=1593742264]
-layout_mode = 2
-text = "Играть"
-
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/AspectRatioContainer/VBoxContainer" unique_id=1852105320]
-layout_mode = 2
-text = "Настройки"
+[connection signal="pressed" from="CenterContainer/VBoxContainer/AspectRatioContainer/Play" to="." method="_on_play_pressed"]
