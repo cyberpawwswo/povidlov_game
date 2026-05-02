@@ -1,24 +1,17 @@
 [gd_scene format=3 uid="uid://c7hqggo64f517"]
 
 [ext_resource type="PackedScene" uid="uid://blqbn0vmqc1kt" path="res://player/cocoon/pupa.tscn" id="1_d101h"]
+[ext_resource type="Texture2D" uid="uid://86pq6gs3v062" path="res://textures/grass/reww.png" id="2_6nl3s"]
 [ext_resource type="Script" uid="uid://bjlfkjx0wqx23" path="res://player/cocoon/cocoon.gd" id="2_cocoon_script"]
-
-[sub_resource type="Curve" id="Curve_wrdih"]
-_data = [Vector2(0.5311203, 0.36479253), 0.0, 0.0, 0, 0]
-point_count = 1
-
-[sub_resource type="Curve" id="Curve_smhya"]
-_data = [Vector2(0.58506215, 0.208166), 0.0, 0.0, 0, 0]
-point_count = 1
-
-[sub_resource type="Curve" id="Curve_7qo2u"]
-_data = [Vector2(0.75103724, 0.12115133), 0.0, 0.0, 0, 0]
-point_count = 1
-
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_c36ng"]
-curve_x = SubResource("Curve_wrdih")
-curve_y = SubResource("Curve_smhya")
-curve_z = SubResource("Curve_7qo2u")
+[ext_resource type="Texture2D" uid="uid://5ycrfb0ocl7l" path="res://textures/grass/r.png" id="3_sghli"]
+[ext_resource type="Script" uid="uid://ckvdwbfj34ixj" path="res://player/cocoon/parallax_background.gd" id="4_uc7aq"]
+[ext_resource type="Texture2D" uid="uid://csifpp5v552u" path="res://textures/sky/sk.png" id="5_quxjy"]
+[ext_resource type="Texture2D" uid="uid://c2esq17gw4mug" path="res://textures/sky/sk01.png" id="6_pmdf6"]
+[ext_resource type="Texture2D" uid="uid://de8n3gn35jyw2" path="res://textures/sky/sk0.png" id="7_svr1r"]
+[ext_resource type="Texture2D" uid="uid://7djtd87x1edd" path="res://player/cocoon/sprites/erff.png" id="8_pmdf6"]
+[ext_resource type="Texture2D" uid="uid://cqwi6ssvs6e1p" path="res://player/cocoon/sprites/dd.png" id="9_svr1r"]
+[ext_resource type="Texture2D" uid="uid://5nuucc7xkq7" path="res://player/cocoon/sprites/erfff.png" id="10_8qne8"]
+[ext_resource type="Texture2D" uid="uid://dul1q5nc0wwqx" path="res://player/cocoon/sprites/232.png" id="12_n8oel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f00xg"]
 size = Vector2(1035, 28)
@@ -26,18 +19,82 @@ size = Vector2(1035, 28)
 [node name="CocoonDefence" type="Node2D" unique_id=1072979385]
 script = ExtResource("2_cocoon_script")
 
-[node name="Pupa" parent="." unique_id=2096588259 instance=ExtResource("1_d101h")]
-position = Vector2(966, 651)
+[node name="Reww" type="Sprite2D" parent="." unique_id=2013249694]
+position = Vector2(772, 869)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_6nl3s")
+
+[node name="Reww2" type="Sprite2D" parent="." unique_id=111625420]
+position = Vector2(2326, 869)
+rotation = -3.1415925
+scale = Vector2(0.7, -0.7)
+texture = ExtResource("2_6nl3s")
+
+[node name="R" type="Sprite2D" parent="." unique_id=472732852]
+position = Vector2(552, 951)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_sghli")
+
+[node name="R2" type="Sprite2D" parent="." unique_id=2112861348]
+position = Vector2(1662, 951)
+rotation = -3.1415925
+scale = Vector2(0.5, -0.5)
+texture = ExtResource("3_sghli")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1170517770]
+script = ExtResource("4_uc7aq")
+speed = 40.0
+
+[node name="Sk" type="Sprite2D" parent="ParallaxBackground" unique_id=2039443939]
+position = Vector2(924, 539)
+rotation = -3.1415925
+texture = ExtResource("5_quxjy")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1735424142]
+motion_scale = Vector2(-0.2, 0)
+motion_mirroring = Vector2(2220, 0)
+
+[node name="Sk01" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=1364612026]
+position = Vector2(923, 538)
+rotation = -3.1415925
+texture = ExtResource("6_pmdf6")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1651034498]
+motion_scale = Vector2(-0.6, 0)
+motion_mirroring = Vector2(2220, 0)
+
+[node name="Sk0" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=2098192781]
+position = Vector2(924, 400)
+scale = Vector2(1, 0.8)
+texture = ExtResource("7_svr1r")
+
+[node name="Erff" type="Sprite2D" parent="." unique_id=35006330]
+position = Vector2(959.9999, 539.99994)
+scale = Vector2(1.918082, 1.9217081)
+texture = ExtResource("8_pmdf6")
 
 [node name="Platform" type="Area2D" parent="." unique_id=1664626800]
-position = Vector2(963, 725)
+position = Vector2(963, 825)
 
 [node name="Sprite2D" type="Sprite2D" parent="Platform" unique_id=1464779399]
 modulate = Color(1, 1, 0.9843137, 1)
-position = Vector2(-518, -14)
-scale = Vector2(4.046875, 28.5)
-texture = SubResource("CurveXYZTexture_c36ng")
+position = Vector2(-963, -825.00006)
+scale = Vector2(1.9180822, 1.9217083)
+texture = ExtResource("9_svr1r")
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform" unique_id=316887522]
 shape = SubResource("RectangleShape2D_f00xg")
+
+[node name="Erfff" type="Sprite2D" parent="." unique_id=241808106]
+position = Vector2(960, 540)
+scale = Vector2(1.9180818, 1.9217081)
+texture = ExtResource("10_8qne8")
+
+[node name="Pupa" parent="." unique_id=2096588259 instance=ExtResource("1_d101h")]
+position = Vector2(966, 755)
+
+[node name="232" type="Sprite2D" parent="." unique_id=426258621]
+position = Vector2(959.99994, 540)
+scale = Vector2(1.918082, 1.9217083)
+texture = ExtResource("12_n8oel")

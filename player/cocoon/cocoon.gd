@@ -9,8 +9,8 @@ extends Node2D
 @export var spider_spawn_y := -50.0
 @export var bee_spawn_margin := 60.0
 
-@export var spider_spawn_interval_start := 1.2
-@export var bee_spawn_interval_start := 1.0
+@export var spider_spawn_interval_start := 1.5
+@export var bee_spawn_interval_start := 1.8
 @export var min_spawn_interval := 0.25
 @export var difficulty_ramp := 0.02 # seconds/second
 
@@ -25,7 +25,7 @@ var _scissors_sprite: Sprite2D
 var _scissors_prev_mouse: Vector2
 var _scissors_has_prev := false
 
-var _spider_spawn_interval := 1.2
+var _spider_spawn_interval := 1.0
 var _bee_spawn_interval := 1.0
 var _spider_spawn_acc := 0.0
 var _bee_spawn_acc := 0.0

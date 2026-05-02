@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 enum State { DESCENDING, WALKING, ATTACKING, FALLING }
 
+@onready var animation_tree: AnimationTree = $AnimationPlayer/AnimationTree
+@onready var state_machine: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 @export var descend_speed := 140.0
 @export var walk_speed := 120.0
 @export var gravity := 1400.0
@@ -11,6 +13,7 @@ enum State { DESCENDING, WALKING, ATTACKING, FALLING }
 @export var attack_damage := 10
 @export var first_attack_delay := 0.1
 @export var attack_interval := 0.5
+
 
 var state: State = State.DESCENDING
 
@@ -23,6 +26,7 @@ var _web_line: Line2D
 
 var _attack_cd := 0.0
 var _attack_first_pending := true
+@onready var _screen_notifier: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 
 
 func _ready() -> void:
@@ -36,6 +40,13 @@ func _ready() -> void:
 	_web_line.z_index = -10
 	add_child(_web_line)
 	_update_web_line()
+	if _screen_notifier != null:
+		_screen_notifier.screen_exited.connect(_on_screen_exited)
+
+
+func _on_screen_exited() -> void:
+	if state == State.FALLING:
+		queue_free()
 
 
 func _physics_process(delta: float) -> void:
@@ -49,6 +60,7 @@ func _physics_process(delta: float) -> void:
 			if global_position.y >= platform_top_y:
 				global_position.y = platform_top_y
 				state = State.WALKING
+			state_machine.travel("walk_down")
 
 		State.WALKING:
 			_web_line.visible = true
@@ -89,6 +101,7 @@ func _physics_process(delta: float) -> void:
 				_web_line.visible = false
 			velocity.y += gravity * delta
 			global_position += velocity * delta
+			state_machine.travel("falling")
 
 	if prev_state != state and state == State.ATTACKING:
 		_arm_first_attack()

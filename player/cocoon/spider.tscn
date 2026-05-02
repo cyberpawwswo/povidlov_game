@@ -1,20 +1,99 @@
 [gd_scene format=3 uid="uid://woktjdyk425t"]
 
-[ext_resource type="Texture2D" uid="uid://bx40bofn7yy27" path="res://icon.svg" id="1_knd63"]
-[ext_resource type="Script" path="res://player/cocoon/Spider.gd" id="2_spider_script"]
+[ext_resource type="Script" uid="uid://bady3341um8dp" path="res://player/cocoon/Spider.gd" id="2_spider_script"]
+[ext_resource type="Texture2D" uid="uid://bcauiidol8l7m" path="res://player/cocoon/sprites/pp.png" id="2_yr6ke"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yr6ke"]
-size = Vector2(64, 67)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ic5kd"]
+radius = 24.0
+height = 71.0
+
+[sub_resource type="Animation" id="Animation_yr6ke"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpiderSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_kmnuu"]
+resource_name = "falling"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpiderSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_ic5kd"]
+resource_name = "walk_down"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpiderSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kmnuu"]
+_data = {
+&"RESET": SubResource("Animation_yr6ke"),
+&"falling": SubResource("Animation_kmnuu"),
+&"walk_down": SubResource("Animation_ic5kd")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ic5kd"]
+animation = &"falling"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yr6ke"]
+animation = &"walk_down"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_yr6ke"]
+states/falling/node = SubResource("AnimationNodeAnimation_ic5kd")
+states/falling/position = Vector2(582.8, 97.44)
+states/walk_down/node = SubResource("AnimationNodeAnimation_yr6ke")
+states/walk_down/position = Vector2(418.8, 98.4)
 
 [node name="Spider" type="CharacterBody2D" unique_id=1320814939]
 script = ExtResource("2_spider_script")
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=2095419924]
+[node name="SpiderSprite" type="Sprite2D" parent="." unique_id=2095419924]
 modulate = Color(0.42, 0.42, 0.42, 1)
 position = Vector2(0, -0.24999994)
-scale = Vector2(0.515625, 0.53515625)
-texture = ExtResource("1_knd63")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_yr6ke")
+hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=245270444]
 position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_yr6ke")
+shape = SubResource("CapsuleShape2D_ic5kd")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1939974486]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1664708280]
+libraries/ = SubResource("AnimationLibrary_kmnuu")
+
+[node name="AnimationTree" type="AnimationTree" parent="AnimationPlayer" unique_id=752983076]
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeStateMachine_yr6ke")
+anim_player = NodePath("..")
