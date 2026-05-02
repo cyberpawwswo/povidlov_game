@@ -2,7 +2,8 @@ extends Node2D
 
 @export var is_final:bool = false
 const LEAVES_DIE_PARTICLES = preload("uid://83ymxxcmoity")
-@onready var audio: AudioStreamPlayer = $AudioStreamPlayer
+@export var audio:AudioStreamPlayer2D
+
 
 
 
@@ -21,13 +22,17 @@ func die():
 	inst.get_child(0).emitting = true
 	inst.global_position = global_position
 	get_tree().current_scene.add_child(inst)
-	await audio.finished
-	queue_free()
+	if audio:
+		await audio.finished
+		queue_free()
+	else:
+		queue_free()
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	audio.pitch_scale = randf_range(0.8,1.2)
-	audio.play()
+	if audio:
+		audio.pitch_scale = randf_range(0.8,1.2)
+		audio.play()
 	if !is_final:
 		CaterpillarGlobal.add_leaf(1)
 		die()
