@@ -19,6 +19,8 @@ var can_jump := true
 
 var _number_unsec_attack = 0
 
+@export var shake_camera_dis: Curve
+
 func _ready() -> void:
 	sprite.animation = 'idle'
 	tongue.hide()
@@ -30,6 +32,11 @@ func _physics_process(delta: float) -> void:
 		jumping = false
 	elif not jumping:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	if get_last_motion().y < 5 and absf(get_last_motion().x) < 4 and get_real_velocity().y > 10:
+		if player:
+			player.shake_camera(shake_camera_dis.sample(player.global_position.distance_to(global_position)/1000))
+
 
 	move_and_slide()
 

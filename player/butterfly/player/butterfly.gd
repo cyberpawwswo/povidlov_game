@@ -54,7 +54,8 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("ui_accept"):
 		#chroma_point = max_chroma_point
-		health = 0
+		#health = 0
+		shake_camera()
 
 	# Handle jump.
 	if Input.is_action_just_pressed("but_fly_up"):
@@ -93,6 +94,17 @@ func _physics_process(delta: float) -> void:
 
 
 	move_and_slide()
+
+
+func shake_camera(strength: float = 1):
+	#$Camera2D.shake_camera20)
+	$Camera2D.add_shake(
+		$Camera2D.ShakeType.HEAVY_IMPACT, 
+		18.0 * strength, 
+		0.6,
+		{"frequency": 8.0, "damping": 4.0, "vertical_bias": 2.5}
+	)
+
 
 func die():
 	UI.open_lose_ui()

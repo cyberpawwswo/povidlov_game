@@ -43,6 +43,11 @@ shader_parameter/wind_phase = 0.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8ftm8"]
 
+[sub_resource type="Curve" id="Curve_cl51e"]
+_limits = [0.0, 1.0, 0.0, 2.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6830227, 0.52780765), -1.552487, -1.552487, 0, 0, Vector2(1.0019629, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="TestMap" type="Node2D" unique_id=1487573391]
 
 [node name="ParallaxSky" type="Node2D" parent="." unique_id=1943001644]
@@ -242,7 +247,7 @@ scale = Vector2(500, 7.932)
 color = Color(0.22450691, 0.12090386, 0, 1)
 
 [node name="Butterfly" parent="." unique_id=636950088 instance=ExtResource("2_u3mhw")]
-position = Vector2(2647, 989)
+position = Vector2(1714, 978)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=213750285]
 layer = -2
@@ -254,8 +259,8 @@ scale = Vector2(0.90146405, 0.94901043)
 texture = ExtResource("5_4c37m")
 
 [node name="Frogs" type="Node2D" parent="." unique_id=2104001377]
-visible = false
 position = Vector2(1522, 1916)
 
 [node name="Frog" parent="Frogs" unique_id=1394785451 instance=ExtResource("4_4c37m")]
 position = Vector2(0, -442)
+shake_camera_dis = SubResource("Curve_cl51e")
