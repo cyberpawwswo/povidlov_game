@@ -11,6 +11,13 @@ var player: Butterfly
 
 @onready var sprite := $AnimatedSprite2D
 
+var can_jump := true
+var is_attack := false
+
+func _ready() -> void:
+	sprite.animation = 'idle'
+	tongue.hide()
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -34,12 +41,14 @@ func jump():
 	sprite.scale.x = direction * abs(sprite.scale.x)
 	velocity.x = SPEED * direction
 
-func attack(player_pos):
-	if player:
+func attack(player_pos: Vector2):
+	if player and not jumping:
 		tongue.look_at(player_pos)
+		tongue.show()
 		sprite.animation = 'attack'
-		create_tween().tween_callback(sprite.set_animation.bind('idle')).set_delay(0.2)
+		create_tween().tween_callback(tongue.hide).set_delay(0.2)
 		print("attack frog")
+
 
 	var tween = create_tween()
 	tween.tween_property(tongue, 'scale:x', 34, 0.1)
@@ -60,7 +69,8 @@ func _on_timer_attack_timeout() -> void:
 		create_tween().tween_callback(attack.bind(player.global_position)).set_delay(randf_range(1, 2))
 		print("ready attack frog")
 		create_tween().tween_callback($TimerAttack.start).set_delay(randf())
-		
+
+		can_jump = false
 
 
 func _on_timer_jump_timeout() -> void:

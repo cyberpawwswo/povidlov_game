@@ -167,7 +167,6 @@ scale = Vector2(500, 7.932)
 color = Color(0.22450691, 0.12090386, 0, 1)
 
 [node name="Frog" parent="." unique_id=1394785451 instance=ExtResource("4_4c37m")]
-visible = false
 position = Vector2(1603, 1518)
 
 [node name="Butterfly" parent="." unique_id=636950088 instance=ExtResource("2_u3mhw")]
