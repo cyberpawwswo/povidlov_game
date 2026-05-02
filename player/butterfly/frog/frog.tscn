@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://daiqi4hoduiex" path="res://player/butterfly/frog/frog.gd" id="1_3l2fg"]
 [ext_resource type="Texture2D" uid="uid://piwlsmye16mo" path="res://player/butterfly/frog/ggg.png" id="2_w1gwn"]
 [ext_resource type="Texture2D" uid="uid://bx40bofn7yy27" path="res://icon.svg" id="2_wwx0m"]
+[ext_resource type="Texture2D" uid="uid://bvo654kx25neo" path="res://player/butterfly/frog/ggg1_to_tile_set.png" id="3_nlfhn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wwx0m"]
-radius = 912.27704
+radius = 394.88477
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3l2fg"]
 size = Vector2(273, 272)
@@ -17,6 +18,18 @@ region = Rect2(0, 588, 1002, 588)
 [sub_resource type="AtlasTexture" id="AtlasTexture_nlfhn"]
 atlas = ExtResource("2_w1gwn")
 region = Rect2(0, 0, 1002, 588)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qh1a2"]
+atlas = ExtResource("3_nlfhn")
+region = Rect2(0, 0, 649, 585)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdt2f"]
+atlas = ExtResource("3_nlfhn")
+region = Rect2(649, 0, 649, 585)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7t41"]
+atlas = ExtResource("3_nlfhn")
+region = Rect2(1298, 0, 649, 585)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g67p6"]
 atlas = ExtResource("2_w1gwn")
@@ -38,6 +51,25 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qh1a2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdt2f")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7t41")
+}],
+"loop": true,
+"name": &"jump_loop",
 "speed": 5.0
 }, {
 "frames": [{
@@ -68,11 +100,12 @@ shape = SubResource("RectangleShape2D_3l2fg")
 position = Vector2(34, 35)
 scale = Vector2(0.43452382, 0.43452382)
 sprite_frames = SubResource("SpriteFrames_wwx0m")
-animation = &"attack"
+animation = &"jump"
+frame_progress = 0.29861093
 
 [node name="Tongue" type="Node2D" parent="AnimatedSprite2D" unique_id=751582184]
 position = Vector2(-9.2054825, 16.109596)
-scale = Vector2(2.301, -2.301)
+scale = Vector2(10, -2.301)
 
 [node name="Ggg" type="Sprite2D" parent="AnimatedSprite2D/Tongue" unique_id=1308129979]
 position = Vector2(82.01315, -1.0001607)
@@ -95,6 +128,11 @@ autostart = true
 [node name="TimerJump" type="Timer" parent="." unique_id=454842968]
 one_shot = true
 autostart = true
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1014599049]
+position = Vector2(34, 35)
+target_position = Vector2(710, 0)
+collision_mask = 2
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_area_2d_body_exited"]
