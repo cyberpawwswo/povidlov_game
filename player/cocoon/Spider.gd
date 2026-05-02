@@ -8,6 +8,9 @@ enum State { DESCENDING, WALKING, ATTACKING, FALLING }
 @export var attack_speed := 220.0
 @export var attack_distance := 34.0
 @export var direct_attack_x_tolerance := 18.0
+@export var attack_damage := 10
+@export var first_attack_delay := 0.1
+@export var attack_interval := 0.5
 
 var state: State = State.DESCENDING
 
@@ -17,6 +20,9 @@ var target: Node2D
 
 var _web_cut := false
 var _web_line: Line2D
+
+var _attack_cd := 0.0
+var _attack_first_pending := true
 
 
 func _ready() -> void:
@@ -33,9 +39,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if target != null and state == State.DESCENDING and not _web_cut:
-		if abs(global_position.x - target.global_position.x) <= direct_attack_x_tolerance:
-			state = State.ATTACKING
+	var prev_state := state
 
 	match state:
 		State.DESCENDING:
@@ -63,12 +67,21 @@ func _physics_process(delta: float) -> void:
 			if target == null:
 				state = State.WALKING
 				return
+
 			var to_t := target.global_position - global_position
-			if to_t.length() <= attack_distance:
-				velocity = Vector2.ZERO
-			else:
+			var in_range := _is_in_attack_range(to_t)
+			if not in_range:
+				_reset_attack_schedule()
 				velocity = to_t.normalized() * attack_speed
 				global_position += velocity * delta
+			else:
+				_tick_attack(delta)
+				# keep pressing into range while descending from above
+				if global_position.y > target.global_position.y:
+					velocity = Vector2(0.0, -absf(attack_speed))
+					global_position += velocity * delta
+				else:
+					velocity = Vector2.ZERO
 
 		State.FALLING:
 			if not _web_cut:
@@ -77,11 +90,48 @@ func _physics_process(delta: float) -> void:
 			velocity.y += gravity * delta
 			global_position += velocity * delta
 
+	if prev_state != state and state == State.ATTACKING:
+		_arm_first_attack()
+
 
 func cut_web() -> void:
 	if state == State.FALLING:
 		return
 	state = State.FALLING
+
+
+func _is_in_attack_range(to_target: Vector2) -> bool:
+	if target == null:
+		return false
+	if abs(global_position.y - platform_top_y) > 0.5:
+		return to_target.length() <= attack_distance
+	return absf(to_target.x) <= attack_distance
+
+
+func _arm_first_attack() -> void:
+	_attack_first_pending = true
+	_attack_cd = first_attack_delay
+
+
+func _reset_attack_schedule() -> void:
+	_attack_first_pending = true
+	_attack_cd = 0.0
+
+
+func _tick_attack(delta: float) -> void:
+	if target == null:
+		return
+	if not target.has_method("take_damage"):
+		return
+
+	_attack_cd -= delta
+	if _attack_cd > 0.0:
+		return
+
+	target.call("take_damage", attack_damage)
+	if _attack_first_pending:
+		_attack_first_pending = false
+	_attack_cd = attack_interval
 
 
 func _update_web_line() -> void:

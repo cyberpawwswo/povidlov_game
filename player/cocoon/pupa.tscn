@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://blqbn0vmqc1kt"]
 
 [ext_resource type="Texture2D" uid="uid://bx40bofn7yy27" path="res://icon.svg" id="1_6agdk"]
+[ext_resource type="Script" path="res://player/cocoon/pupa.gd" id="2_pupa_script"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g6jpx"]
 radius = 31.0
 height = 108.0
 
 [node name="Pupa" type="Node2D" unique_id=2096588259]
+script = ExtResource("2_pupa_script")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1685953005]
 modulate = Color(0.44313726, 1, 0.43529412, 1)

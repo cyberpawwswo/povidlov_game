@@ -4,6 +4,7 @@ extends Node2D
 @export var bee_scene: PackedScene = preload("res://player/cocoon/bee.tscn")
 @export var pshik_scene: PackedScene = preload("res://player/cocoon/Pshik.tscn")
 @export var scissors_scene: PackedScene = preload("res://player/cocoon/scissors.tscn")
+@export var pupa_hud_scene: PackedScene = preload("res://player/cocoon/PupaHUD.tscn")
 
 @export var spider_spawn_y := -50.0
 @export var bee_spawn_margin := 60.0
@@ -13,8 +14,8 @@ extends Node2D
 @export var min_spawn_interval := 0.25
 @export var difficulty_ramp := 0.02 # seconds/second
 
-@export var spray_radius := 600.0
-@export var spray_strength := 1000.0
+@export var spray_radius := 650.0
+@export var spray_strength := 1050.0
 
 @onready var pupa: Node2D = $Pupa
 @onready var platform: Node2D = $Platform
@@ -41,6 +42,7 @@ func _ready() -> void:
 	_cut_prev_mouse = get_global_mouse_position()
 	_cut_has_prev = false
 	_setup_scissors()
+	_setup_hud()
 
 
 func _process(delta: float) -> void:
@@ -123,6 +125,13 @@ func _setup_scissors() -> void:
 	_scissors.z_index = 1000
 	add_child(_scissors)
 	_scissors_sprite = _scissors.get_node_or_null("Scissors") as Sprite2D
+
+
+func _setup_hud() -> void:
+	if pupa_hud_scene == null:
+		return
+	var hud := pupa_hud_scene.instantiate()
+	add_child(hud)
 
 
 func _update_scissors() -> void:
