@@ -55,8 +55,7 @@ drag_vertical_enabled = true
 
 [node name="Blur" type="Sprite2D" parent="." unique_id=1641660121]
 material = SubResource("ShaderMaterial_d3v2e")
-position = Vector2(5.0000305, 5.000046)
-scale = Vector2(3.7114286, 3.5183673)
+scale = Vector2(4.9914284, 4.414286)
 texture = ExtResource("5_1wyui")
 
 [node name="Body" type="AnimatedSprite2D" parent="." unique_id=954996585]
@@ -65,3 +64,29 @@ scale = Vector2(0.16666666, 0.16666664)
 sprite_frames = SubResource("SpriteFrames_0hvfw")
 animation = &"fly"
 frame = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=167977939]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=16632497]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/Control" unique_id=1842384766]
+layout_mode = 1
+offset_left = 36.0
+offset_top = 28.0
+offset_right = 345.0
+offset_bottom = 42.36
+show_percentage = false
+
+[node name="ChromaPointBar" type="ProgressBar" parent="CanvasLayer/Control" unique_id=712499418]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 62.0
+offset_right = 434.0
+offset_bottom = 89.0
+show_percentage = false

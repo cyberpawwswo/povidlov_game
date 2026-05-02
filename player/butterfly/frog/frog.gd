@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 
+var damage := 4.0
+
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -1000.0
 var jumping := false
@@ -76,6 +78,7 @@ func test_keep_player():
 		if cast_tongue.get_collider() is Butterfly:
 			var target = cast_tongue.get_collider() as Butterfly
 			create_tween().tween_property(target, 'global_position', tongue.global_position, 0.1)
+			target.health -= damage
 		print('hello', cast_tongue.get_collider())
 
 
