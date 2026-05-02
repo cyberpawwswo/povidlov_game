@@ -1,14 +1,26 @@
 [gd_scene format=3 uid="uid://co3jht7k460a1"]
 
 [ext_resource type="Script" uid="uid://0jocyet2h7uo" path="res://player/butterfly/flowers/flower.gd" id="1_1ic7r"]
+[ext_resource type="Shader" uid="uid://86wavinnv8cg" path="res://player/caterpillar/wind_sway.gdshader" id="2_765pc"]
 [ext_resource type="Texture2D" uid="uid://cgrx2x0d1d8ig" path="res://player/butterfly/flowers/flw.png" id="2_v1l1b"]
 [ext_resource type="PackedScene" uid="uid://stns2aupan8t" path="res://player/butterfly/flowers/flower_trigger.tscn" id="3_765pc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yg3xk"]
+shader = ExtResource("2_765pc")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 1.6400000779
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.0470000022325
+shader_parameter/wind_speed = 0.36400001077023
+shader_parameter/scale = 2.0
+shader_parameter/wind_phase = 0.0
 
 [node name="RedFlw" type="Node2D" unique_id=522645934]
 script = ExtResource("1_1ic7r")
 metadata/_custom_type_script = "uid://0jocyet2h7uo"
 
 [node name="Flw" type="Sprite2D" parent="." unique_id=677428135]
+material = SubResource("ShaderMaterial_yg3xk")
 position = Vector2(-3, -219)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_v1l1b")

@@ -81,7 +81,7 @@ _data = {
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_qwwce"]
-font_size = 104
+font_size = 69
 
 [node name="WinScene" type="Control" unique_id=1171598117]
 layout_mode = 3
@@ -115,6 +115,6 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="CenterContainer" unique_id=1740437276]
 layout_mode = 2
-text = "ты проиграл!"
+text = "ты проиграл..."
 label_settings = SubResource("LabelSettings_qwwce")
 uppercase = true

@@ -2,18 +2,18 @@
 
 [ext_resource type="Script" uid="uid://0jocyet2h7uo" path="res://player/butterfly/flowers/flower.gd" id="1_y63se"]
 [ext_resource type="Texture2D" uid="uid://dqhcr8swwg7wj" path="res://player/butterfly/flowers/flw1.png" id="2_fkts2"]
+[ext_resource type="Shader" uid="uid://86wavinnv8cg" path="res://player/caterpillar/wind_sway.gdshader" id="2_vfj4i"]
 [ext_resource type="PackedScene" uid="uid://stns2aupan8t" path="res://player/butterfly/flowers/flower_trigger.tscn" id="3_1xpyr"]
-[ext_resource type="Shader" uid="uid://clfnuwrd5jmxl" path="res://player/butterfly/flowers/types/color_reversed.gdshader" id="4_3naep"]
-[ext_resource type="Texture2D" uid="uid://bx40bofn7yy27" path="res://icon.svg" id="4_vfj4i"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3h1mt"]
-shader = ExtResource("4_3naep")
-shader_parameter/invert_mode = true
-shader_parameter/effect_strength = 1.0
-shader_parameter/edge_fade_start = 0.4
-shader_parameter/fade_width = 0.3
-shader_parameter/color_multiplier = Vector3(1, 1, 1)
-shader_parameter/color_offset = Vector3(0, 0, 0)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yg3xk"]
+shader = ExtResource("2_vfj4i")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 1.6400000779
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.0470000022325
+shader_parameter/wind_speed = 0.36400001077023
+shader_parameter/scale = 2.0
+shader_parameter/wind_phase = 0.0
 
 [node name="Tulip" type="Node2D" unique_id=119960863]
 script = ExtResource("1_y63se")
@@ -21,6 +21,7 @@ metadata/_custom_type_script = "uid://0jocyet2h7uo"
 
 [node name="Flw1" type="Sprite2D" parent="." unique_id=217315585]
 light_mask = 3
+material = SubResource("ShaderMaterial_yg3xk")
 position = Vector2(-37, -216)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_fkts2")
@@ -34,11 +35,3 @@ scale = Vector2(1.2110864, 1.2231176)
 [node name="Flower2" parent="." unique_id=1589399605 instance=ExtResource("3_1xpyr")]
 position = Vector2(62, -424.00003)
 scale = Vector2(1.2110864, 1.2231176)
-
-[node name="Icon" type="Sprite2D" parent="." unique_id=505108122]
-light_mask = 0
-visibility_layer = 2
-material = SubResource("ShaderMaterial_3h1mt")
-position = Vector2(64, -420)
-scale = Vector2(2.03125, 1.6796875)
-texture = ExtResource("4_vfj4i")

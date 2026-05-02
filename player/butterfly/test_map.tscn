@@ -210,8 +210,16 @@ position = Vector2(2641, 1748)
 
 [node name="Tulip" parent="Flowers" unique_id=119960863 instance=ExtResource("14_uqu8w")]
 
+[node name="Tulip2" parent="Flowers" unique_id=670652517 instance=ExtResource("14_uqu8w")]
+position = Vector2(-969, -19)
+rotation = -0.078287825
+
 [node name="Chamomile" parent="Flowers" unique_id=1191199222 instance=ExtResource("3_s2hvg")]
 position = Vector2(-721, 0)
+
+[node name="Chamomile2" parent="Flowers" unique_id=178364480 instance=ExtResource("3_s2hvg")]
+position = Vector2(301, -6)
+rotation = 0.12750606
 
 [node name="Daisy" parent="Flowers" unique_id=1222506530 instance=ExtResource("15_b6d5v")]
 position = Vector2(419, 9)
@@ -234,7 +242,7 @@ scale = Vector2(500, 7.932)
 color = Color(0.22450691, 0.12090386, 0, 1)
 
 [node name="Butterfly" parent="." unique_id=636950088 instance=ExtResource("2_u3mhw")]
-position = Vector2(1541, 1229)
+position = Vector2(2647, 989)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=213750285]
 layer = -2
@@ -245,8 +253,9 @@ position = Vector2(993.37506, 559.56256)
 scale = Vector2(0.90146405, 0.94901043)
 texture = ExtResource("5_4c37m")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=2104001377]
+[node name="Frogs" type="Node2D" parent="." unique_id=2104001377]
+visible = false
 position = Vector2(1522, 1916)
 
-[node name="Frog" parent="Node2D" unique_id=1394785451 instance=ExtResource("4_4c37m")]
+[node name="Frog" parent="Frogs" unique_id=1394785451 instance=ExtResource("4_4c37m")]
 position = Vector2(0, -442)

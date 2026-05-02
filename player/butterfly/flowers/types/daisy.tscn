@@ -3,12 +3,24 @@
 [ext_resource type="Script" uid="uid://0jocyet2h7uo" path="res://player/butterfly/flowers/flower.gd" id="1_g6bhs"]
 [ext_resource type="Texture2D" uid="uid://dqhcr8swwg7wj" path="res://player/butterfly/flowers/flw1.png" id="2_tcdm5"]
 [ext_resource type="PackedScene" uid="uid://stns2aupan8t" path="res://player/butterfly/flowers/flower_trigger.tscn" id="3_dp4vc"]
+[ext_resource type="Shader" uid="uid://86wavinnv8cg" path="res://player/caterpillar/wind_sway.gdshader" id="4_cvo6b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yg3xk"]
+shader = ExtResource("4_cvo6b")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 1.6400000779
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.0470000022325
+shader_parameter/wind_speed = 0.36400001077023
+shader_parameter/scale = 2.0
+shader_parameter/wind_phase = 0.0
 
 [node name="Daisy" type="Node2D" unique_id=1222506530]
 script = ExtResource("1_g6bhs")
 metadata/_custom_type_script = "uid://0jocyet2h7uo"
 
 [node name="Flw1" type="Sprite2D" parent="." unique_id=1775942101]
+material = SubResource("ShaderMaterial_yg3xk")
 position = Vector2(29, -309)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_tcdm5")
