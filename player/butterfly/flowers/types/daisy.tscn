@@ -15,6 +15,10 @@ shader_parameter/wind_speed = 0.36400001077023
 shader_parameter/scale = 2.0
 shader_parameter/wind_phase = 0.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvo6b"]
+radius = 27.0
+height = 130.0
+
 [node name="Daisy" type="Node2D" unique_id=1222506530]
 script = ExtResource("1_g6bhs")
 metadata/_custom_type_script = "uid://0jocyet2h7uo"
@@ -28,5 +32,9 @@ region_enabled = true
 region_rect = Rect2(0, 0, 946.88574, 1233)
 
 [node name="Flower" parent="." unique_id=2047706209 instance=ExtResource("3_dp4vc")]
-position = Vector2(6.199999, -562.2)
-scale = Vector2(1.2815189, 0.54228663)
+position = Vector2(-4, -557)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flower" unique_id=2080156463]
+position = Vector2(5, -2)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_cvo6b")
