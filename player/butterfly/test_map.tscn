@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://csifpp5v552u" path="res://textures/sky/sk.png" id="5_4c37m"]
 [ext_resource type="Texture2D" uid="uid://86pq6gs3v062" path="res://textures/grass/reww.png" id="10_2soir"]
 [ext_resource type="Texture2D" uid="uid://bh2c0ft35h27f" path="res://textures/sky/cloude_sprite/cloude_small01.png" id="10_cl51e"]
+[ext_resource type="Shader" uid="uid://86wavinnv8cg" path="res://player/caterpillar/wind_sway.gdshader" id="10_dj2he"]
 [ext_resource type="Texture2D" uid="uid://dl8a8f8q1xolf" path="res://textures/sky/cloude_sprite/cloude_small02.png" id="11_dj2he"]
 [ext_resource type="Texture2D" uid="uid://dqcxnmfa0bjmb" path="res://textures/sky/cloude_sprite/cloude_small.png" id="12_jpnwx"]
 [ext_resource type="Texture2D" uid="uid://wjchxmsst46" path="res://textures/sky/cloude_sprite/cloud_big.png" id="13_r81sy"]
@@ -19,6 +20,26 @@
 [ext_resource type="Texture2D" uid="uid://d2b1yrs5nvwy" path="res://textures/sky/cloude_sprite/Без имени.png" id="16_s05io"]
 [ext_resource type="Texture2D" uid="uid://cbb2ljwn3b0d8" path="res://textures/grass/rew.png" id="17_03xyf"]
 [ext_resource type="Texture2D" uid="uid://5ycrfb0ocl7l" path="res://textures/grass/r.png" id="18_prjvx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cl51e"]
+shader = ExtResource("10_dj2he")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 2.0
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.0290000013775
+shader_parameter/wind_speed = 1.0
+shader_parameter/scale = 2.0
+shader_parameter/wind_phase = 0.5450000258875
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jpnwx"]
+shader = ExtResource("10_dj2he")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 2.0
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.0290000013775
+shader_parameter/wind_speed = 1.0
+shader_parameter/scale = 2.0
+shader_parameter/wind_phase = 0.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8ftm8"]
 
@@ -154,6 +175,7 @@ repeat_times = 11
 [node name="Node2D" type="Node2D" parent="ParallaxGrass/ParallaxBack" unique_id=1676560968]
 
 [node name="Reww" type="Sprite2D" parent="ParallaxGrass/ParallaxBack/Node2D" unique_id=1276340306]
+material = SubResource("ShaderMaterial_cl51e")
 position = Vector2(67, 2)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_2soir")
@@ -166,6 +188,7 @@ repeat_size = Vector2(1105.615, 0)
 repeat_times = 11
 
 [node name="R" type="Sprite2D" parent="ParallaxGrass/ParallaxMidlle" unique_id=154712952]
+material = SubResource("ShaderMaterial_jpnwx")
 position = Vector2(28, 287)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("18_prjvx")
@@ -177,12 +200,13 @@ repeat_size = Vector2(1105.615, 0)
 repeat_times = 85
 
 [node name="Rew" type="Sprite2D" parent="ParallaxGrass/ParallaxForward" unique_id=1635811682]
+material = SubResource("ShaderMaterial_jpnwx")
 position = Vector2(0, 118)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("17_03xyf")
 
 [node name="Flowers" type="Node2D" parent="." unique_id=1546450944]
-position = Vector2(2641, 1795)
+position = Vector2(2641, 1748)
 
 [node name="Tulip" parent="Flowers" unique_id=119960863 instance=ExtResource("14_uqu8w")]
 
@@ -210,7 +234,7 @@ scale = Vector2(500, 7.932)
 color = Color(0.22450691, 0.12090386, 0, 1)
 
 [node name="Butterfly" parent="." unique_id=636950088 instance=ExtResource("2_u3mhw")]
-position = Vector2(1585, 1684)
+position = Vector2(1541, 1229)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=213750285]
 layer = -2
