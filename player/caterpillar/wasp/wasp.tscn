@@ -1,10 +1,39 @@
 [gd_scene format=3 uid="uid://bymrl2yoa6itl"]
 
 [ext_resource type="Script" uid="uid://bvv7fc1ntylii" path="res://player/caterpillar/wasp/wasp.gd" id="1_tdkqg"]
-[ext_resource type="Texture2D" uid="uid://bx40bofn7yy27" path="res://icon.svg" id="2_whj1b"]
+[ext_resource type="Texture2D" uid="uid://uarv8k1odobg" path="res://player/cocoon/sprites/Bee.png" id="2_tdkqg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n1ssl"]
-radius = 17.0
+radius = 11.030709
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whj1b"]
+atlas = ExtResource("2_tdkqg")
+region = Rect2(0, 0, 334, 358)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1ssl"]
+atlas = ExtResource("2_tdkqg")
+region = Rect2(334, 0, 334, 358)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfqo2"]
+atlas = ExtResource("2_tdkqg")
+region = Rect2(668, 0, 334, 358)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vbw5o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whj1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1ssl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfqo2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="Animation" id="Animation_jfqo2"]
 length = 0.001
@@ -192,14 +221,15 @@ script = ExtResource("1_tdkqg")
 [node name="Area2D" type="Area2D" parent="." unique_id=405355754]
 collision_layer = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=797108372]
-self_modulate = Color(1.6032891, 1.685791, 0, 1)
-rotation = 0.8377581
-scale = Vector2(0.26, 0.26)
-texture = ExtResource("2_whj1b")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=67127289]
+position = Vector2(1, 7.1774826)
 shape = SubResource("CircleShape2D_n1ssl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=1432090685]
+scale = Vector2(0.15675488, 0.15675488)
+sprite_frames = SubResource("SpriteFrames_vbw5o")
+autoplay = "default"
+frame_progress = 0.66033614
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=666711519]
 libraries/ = SubResource("AnimationLibrary_c5ss6")

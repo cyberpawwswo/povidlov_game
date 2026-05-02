@@ -1,0 +1,231 @@
+[gd_scene format=3 uid="uid://byj5el78mnxwx"]
+
+[ext_resource type="Script" uid="uid://jd28maofxa5l" path="res://player/caterpillar/leaf/leaf.gd" id="1_5bvaj"]
+[ext_resource type="Shader" uid="uid://86wavinnv8cg" path="res://player/caterpillar/wind_sway.gdshader" id="2_bs8w3"]
+[ext_resource type="Shader" uid="uid://nh33wfro05oh" path="res://player/caterpillar/shaders/canvas_group_outline.gdshader" id="2_sitbx"]
+[ext_resource type="Texture2D" uid="uid://dk8m83df7enoe" path="res://player/caterpillar/sprites/leaf (1).png" id="3_sitbx"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5bvaj"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_bs8w3"]
+offsets = PackedFloat32Array(0, 0.4970588)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sitbx"]
+gradient = SubResource("Gradient_bs8w3")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_eaux3"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(1, 2.8324318), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_spdi1"]
+_data = [Vector2(0, 0.72594595), 0.0, 0.0, 0, 0, Vector2(0.25690606, 0.9929729), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.2482138, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_uyyol"]
+offsets = PackedFloat32Array(0, 0.30357143, 0.67261904, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_c0io7"]
+offsets = PackedFloat32Array(0, 0.38690478, 0.90178573)
+colors = PackedColorArray(1, 0.25490198, 0, 1, 1, 1, 0, 1, 0.45000005, 1, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mvc6e"]
+radius = 15.0
+
+[sub_resource type="Animation" id="Animation_bf76g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasGroup/Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasGroup/Sprite2D:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasGroup/Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasGroup:material:shader_parameter/line_thickness")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_qfm71"]
+resource_name = "new_animation"
+length = 1.3333334
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("CanvasGroup/Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6666667, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.8984075, 1.8984075, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasGroup/Sprite2D:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.3333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.10995574287564296, 0.4223696789826275]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasGroup/Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6666666, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(5.912981, 5.912981, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasGroup:material:shader_parameter/line_thickness")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6666667, 1.0333333, 1.3333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 2, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rtfiu"]
+_data = {
+&"RESET": SubResource("Animation_bf76g"),
+&"new_animation": SubResource("Animation_qfm71")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eaux3"]
+shader = ExtResource("2_sitbx")
+shader_parameter/line_colour = Color(1, 0.8156863, 0, 1)
+shader_parameter/line_thickness = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ksnq2"]
+shader = ExtResource("2_bs8w3")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 2.0
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.2
+shader_parameter/wind_speed = 1.0
+shader_parameter/scale = 2.0
+shader_parameter/wind_phase = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otjxb"]
+atlas = ExtResource("3_sitbx")
+region = Rect2(152, 40, 256, 376)
+
+[node name="leaf" type="Node2D" unique_id=794154945]
+script = ExtResource("1_5bvaj")
+is_final = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1759895788]
+material = SubResource("CanvasItemMaterial_5bvaj")
+position = Vector2(1, -8)
+amount = 16
+texture = SubResource("GradientTexture2D_sitbx")
+lifetime = 2.17
+lifetime_randomness = 0.25
+fixed_fps = 60
+emission_shape = 1
+emission_sphere_radius = 25.61
+gravity = Vector2(0, -40)
+linear_accel_curve = SubResource("Curve_eaux3")
+tangential_accel_min = -15.38
+tangential_accel_max = 23.5
+scale_amount_min = 0.2
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_spdi1")
+color_ramp = SubResource("Gradient_uyyol")
+color_initial_ramp = SubResource("Gradient_c0io7")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1962390562]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=451322419]
+shape = SubResource("CircleShape2D_mvc6e")
+debug_color = Color(0, 0.6499802, 0.133382, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1801272442]
+libraries/ = SubResource("AnimationLibrary_rtfiu")
+autoplay = &"new_animation"
+
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=1881259300]
+material = SubResource("ShaderMaterial_eaux3")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasGroup" unique_id=783513748]
+texture_filter = 1
+material = SubResource("ShaderMaterial_ksnq2")
+use_parent_material = true
+position = Vector2(9.536743e-07, 14)
+scale = Vector2(0.10769022, 0.10769022)
+texture = SubResource("AtlasTexture_otjxb")
+centered = false
+offset = Vector2(-233.11893, -348.7645)
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasGroup/Sprite2D" unique_id=1379924536]
+show_behind_parent = true
+texture_filter = 1
+material = SubResource("ShaderMaterial_ksnq2")
+use_parent_material = true
+position = Vector2(-9.536743e-07, 0)
+scale = Vector2(0.71860427, 0.71860427)
+texture = SubResource("AtlasTexture_otjxb")
+centered = false
+offset = Vector2(-28.829254, -348.7645)
+flip_h = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

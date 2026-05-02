@@ -1,7 +1,7 @@
 extends Node
 signal leaf_eat
 var leaves_eaten:int = 0
-
+var caterpillar:Caterpillar
 
 
 func add_leaf(value):

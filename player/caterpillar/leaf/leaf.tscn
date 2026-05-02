@@ -1,14 +1,9 @@
 [gd_scene format=3 uid="uid://c6gm6lta86cjg"]
 
 [ext_resource type="Script" uid="uid://jd28maofxa5l" path="res://player/caterpillar/leaf/leaf.gd" id="1_qfm71"]
-[ext_resource type="Shader" uid="uid://nh33wfro05oh" path="res://player/caterpillar/shaders/canvas_group_outline.gdshader" id="2_rtfiu"]
 [ext_resource type="Shader" uid="uid://86wavinnv8cg" path="res://player/caterpillar/wind_sway.gdshader" id="3_vldew"]
 [ext_resource type="Texture2D" uid="uid://dk8m83df7enoe" path="res://player/caterpillar/sprites/leaf (1).png" id="4_1oldp"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tnvyp"]
-shader = ExtResource("2_rtfiu")
-shader_parameter/line_colour = Color(1.8247963, 1.8247963, 0, 1)
-shader_parameter/line_thickness = 2
+[ext_resource type="AudioStream" uid="uid://dm68v60125gek" path="res://sounds/collect.wav" id="4_qfm71"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ksnq2"]
 shader = ExtResource("3_vldew")
@@ -18,6 +13,7 @@ shader_parameter/wind_end_threshold_2 = 0.1
 shader_parameter/wind_strength = 0.2
 shader_parameter/wind_speed = 1.0
 shader_parameter/scale = 2.0
+shader_parameter/wind_phase = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_otjxb"]
 atlas = ExtResource("4_1oldp")
@@ -26,18 +22,85 @@ region = Rect2(152, 40, 256, 376)
 [sub_resource type="CircleShape2D" id="CircleShape2D_mvc6e"]
 radius = 15.0
 
+[sub_resource type="Animation" id="Animation_bf76g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qfm71"]
+resource_name = "new_animation"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.8984075, 1.8984075, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.10995574287564296, 0.42236967898262756]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rtfiu"]
+_data = {
+&"RESET": SubResource("Animation_bf76g"),
+&"new_animation": SubResource("Animation_qfm71")
+}
+
 [node name="leaf" type="Node2D" unique_id=794154945]
 script = ExtResource("1_qfm71")
 
-[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=1118463394]
-material = SubResource("ShaderMaterial_tnvyp")
-fit_margin = 92.0
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1740634522]
+stream = ExtResource("4_qfm71")
+volume_db = -11.383
+mix_target = 2
+max_polyphony = 50
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasGroup" unique_id=783513748]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=783513748]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ksnq2")
+use_parent_material = true
+position = Vector2(8, 14)
 scale = Vector2(0.09, 0.09)
 texture = SubResource("AtlasTexture_otjxb")
+centered = false
+offset = Vector2(-233.11893, -348.7645)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1962390562]
 collision_layer = 0
@@ -46,6 +109,10 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=451322419]
 shape = SubResource("CircleShape2D_mvc6e")
 debug_color = Color(0, 0.6499802, 0.133382, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1801272442]
+libraries/ = SubResource("AnimationLibrary_rtfiu")
+autoplay = &"new_animation"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -20,4 +20,4 @@ func _process(delta: float) -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	ui_anim.play("disap")
 	await ui_anim.animation_finished
-	get_tree().reload_current_scene()
+	UI.open_lose_ui()

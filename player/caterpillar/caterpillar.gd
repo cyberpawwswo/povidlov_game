@@ -8,6 +8,7 @@ class_name Caterpillar
 @onready var left_end_2: Marker2D = %left_end2
 
 @onready var animator: AnimationPlayer = %AnimationPlayer
+@onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @onready var body: CollisionShape2D = $CollisionShape2D
 
@@ -20,7 +21,7 @@ class_name Caterpillar
 
 @export var HP:int = 3
 @export var is_horizontal:bool = true
-
+var cutscene:bool = false
 
 
 var tw: Tween
@@ -45,6 +46,7 @@ func _ready() -> void:
 	get_tree().paused = false
 	$"..".process_mode = Node.PROCESS_MODE_PAUSABLE
 	CaterpillarGlobal.connect("leaf_eat", add_stretch_limit)
+	CaterpillarGlobal.caterpillar = self
 	for state in state_machine.get_children():
 		state.states = state_machine
 		state.player = self
@@ -58,16 +60,9 @@ func reset_tween():
 		tw.kill()
 	tw = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_ELASTIC)
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+
 	current_state.update(delta)
-	#if Input.is_action_pressed("ui_right"):
-		#stretch_right(delta)
-	#elif Input.is_action_pressed("ui_left"):
-		#stretch_left(delta)
-	#elif Input.is_action_just_released("ui_right"):
-		#move_right()
-	#elif Input.is_action_just_released("ui_left"):
-		#move_left()
+
 	velocity.x = lerp(velocity.x, 0.0, delta*6)
 	move_and_slide()
 func _process(_delta: float) -> void:
@@ -111,7 +106,11 @@ func stretch_up(_delta):
 
 func hurt(knock_dir):
 	HP -= 1
+	$"../../CanvasLayer/Score".update_health()
 	velocity.x += knock_dir *300
 	get_parent().modulate = Color.RED
 	await get_tree().create_timer(0.2).timeout
 	get_parent().modulate = Color.WHITE
+
+func pupa():
+	change_state(state_machine.pupa)

@@ -9,3 +9,4 @@ extends Node
 @onready var move_up: Node = $move_up
 @onready var fall: Node = $fall
 @onready var die: Node = $die
+@onready var pupa: Node = $pupa

@@ -16,7 +16,7 @@ func enter_state():
 
 func update(delta):
 	player.handle_gravity(delta)
-	if player.is_on_floor() and !player.animator.is_playing():
+	if player.is_on_floor() and !player.animator.is_playing() and !player.cutscene:
 		if Input.is_action_pressed("ui_right"):
 			player.change_state(states.stretch_right)
 		elif Input.is_action_pressed("ui_left"):

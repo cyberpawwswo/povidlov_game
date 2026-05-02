@@ -1,19 +1,16 @@
 [gd_scene format=3 uid="uid://bo28ykl0jmn31"]
 
 [ext_resource type="Script" uid="uid://b8ma1dbe4asr3" path="res://player/caterpillar/moving_platform/moving_platorm.gd" id="1_1n8hc"]
-[ext_resource type="Texture2D" uid="uid://bx40bofn7yy27" path="res://icon.svg" id="2_7ti7x"]
+[ext_resource type="Texture2D" uid="uid://bcauiidol8l7m" path="res://player/cocoon/sprites/pp.png" id="2_1n8hc"]
+[ext_resource type="Shader" uid="uid://nh33wfro05oh" path="res://player/caterpillar/shaders/canvas_group_outline.gdshader" id="2_7ti7x"]
 [ext_resource type="Texture2D" uid="uid://cg8mvwi2lwlvb" path="res://player/caterpillar/sprites/props etc/branches tiles2.png" id="3_aukdh"]
-
-[sub_resource type="Curve" id="Curve_7cuid"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
 
 [sub_resource type="Animation" id="Animation_8kssm"]
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/StaticBody2D:position:x")
+tracks/0/path = NodePath("CanvasGroup/Node2D/bdy:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +21,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/StaticBody2D:position:y")
+tracks/1/path = NodePath("CanvasGroup/Node2D/bdy:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -40,7 +37,7 @@ loop_mode = 2
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/StaticBody2D:position:x")
+tracks/0/path = NodePath("CanvasGroup/Node2D/bdy:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -51,7 +48,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/StaticBody2D:position:y")
+tracks/1/path = NodePath("CanvasGroup/Node2D/bdy:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -66,9 +63,40 @@ _data = {
 &"move": SubResource("Animation_ubdc5")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aukdh"]
+shader = ExtResource("2_7ti7x")
+shader_parameter/line_colour = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 2
+
+[sub_resource type="Curve" id="Curve_7cuid"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ti7x"]
+atlas = ExtResource("2_1n8hc")
+region = Rect2(0, 0, 310, 447)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aukdh"]
+atlas = ExtResource("2_1n8hc")
+region = Rect2(310, 0, 310, 447)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qcp1h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ti7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aukdh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_g3dt3"]
 atlas = ExtResource("3_aukdh")
-region = Rect2(0, 32, 128, 24)
+region = Rect2(24, 64, 112, 24)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w5hvd"]
 radius = 9.999998
@@ -77,28 +105,35 @@ height = 124.0
 [node name="moving_platorm" type="Node2D" unique_id=335974107]
 script = ExtResource("1_1n8hc")
 
-[node name="Line2D" type="Line2D" parent="." unique_id=518887721]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=940036178]
+libraries/ = SubResource("AnimationLibrary_o205u")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=845460275]
+material = SubResource("ShaderMaterial_aukdh")
+
+[node name="Line2D" type="Line2D" parent="CanvasGroup" unique_id=518887721]
 points = PackedVector2Array(-1, -47, -1, -8)
 width = 5.25
 width_curve = SubResource("Curve_7cuid")
 default_color = Color(0.86898494, 0.8689849, 0.8689849, 1)
 
-[node name="SpriteSpider" type="Sprite2D" parent="." unique_id=901239872]
+[node name="SpriteSpider" type="AnimatedSprite2D" parent="CanvasGroup" unique_id=273316815]
 position = Vector2(0, -50)
-scale = Vector2(0.3125, 0.21875)
-texture = ExtResource("2_7ti7x")
+rotation = 3.1415925
+scale = Vector2(0.205, 0.14)
+sprite_frames = SubResource("SpriteFrames_qcp1h")
+autoplay = "default"
+frame_progress = 0.55926627
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=940036178]
-libraries/ = SubResource("AnimationLibrary_o205u")
+[node name="Node2D" type="Node2D" parent="CanvasGroup" unique_id=1560525722]
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1560525722]
+[node name="bdy" type="StaticBody2D" parent="CanvasGroup/Node2D" unique_id=1340871689 groups=["wall"]]
+unique_name_in_owner = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Node2D" unique_id=1340871689 groups=["wall"]]
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/StaticBody2D" unique_id=1298342778]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasGroup/Node2D/bdy" unique_id=1298342778]
 texture = SubResource("AtlasTexture_g3dt3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D" unique_id=1471265884]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasGroup/Node2D/bdy" unique_id=1471265884]
 position = Vector2(0, 1)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_w5hvd")

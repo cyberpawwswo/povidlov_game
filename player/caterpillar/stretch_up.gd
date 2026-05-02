@@ -7,6 +7,7 @@ var stretch_finish = false
 var anim_finish = false
 var bumped = false
 func enter_state():
+	
 	time = 0.0
 	stretch_finish = false
 	bumped = false
@@ -18,7 +19,10 @@ func enter_state():
 	player.head.flip_h = false
 	await player.animator.animation_finished
 	anim_finish = true
+func exit_state():
+	player.audio.stop()
 func update(delta: float):
+	player.audio.play()
 	if !stretch_finish:
 		player.handle_gravity(delta)
 	if !anim_finish:

@@ -5,6 +5,7 @@ var bumped = false
 var time = 0.0
 var stretch_finish:bool = false
 func enter_state():
+	
 	bumped = false
 	time = 0.0
 	stretch_finish = false
@@ -15,7 +16,10 @@ func enter_state():
 	player.head.position = Vector2.ZERO
 	player.head.offset.x = -111
 	player.head.flip_h = true
+func exit_state():
+	player.audio.stop()
 func update(delta: float):
+	player.audio.play()
 	player.handle_gravity(delta)
 	time += delta
 	if ray_left.is_colliding():
