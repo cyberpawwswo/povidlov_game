@@ -68,7 +68,7 @@ func _physics_process(delta: float) -> void:
 		#move_right()
 	#elif Input.is_action_just_released("ui_left"):
 		#move_left()
-	velocity.x = lerp(velocity.x, 0.0, delta*10)
+	velocity.x = lerp(velocity.x, 0.0, delta*6)
 	move_and_slide()
 func _process(_delta: float) -> void:
 	if HP <= 0:
@@ -92,11 +92,17 @@ func stretch_left(delta):
 func move_right():
 	reset_tween()
 	tw.tween_property(self, "scale:x", 1.0, 0.5)
-	tw.parallel().tween_property(self, "global_position", right_end.global_position-Vector2(22,0), 0.5)
+	await get_tree().create_timer(0.25).timeout
+	velocity.x += speed *scale.x*8
+	
+	
+	#tw.parallel().tween_property(self, "global_position", right_end.global_position-Vector2(22,0), 0.5)
 func move_left():
 	reset_tween()
 	tw.tween_property(self, "scale:x", 1.0, 0.5)
-	tw.parallel().tween_property(self, "global_position", left_end.global_position+Vector2(22,0), 0.5)
+	await get_tree().create_timer(0.25).timeout
+	velocity.x -= speed *scale.x*8
+	#tw.parallel().tween_property(self, "global_position", left_end.global_position+Vector2(22,0), 0.5)
 func reset_scale():
 	reset_tween()
 	tw.tween_property(self, "scale:x", 1.0, 0.5)

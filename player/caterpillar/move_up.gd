@@ -15,5 +15,6 @@ func enter_state():
 		player.reset_scale()
 		await player.tw.finished
 		player.change_state(states.idle)
+
 func exit_state():
 	player.animator.play("horiz")

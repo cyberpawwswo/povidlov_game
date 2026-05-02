@@ -11,7 +11,8 @@ func enter_state():
 		player.reset_scale()
 		await player.tw.finished
 		player.change_state(states.idle)
-
+func update(delta: float):
+	player.handle_gravity(delta)
 func exit_state():
 	player.body.position = Vector2.ZERO
 	player.global_position.x += player.body_pos_left.x

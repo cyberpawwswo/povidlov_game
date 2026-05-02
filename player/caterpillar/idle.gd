@@ -4,6 +4,7 @@ extends CaterpillarState
 
 func enter_state():
 	%head.rotation = 0
+	player.velocity.x = 0
 		#for i in canvas_group.get_children():
 			#var tw = create_tween().set_trans(Tween.TRANS_BOUNCE)
 			#var init_scale = i.scale

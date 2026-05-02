@@ -1,13 +1,12 @@
 [gd_scene format=3 uid="uid://bf2ywits3xo18"]
 
 [ext_resource type="Script" uid="uid://cod0wu776h5fg" path="res://player/caterpillar/button.gd" id="1_pt2wk"]
-[ext_resource type="Texture2D" uid="uid://bx40bofn7yy27" path="res://icon.svg" id="2_tyvtx"]
+[ext_resource type="Texture2D" uid="uid://5mqte4ckqym3" path="res://player/caterpillar/sprites/props etc/kk.png" id="2_tyvtx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tnvyp"]
 size = Vector2(32, 13)
 
 [node name="button" type="Node2D" unique_id=1540223482]
-modulate = Color(1, 0, 0, 1)
 script = ExtResource("1_pt2wk")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=974866067]
@@ -20,8 +19,9 @@ shape = SubResource("RectangleShape2D_tnvyp")
 debug_color = Color(0.9537192, 0.21786791, 1.1551381e-06, 0.41960785)
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1715796952]
-position = Vector2(-0.5, 1.4999998)
-scale = Vector2(0.2578125, 0.101562515)
+position = Vector2(-1, 0.9999999)
+scale = Vector2(0.16, 0.16)
 texture = ExtResource("2_tyvtx")
+vframes = 2
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

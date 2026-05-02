@@ -16,6 +16,7 @@ func enter_state():
 	player.head.offset.x = -111
 	player.head.flip_h = true
 func update(delta: float):
+	player.handle_gravity(delta)
 	time += delta
 	if ray_left.is_colliding():
 		if ray_left.get_collider().is_in_group("wall"):
