@@ -1,7 +1,32 @@
 extends CaterpillarState
+@onready var caterpillar_container: Node2D = $"../../.."
+@onready var canvas_group: CanvasGroup = $"../../../CanvasGroup"
+@onready var caterpillar: Caterpillar = $"../.."
 
 
 func enter_state():
+	caterpillar_container.global_position = caterpillar.global_position
+	caterpillar.position = Vector2.ZERO
+	canvas_group.position = Vector2.ZERO
+	if player.scale.x != 1.0:
+		player.reset_scale()
+		await get_tree().create_timer(0.5).timeout
+		pupa()
+	else:
+		pupa()
+	#if player.current_state == states.stretch_right:
+		#player.change_state(states.move_right)
+		#await get_tree().create_timer(1).timeout
+		#pupa()
+	#elif player.current_state == states.move_right:
+		#await get_tree().create_timer(1).timeout
+		#pupa()
+	#else:
+		#pupa()
+
+func update(delta: float):
+	player.handle_gravity(delta)
+func pupa():
 	player.cutscene = true
 	player.animator.play("vert")
 	await player.animator.animation_finished

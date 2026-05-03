@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bvv7fc1ntylii" path="res://player/caterpillar/wasp/wasp.gd" id="1_tdkqg"]
 [ext_resource type="Texture2D" uid="uid://uarv8k1odobg" path="res://player/cocoon/sprites/Bee.png" id="2_tdkqg"]
+[ext_resource type="AudioStream" uid="uid://xf1pdjhwyjwo" path="res://sounds/hurt.wav" id="3_whj1b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n1ssl"]
 radius = 11.030709
@@ -238,5 +239,8 @@ libraries/ = SubResource("AnimationLibrary_c5ss6")
 root_node = NodePath("../..")
 tree_root = SubResource("AnimationNodeStateMachine_7s0pi")
 anim_player = NodePath("..")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1224237171]
+stream = ExtResource("3_whj1b")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
