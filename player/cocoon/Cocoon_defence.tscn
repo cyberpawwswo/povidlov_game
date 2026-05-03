@@ -14,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://5nuucc7xkq7" path="res://player/cocoon/sprites/erfff.png" id="10_8qne8"]
 [ext_resource type="Texture2D" uid="uid://dul1q5nc0wwqx" path="res://player/cocoon/sprites/232.png" id="12_n8oel"]
 [ext_resource type="FontFile" uid="uid://b6smblm40nxqo" path="res://fonts/kaph/Kaph-Regular.otf" id="14_8qne8"]
+[ext_resource type="AudioStream" uid="uid://dh7vfioyjqdbl" path="res://player/cocoon/sound/Moving Fast - 2013.wav" id="15_bgm"]
+[ext_resource type="AudioStream" uid="uid://dk0rq72usnist" path="res://sounds/air swoosh.wav" id="16_pshik_sfx"]
+[ext_resource type="AudioStream" uid="uid://xf1pdjhwyjwo" path="res://sounds/hurt.wav" id="17_scissors_sfx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f00xg"]
 size = Vector2(1014, 28)
@@ -25,6 +28,10 @@ size = Vector2(516.7542, 20)
 size = Vector2(458, 20)
 
 [sub_resource type="LabelSettings" id="LabelSettings_n8oel"]
+font = ExtResource("14_8qne8")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_8qne8"]
 font = ExtResource("14_8qne8")
 font_size = 32
 
@@ -141,6 +148,22 @@ offset_bottom = 69.0
 text = "I I"
 icon_alignment = 1
 
+[node name="MusicButton" type="Button" parent="pauseButton" unique_id=177753201]
+process_mode = 3
+offset_left = 1849.0
+offset_top = 146.0
+offset_right = 1906.0
+offset_bottom = 200.0
+text = "♫"
+
+[node name="SfxButton" type="Button" parent="pauseButton" unique_id=695720155]
+process_mode = 3
+offset_left = 1849.0
+offset_top = 80.0
+offset_right = 1905.0
+offset_bottom = 134.0
+text = "🔊"
+
 [node name="Help" type="Label" parent="." unique_id=395176600]
 modulate = Color(1, 1, 1, 0)
 offset_left = 703.0
@@ -149,3 +172,25 @@ offset_right = 1330.0
 offset_bottom = 88.0
 text = "ИЗБАВЬТЕСЬ ОТ ОСТАВШИХСЯ"
 label_settings = SubResource("LabelSettings_n8oel")
+
+[node name="startHelp" type="Label" parent="." unique_id=2015882414]
+modulate = Color(1, 1, 1, 0)
+offset_left = 736.0
+offset_top = 974.0
+offset_right = 1198.0
+offset_bottom = 1011.0
+text = "ЗАЩИЩАЙТЕ КУКОЛКУ"
+label_settings = SubResource("LabelSettings_8qne8")
+
+[node name="BgmPlayer" type="AudioStreamPlayer" parent="." unique_id=1870250036]
+stream = ExtResource("15_bgm")
+volume_db = -15.0
+
+[node name="PshikSfxPlayer" type="AudioStreamPlayer" parent="." unique_id=93234835]
+stream = ExtResource("16_pshik_sfx")
+volume_db = -20.0
+pitch_scale = 0.7
+
+[node name="ScissorsSfxPlayer" type="AudioStreamPlayer" parent="." unique_id=1086259200]
+stream = ExtResource("17_scissors_sfx")
+volume_db = -15.0

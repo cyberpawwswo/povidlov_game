@@ -21,9 +21,16 @@ extends Node2D
 @export var victory_scene: PackedScene = preload("res://player/butterfly/tutorial_map.tscn")
 @export var victory_fade_out_duration := 1.0
 @export var countdown_hide_duration := 0.6
+@export var start_help_delay := 1.0
+@export var start_help_fade_in_duration := 0.8
+@export var start_help_pulse_duration := 5.0
+@export var start_help_fade_out_duration := 0.8
 
 @onready var pupa: Node2D = $Pupa
 @onready var platform: Node2D = $Platform
+@onready var _bgm_player: AudioStreamPlayer = $BgmPlayer
+@onready var _pshik_sfx_player: AudioStreamPlayer = $PshikSfxPlayer
+@onready var _scissors_sfx_player: AudioStreamPlayer = $ScissorsSfxPlayer
 
 var _scissors: Node2D
 var _scissors_sprite: Sprite2D
@@ -52,6 +59,9 @@ var _help_hint_started := false
 var _help_pulse_tween: Tween
 
 var _countdown_hide_started := false
+var _start_help_started := false
+var _music_enabled := true
+var _sfx_enabled := true
 
 func _ready() -> void:
 	_survival_left = survival_seconds
@@ -67,7 +77,17 @@ func _ready() -> void:
 	var pause_menu_button := get_node_or_null("pauseButton/Button") as Button
 	if pause_menu_button != null:
 		pause_menu_button.pressed.connect(_on_pause_menu_button_pressed)
+	var music_button := get_node_or_null("pauseButton/MusicButton") as Button
+	if music_button != null:
+		music_button.pressed.connect(_on_music_button_pressed)
+	var sfx_button := get_node_or_null("pauseButton/SfxButton") as Button
+	if sfx_button != null:
+		sfx_button.pressed.connect(_on_sfx_button_pressed)
+	_update_audio_toggle_buttons()
+	if _bgm_player != null:
+		_bgm_player.play()
 	_play_fade_in()
+	_play_start_help_hint()
 
 
 func _process(delta: float) -> void:
@@ -223,6 +243,36 @@ func _start_help_hint() -> void:
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 
+func _play_start_help_hint() -> void:
+	if _start_help_started:
+		return
+	var start_help := get_node_or_null("startHelp") as Label
+	if start_help == null:
+		return
+	_start_help_started = true
+
+	start_help.modulate.a = 0.0
+	start_help.scale = Vector2.ONE
+
+	var delay_tween := create_tween()
+	delay_tween.tween_interval(start_help_delay)
+	delay_tween.finished.connect(func() -> void:
+		if not is_instance_valid(start_help):
+			return
+		var tween := create_tween()
+		tween.tween_property(start_help, "modulate:a", 1.0, start_help_fade_in_duration)
+
+		var pulse_steps := maxi(1, int(round(start_help_pulse_duration / 0.6)))
+		for _i in pulse_steps:
+			tween.tween_property(start_help, "scale", Vector2(1.05, 1.05), 0.3)\
+				.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+			tween.tween_property(start_help, "scale", Vector2(1.0, 1.0), 0.3)\
+				.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+		tween.tween_property(start_help, "modulate:a", 0.0, start_help_fade_out_duration)
+	, CONNECT_ONE_SHOT)
+
+
 func _count_hostile_enemies() -> int:
 	var n := 0
 	for node in get_tree().get_nodes_in_group("Bee"):
@@ -247,6 +297,39 @@ func _on_pause_menu_button_pressed() -> void:
 	if _level_ended:
 		return
 	PauseUi.request_open_pause()
+
+
+func _on_music_button_pressed() -> void:
+	_music_enabled = not _music_enabled
+	if _bgm_player != null:
+		_bgm_player.stream_paused = not _music_enabled
+	_update_audio_toggle_buttons()
+
+
+func _on_sfx_button_pressed() -> void:
+	_sfx_enabled = not _sfx_enabled
+	_update_audio_toggle_buttons()
+
+
+func _update_audio_toggle_buttons() -> void:
+	var music_button := get_node_or_null("pauseButton/MusicButton") as Button
+	if music_button != null:
+		music_button.text = "♫" if _music_enabled else "×♫"
+	var sfx_button := get_node_or_null("pauseButton/SfxButton") as Button
+	if sfx_button != null:
+		sfx_button.text = "🔊" if _sfx_enabled else "🔇"
+
+
+func _play_pshik_sfx() -> void:
+	if not _sfx_enabled or _pshik_sfx_player == null:
+		return
+	_pshik_sfx_player.play()
+
+
+func _play_scissors_sfx() -> void:
+	if not _sfx_enabled or _scissors_sfx_player == null:
+		return
+	_scissors_sfx_player.play()
 
 
 func _on_pupa_died() -> void:
@@ -314,6 +397,7 @@ func _update_scissors() -> void:
 func _play_pshik(at: Vector2) -> void:
 	if pshik_scene == null:
 		return
+	_play_pshik_sfx()
 	var fx := pshik_scene.instantiate() as Node2D
 	if fx == null:
 		return
@@ -365,6 +449,7 @@ func _handle_web_cutting() -> void:
 		return
 
 	var spiders := get_tree().get_nodes_in_group("spider")
+	var did_cut := false
 	for n in spiders:
 		var spider := n as Node2D
 		if spider == null:
@@ -375,7 +460,11 @@ func _handle_web_cutting() -> void:
 		var a := spider.get("anchor_point") as Vector2
 		var b := spider.global_position
 		if Geometry2D.segment_intersects_segment(_cut_prev_mouse, mouse, a, b) != null:
+			did_cut = true
 			spider.call("cut_web")
+
+	if did_cut:
+		_play_scissors_sfx()
 
 	_cut_prev_mouse = mouse
 
