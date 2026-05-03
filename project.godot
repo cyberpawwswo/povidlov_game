@@ -38,6 +38,7 @@ movie_writer/fps=24
 wall=""
 caterpillar=""
 caterpillar_trigger=""
+flower_trigger=""
 
 [input]
 

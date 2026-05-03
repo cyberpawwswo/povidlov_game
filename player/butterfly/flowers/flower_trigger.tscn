@@ -49,7 +49,7 @@ scale_max = 0.5
 scale_curve = SubResource("CurveTexture_pn85c")
 color = Color(1, 1, 0, 1)
 
-[node name="Flower" type="Node2D" unique_id=2047706209]
+[node name="Flower" type="Node2D" unique_id=2047706209 groups=["flower_trigger"]]
 script = ExtResource("1_o11o5")
 
 [node name="TriggerAnimation" type="Area2D" parent="." unique_id=2101801003]

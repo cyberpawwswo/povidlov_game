@@ -11,6 +11,7 @@ func _ready() -> void:
 	for i in get_children():
 		if i is CollisionShape2D:
 			i.reparent($TriggerAnimation)
+			
 
 func _on_trigger_animation_body_entered(body: Node2D) -> void:
 	if body is Butterfly and not $ProgressBar.visible and is_active:
@@ -37,4 +38,4 @@ func tween_finished(player: Butterfly):
 	$ProgressBar.visible = false
 	$GPUParticles2D.emitting = false
 	is_active = false
-	print("as")
+	print("get chroma")
