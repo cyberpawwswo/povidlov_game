@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://piwlsmye16mo" path="res://player/butterfly/frog/ggg.png" id="2_w1gwn"]
 [ext_resource type="Texture2D" uid="uid://bx40bofn7yy27" path="res://icon.svg" id="2_wwx0m"]
 [ext_resource type="Texture2D" uid="uid://bvo654kx25neo" path="res://player/butterfly/frog/ggg1_to_tile_set.png" id="3_nlfhn"]
+[ext_resource type="AudioStream" uid="uid://xf1pdjhwyjwo" path="res://sounds/hurt.wav" id="5_g67p6"]
 
 [sub_resource type="Curve" id="Curve_cl51e"]
 _limits = [0.0, 1.0, 0.0, 2.0]
@@ -147,6 +148,11 @@ collision_mask = 4
 [node name="TriggerWallL" type="RayCast2D" parent="." unique_id=1306243359]
 target_position = Vector2(-665, 1)
 collision_mask = 4
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1212953645]
+position = Vector2(29.999998, 42.000004)
+scale = Vector2(4.345238, -0.99983937)
+stream = ExtResource("5_g67p6")
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_area_2d_body_exited"]

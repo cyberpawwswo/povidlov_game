@@ -91,6 +91,8 @@ func attack(player_pos: Vector2):
 func test_keep_player():
 	if cast_tongue.is_colliding():
 		if cast_tongue.get_collider() is Butterfly:
+			$AudioStreamPlayer2D.play()
+
 			var target = cast_tongue.get_collider() as Butterfly
 
 			var tween := create_tween()

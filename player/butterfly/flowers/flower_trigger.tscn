@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cqtaroveve4gt" path="res://player/butterfly/flowers/flower_trigger.gd" id="1_o11o5"]
 [ext_resource type="Texture2D" uid="uid://bk3bp7p5tkkaa" path="res://textures/UI/progress_transparent.png" id="2_774af"]
 [ext_resource type="Texture2D" uid="uid://cfli5gdtuy4g4" path="res://textures/UI/progress_gray.png" id="3_pn85c"]
+[ext_resource type="AudioStream" uid="uid://dm68v60125gek" path="res://sounds/collect.wav" id="4_pn85c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w6ncd"]
 radius = 49.010204
@@ -79,6 +80,9 @@ amount = 17
 texture = SubResource("GradientTexture2D_co406")
 lifetime = 1.42
 process_material = SubResource("ParticleProcessMaterial_o11o5")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1231890166]
+stream = ExtResource("4_pn85c")
 
 [connection signal="body_entered" from="TriggerAnimation" to="." method="_on_trigger_animation_body_entered"]
 [connection signal="body_exited" from="TriggerAnimation" to="." method="_on_trigger_animation_body_exited"]

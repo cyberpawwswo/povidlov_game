@@ -40,4 +40,5 @@ func tween_finished(player: Butterfly):
 	$ProgressBar.visible = false
 	$GPUParticles2D.emitting = false
 	is_active = false
+	$AudioStreamPlayer2D.play()
 	print("get chroma")
