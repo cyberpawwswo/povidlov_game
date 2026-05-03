@@ -474,7 +474,7 @@ size = Vector2(264.5, 144)
 size = Vector2(541.5, 414)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pj25"]
-size = Vector2(461, 529.5)
+size = Vector2(366, 529.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x47cf"]
 size = Vector2(3192, 399)
@@ -1069,7 +1069,6 @@ texture = ExtResource("22_0rfbj")
 layer = -1
 
 [node name="camera_switches" type="Node2D" parent="." unique_id=1036652181]
-visible = false
 
 [node name="1" type="Area2D" parent="camera_switches" unique_id=1409538889]
 position = Vector2(230, 449)
@@ -1089,7 +1088,7 @@ shape = SubResource("RectangleShape2D_0clec")
 position = Vector2(1221, 92)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="camera_switches/3" unique_id=905721863]
-position = Vector2(133.5, -3.25)
+position = Vector2(86, -3.25)
 shape = SubResource("RectangleShape2D_3pj25")
 
 [node name="4" type="Area2D" parent="camera_switches" unique_id=1836276632]

@@ -23,10 +23,10 @@ func update(delta: float):
 	player.audio.play()
 	player.handle_gravity(delta)
 	time += delta
-	if ray_right.is_colliding():
-		if ray_right.get_collider().is_in_group("wall"):
-			stretch_finish = true
-			bumped = true
+	#if ray_right.is_colliding():
+		#if ray_right.get_collider().is_in_group("wall"):
+			#stretch_finish = true
+			#bumped = true
 	if Input.is_action_pressed("ui_right") and !stretch_finish:
 		player.scale.x += 0.1 *delta*player.speed
 		$"../../../../CanvasLayer/Score/ProgressBar".value -= time*player.stretch_limit*1.35
