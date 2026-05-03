@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://csifpp5v552u" path="res://textures/sky/sk.png" id="1_jei2a"]
 [ext_resource type="Texture2D" uid="uid://c2esq17gw4mug" path="res://textures/sky/sk01.png" id="2_bw7as"]
 [ext_resource type="Texture2D" uid="uid://de8n3gn35jyw2" path="res://textures/sky/sk0.png" id="3_1l0aq"]
-[ext_resource type="Script" uid="uid://ckvdwbfj34ixj" path="res://player/cocoon/parallax_background.gd" id="3_bw7as"]
+[ext_resource type="Script" path="res://player/cocoon/parallax_background.gd" id="3_bw7as"]
 [ext_resource type="Texture2D" uid="uid://86pq6gs3v062" path="res://textures/grass/reww.png" id="4_5oqpi"]
 [ext_resource type="Texture2D" uid="uid://5ycrfb0ocl7l" path="res://textures/grass/r.png" id="5_jbbag"]
 [ext_resource type="Script" uid="uid://ctyf1npg8ij3j" path="res://player/cocoon/tutorial_spawn.gd" id="6_tutorial_spawn"]

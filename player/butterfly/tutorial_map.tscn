@@ -44,7 +44,8 @@ shader_parameter/wind_phase = 0.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dmhx4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qlst8"]
-outline_size = 5
+font_size = 32
+font_color = Color(0, 0, 0, 1)
 outline_color = Color(0, 0, 0, 1)
 
 [node name="TutorialMap" type="Node2D" unique_id=773139129]
@@ -228,24 +229,31 @@ shape = SubResource("WorldBoundaryShape2D_dmhx4")
 [node name="Tulip" parent="." unique_id=119960863 instance=ExtResource("16_qea6c")]
 position = Vector2(1733, 1667)
 
-[node name="ChromaLabel" type="Label" parent="." unique_id=1280465011]
-offset_left = 1433.0
-offset_top = 1074.0
-offset_right = 2007.0
-offset_bottom = 1093.0
+[node name="ChromaLabel" type="Node2D" parent="." unique_id=2003226237]
+position = Vector2(1741, 1086)
+
+[node name="ChromaLabel" type="Label" parent="ChromaLabel" unique_id=1280465011]
+offset_left = -328.0
+offset_top = -31.0
+offset_right = 322.0
+offset_bottom = 46.0
 theme = ExtResource("15_qlst8")
-text = "Соберай пылцу чтобы снова появилась гусеница"
+text = "Собирай пылцу чтобы \\снова появилась гусеница"
 label_settings = SubResource("LabelSettings_qlst8")
+horizontal_alignment = 1
 paragraph_separator = "\\"
 
 [node name="Frog" parent="." unique_id=1394785451 instance=ExtResource("19_f3fb7")]
 position = Vector2(1218, 1414)
 
-[node name="FrogLabel" type="Label" parent="Frog" unique_id=990774946]
-offset_left = -60.0
-offset_top = -161.0
-offset_right = 150.0
-offset_bottom = -142.0
+[node name="FrogLabel" type="Node2D" parent="Frog" unique_id=217342394]
+position = Vector2(37, -101)
+
+[node name="FrogLabel" type="Label" parent="Frog/FrogLabel" unique_id=990774946]
+offset_left = -195.0
+offset_top = -15.0
+offset_right = 224.0
+offset_bottom = 22.0
 theme = ExtResource("15_qlst8")
 text = "Опасайся лягушек"
 label_settings = SubResource("LabelSettings_qlst8")
