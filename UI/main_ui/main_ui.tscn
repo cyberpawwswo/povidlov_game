@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dfnioh7r6fqd0"]
 
+[ext_resource type="Theme" uid="uid://6tan20pvkgul" path="res://UI/styles/theme.tres" id="1_xi1m5"]
 [ext_resource type="Script" uid="uid://dbrpfn4u7vhud" path="res://UI/main_ui/main_ui.gd" id="2_df82o"]
 [ext_resource type="PackedScene" uid="uid://batxikaw0uoac" path="res://UI/level_to_level/black_scrin.tscn" id="3_622d5"]
 [ext_resource type="PackedScene" uid="uid://ccn2ojb8e1rve" path="res://player/caterpillar/caterpillar_test.tscn" id="3_xi1m5"]
@@ -15,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_xi1m5")
 script = ExtResource("2_df82o")
 first_lvl = ExtResource("3_xi1m5")
 change_scene = ExtResource("3_622d5")
