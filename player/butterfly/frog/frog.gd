@@ -50,6 +50,12 @@ func jump():
 		var direction: float = [-1,1].pick_random()
 		if player:
 			direction = sign(player.global_position.x - global_position.x)
+
+		if $TriggerWallR.is_colliding():
+			direction = -1
+		if $TriggerWallL.is_colliding():
+			direction = 1
+
 		sprite.scale.x = direction * abs(sprite.scale.x)
 		velocity.x = SPEED * direction
 

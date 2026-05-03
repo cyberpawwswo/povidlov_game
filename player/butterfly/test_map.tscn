@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d28gpixrx8jg6"]
 
+[ext_resource type="Texture2D" uid="uid://c77ovqhn3j742" path="res://textures/grass/ddss.png" id="2_jpnwx"]
 [ext_resource type="PackedScene" uid="uid://dapbscxj5pqni" path="res://player/butterfly/player/butterfly.tscn" id="2_u3mhw"]
 [ext_resource type="Texture2D" uid="uid://bhvap01ybkbgi" path="res://textures/sky/cloude_sprite/cloude_ground.png" id="3_03xyf"]
 [ext_resource type="PackedScene" uid="uid://buwossh8o61xo" path="res://player/butterfly/flowers/types/chamomile.tscn" id="3_s2hvg"]
@@ -20,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://d2b1yrs5nvwy" path="res://textures/sky/cloude_sprite/Без имени.png" id="16_s05io"]
 [ext_resource type="Texture2D" uid="uid://cbb2ljwn3b0d8" path="res://textures/grass/rew.png" id="17_03xyf"]
 [ext_resource type="Texture2D" uid="uid://5ycrfb0ocl7l" path="res://textures/grass/r.png" id="18_prjvx"]
+[ext_resource type="Texture2D" uid="uid://b218wvnesenv8" path="res://textures/grass/dds.png" id="21_dj2he"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cl51e"]
 shader = ExtResource("10_dj2he")
@@ -40,6 +42,8 @@ shader_parameter/wind_strength = 0.0290000013775
 shader_parameter/wind_speed = 1.0
 shader_parameter/scale = 2.0
 shader_parameter/wind_phase = 0.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jpnwx"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8ftm8"]
 
@@ -164,6 +168,11 @@ position = Vector2(-1366.0867, -8.571411)
 scale = Vector2(1.4285713, 1.4285713)
 texture = ExtResource("11_dj2he")
 
+[node name="Dds" type="Sprite2D" parent="." unique_id=868736671]
+position = Vector2(2235.2637, 1076.5001)
+scale = Vector2(1.4332743, 1.4332741)
+texture = ExtResource("21_dj2he")
+
 [node name="ParallaxGrass" type="Node2D" parent="." unique_id=2060851462]
 
 [node name="ParallaxBack" type="Parallax2D" parent="ParallaxGrass" unique_id=1471208761]
@@ -181,7 +190,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_2soir")
 
 [node name="ParallaxMidlle" type="Parallax2D" parent="ParallaxGrass" unique_id=1564712983]
-z_index = 1
+z_index = 2
 scroll_scale = Vector2(0.9, 0.9)
 scroll_offset = Vector2(-587, 1258)
 repeat_size = Vector2(1105.615, 0)
@@ -194,7 +203,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("18_prjvx")
 
 [node name="ParallaxForward" type="Parallax2D" parent="ParallaxGrass" unique_id=74799569]
-z_index = 1
+z_index = 2
 scroll_offset = Vector2(773, 1498)
 repeat_size = Vector2(1105.615, 0)
 repeat_times = 85
@@ -227,6 +236,27 @@ position = Vector2(419, 9)
 [node name="RedFlw" parent="Flowers" unique_id=522645934 instance=ExtResource("16_03xyf")]
 position = Vector2(-1213, 18)
 
+[node name="Ddss" type="Sprite2D" parent="." unique_id=1306479824]
+z_index = 1
+position = Vector2(2235.2637, 1076.5001)
+scale = Vector2(1.4332743, 1.4332741)
+texture = ExtResource("2_jpnwx")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ddss" unique_id=422938617]
+scale = Vector2(0.99999994, 0.99999994)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ddss/StaticBody2D" unique_id=153616019]
+position = Vector2(-967.8982, 128.02844)
+rotation = 0.7853982
+shape = SubResource("WorldBoundaryShape2D_jpnwx")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ddss/StaticBody2D" unique_id=1355335089]
+position = Vector2(906.13257, 154.54117)
+rotation = -0.7853982
+shape = SubResource("WorldBoundaryShape2D_jpnwx")
+
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1839661695]
 position = Vector2(1840, 1789)
 
@@ -242,7 +272,7 @@ scale = Vector2(500, 7.932)
 color = Color(0.22450691, 0.12090386, 0, 1)
 
 [node name="Butterfly" parent="." unique_id=636950088 instance=ExtResource("2_u3mhw")]
-position = Vector2(1714, 978)
+position = Vector2(3712, 769)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=213750285]
 layer = -2
@@ -257,10 +287,7 @@ texture = ExtResource("5_4c37m")
 position = Vector2(1522, 1916)
 
 [node name="Frog" parent="Frogs" unique_id=1394785451 instance=ExtResource("4_4c37m")]
-position = Vector2(-130, -313)
-
-[node name="Frog2" parent="Frogs" unique_id=137603289 instance=ExtResource("4_4c37m")]
-position = Vector2(417, -316)
+position = Vector2(-100, -396)
 
 [node name="Frog3" parent="Frogs" unique_id=1636223898 instance=ExtResource("4_4c37m")]
 position = Vector2(1724, -298)
