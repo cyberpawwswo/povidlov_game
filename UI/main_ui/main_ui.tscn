@@ -3,7 +3,9 @@
 [ext_resource type="Theme" uid="uid://6tan20pvkgul" path="res://UI/styles/theme.tres" id="1_xi1m5"]
 [ext_resource type="Script" uid="uid://dbrpfn4u7vhud" path="res://UI/main_ui/main_ui.gd" id="2_df82o"]
 [ext_resource type="PackedScene" uid="uid://batxikaw0uoac" path="res://UI/level_to_level/black_scrin.tscn" id="3_622d5"]
-[ext_resource type="PackedScene" uid="uid://ccn2ojb8e1rve" path="res://player/caterpillar/caterpillar_test.tscn" id="3_xi1m5"]
+[ext_resource type="PackedScene" uid="uid://ccn2ojb8e1rve" path="res://player/caterpillar/caterpillar_test.tscn" id="4_lvl1"]
+[ext_resource type="PackedScene" uid="uid://bmp3d1a8ufo8d" path="res://player/cocoon/tutorial.tscn" id="5_lvl2"]
+[ext_resource type="PackedScene" uid="uid://b8lxgl61oab56" path="res://player/butterfly/tutorial_map.tscn" id="6_lvl3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qliqw"]
 font_size = 70
@@ -18,10 +20,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_xi1m5")
 script = ExtResource("2_df82o")
-first_lvl = ExtResource("3_xi1m5")
+first_lvl = ExtResource("4_lvl1")
+level_2 = ExtResource("5_lvl2")
+level_3 = ExtResource("6_lvl3")
 change_scene = ExtResource("3_622d5")
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2002840627]
+[node name="MainMenuScreen" type="Control" parent="." unique_id=189010001]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,26 +33,98 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1403084288]
-layout_mode = 2
+[node name="CenterContainer" type="CenterContainer" parent="MainMenuScreen" unique_id=2002840627]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer" unique_id=1247618465]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuScreen/CenterContainer" unique_id=1403084288]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuScreen/CenterContainer/VBoxContainer" unique_id=1247618465]
 layout_mode = 2
 theme_override_constants/margin_top = -200
-theme_override_constants/margin_bottom = 69
+theme_override_constants/margin_bottom = 48
 
-[node name="GameName" type="Label" parent="CenterContainer/VBoxContainer/MarginContainer" unique_id=986224]
+[node name="GameName" type="Label" parent="MainMenuScreen/CenterContainer/VBoxContainer/MarginContainer" unique_id=986224]
 layout_mode = 2
 text = "Название игры"
 label_settings = SubResource("LabelSettings_qliqw")
 horizontal_alignment = 1
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CenterContainer/VBoxContainer" unique_id=296923676]
+[node name="PlayRow" type="AspectRatioContainer" parent="MainMenuScreen/CenterContainer/VBoxContainer" unique_id=296923676]
 layout_mode = 2
 
-[node name="Play" type="Button" parent="CenterContainer/VBoxContainer/AspectRatioContainer" unique_id=1732340380]
+[node name="Play" type="Button" parent="MainMenuScreen/CenterContainer/VBoxContainer/PlayRow" unique_id=1732340380]
 process_mode = 3
 layout_mode = 2
 text = "Начать игру"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/AspectRatioContainer/Play" to="." method="_on_play_pressed"]
+[node name="LevelSelectRow" type="AspectRatioContainer" parent="MainMenuScreen/CenterContainer/VBoxContainer" unique_id=189010050]
+layout_mode = 2
+
+[node name="ChooseLevel" type="Button" parent="MainMenuScreen/CenterContainer/VBoxContainer/LevelSelectRow" unique_id=189010051]
+process_mode = 3
+layout_mode = 2
+text = "Выбор уровня"
+
+[node name="LevelSelectScreen" type="Control" parent="." unique_id=189020001]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelSelectScreen" unique_id=189020002]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelSelectScreen/CenterContainer" unique_id=189020003]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LevelsTitle" type="Label" parent="LevelSelectScreen/CenterContainer/VBoxContainer" unique_id=189020004]
+layout_mode = 2
+text = "Выбор уровня"
+label_settings = SubResource("LabelSettings_qliqw")
+horizontal_alignment = 1
+
+[node name="Level1" type="Button" parent="LevelSelectScreen/CenterContainer/VBoxContainer" unique_id=189020006]
+process_mode = 3
+layout_mode = 2
+text = "Уровень 1"
+
+[node name="Level2" type="Button" parent="LevelSelectScreen/CenterContainer/VBoxContainer" unique_id=189020007]
+process_mode = 3
+layout_mode = 2
+text = "Уровень 2"
+
+[node name="Level3" type="Button" parent="LevelSelectScreen/CenterContainer/VBoxContainer" unique_id=189020008]
+process_mode = 3
+layout_mode = 2
+text = "Уровень 3"
+
+[node name="BackRow" type="AspectRatioContainer" parent="LevelSelectScreen/CenterContainer/VBoxContainer" unique_id=189020009]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="LevelSelectScreen/CenterContainer/VBoxContainer/BackRow" unique_id=189020010]
+process_mode = 3
+layout_mode = 2
+text = "Назад в главное меню"
+
+[connection signal="pressed" from="MainMenuScreen/CenterContainer/VBoxContainer/PlayRow/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MainMenuScreen/CenterContainer/VBoxContainer/LevelSelectRow/ChooseLevel" to="." method="_on_choose_level_pressed"]
+[connection signal="pressed" from="LevelSelectScreen/CenterContainer/VBoxContainer/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="LevelSelectScreen/CenterContainer/VBoxContainer/Level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="LevelSelectScreen/CenterContainer/VBoxContainer/Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="LevelSelectScreen/CenterContainer/VBoxContainer/BackRow/Back" to="." method="_on_back_pressed"]

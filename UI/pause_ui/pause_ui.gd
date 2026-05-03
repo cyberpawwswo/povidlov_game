@@ -47,7 +47,8 @@ func _on_continue_pressed() -> void:
 
 
 func _on_main_menu_pressed() -> void:
-	UI.change_level('res://UI/main_ui/main_ui.tscn', lvl_to_lvl.resource_path, hide)
+	get_tree().paused = false
+	UI.change_level("res://UI/main_ui/main_ui.tscn", lvl_to_lvl.resource_path, hide)
 
 
 func _on_restart_level_pressed() -> void:

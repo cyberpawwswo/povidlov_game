@@ -26,6 +26,9 @@ func change_level(next_lvl, scene_change_path = 'res://UI/level_to_level/black_s
 	add_child(changer_node)
 	await changer_node.change_scene
 
+	# Leaving a level while paused (e.g. "главное меню" из паузы) leaves the flag set; new scenes would stay frozen.
+	get_tree().paused = false
+
 	if next_lvl is String:
 		get_tree().change_scene_to_file(next_lvl)
 	elif next_lvl is Node:
