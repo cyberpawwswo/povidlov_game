@@ -64,10 +64,3 @@ func reload_current_scene():
 func _on_visibility_changed() -> void:
 	if not visible:
 		is_lose = false
-
-
-func _on_check_button_toggled(toggled_on: bool) -> void:
-	if toggled_on:
-		MusicManadger.enable_audio()
-	else:
-		MusicManadger.disable_audio()

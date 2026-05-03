@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 CaterpillarGlobal="*uid://c4tn71nilxwhh"
 PauseUi="*uid://cvbhpjpf27kvr"
 UI="*uid://b1mc2o11jpukq"
-MusicManadger="*uid://bpq50164impg1"
+MusicManadger="uid://bpq50164impg1"
 
 [display]
 

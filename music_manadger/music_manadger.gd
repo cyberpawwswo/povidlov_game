@@ -78,7 +78,7 @@ func get_audio_streams_from_folder(folder_path: String) -> Array[AudioStream]:
 	print(audio_streams)
 	return audio_streams
 
-func set_volume(idx: float, volum: float):
+func set_volume(idx: int, volum: float):
 	AudioServer.set_bus_volume_db(idx, volum)
 
 
