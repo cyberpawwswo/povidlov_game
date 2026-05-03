@@ -52,8 +52,8 @@ func _physics_process(delta: float) -> void:
 
 	var direction := signf(get_local_mouse_position().x)
 
-	#if Input.is_action_just_pressed("ui_accept"):
-		#chroma_point = max_chroma_point
+	if Input.is_action_just_pressed("ui_accept"):
+		chroma_point = max_chroma_point
 		#health = 0
 		#shake_camera()
 
@@ -111,7 +111,7 @@ func die():
 	#print('huh, im die')
 
 func win():
-	UI.change_level("res://UI/win_ui/global_win_ui.tscn", "res://UI/level_to_level/win_scene.tscn")
+	UI.change_level("res://player/butterfly/FinalCatscene.tscn", "res://UI/level_to_level/win_scene.tscn")
 	#print('huh, im win')
 
 func set_frame(frame):
