@@ -4,6 +4,10 @@
 [ext_resource type="Script" uid="uid://bexan1atfsmc7" path="res://player/butterfly/player/camera.gd" id="2_0hvfw"]
 [ext_resource type="Shader" uid="uid://cpsch0ntftr1l" path="res://player/butterfly/player/butterfly.gdshader" id="2_pp3c8"]
 [ext_resource type="Texture2D" uid="uid://b0v1shkqakxu5" path="res://player/butterfly/player/bttfly.png" id="4_0hvfw"]
+[ext_resource type="Theme" uid="uid://5csefvu52i6y" path="res://UI/styles/simple_theme.tres" id="5_ppyi0"]
+[ext_resource type="Texture2D" uid="uid://bk3bp7p5tkkaa" path="res://textures/UI/progress_transparent.png" id="6_roqkg"]
+[ext_resource type="Texture2D" uid="uid://b6ndq516x0my4" path="res://textures/UI/progress_red.png" id="7_aiax6"]
+[ext_resource type="Texture2D" uid="uid://cfli5gdtuy4g4" path="res://textures/UI/progress_gray.png" id="8_aiax6"]
 
 [sub_resource type="Curve" id="Curve_cm705"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -83,19 +87,40 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_ppyi0")
 
-[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/Control" unique_id=1842384766]
+[node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer/Control" unique_id=800622530]
 layout_mode = 1
-offset_left = 36.0
-offset_top = 28.0
-offset_right = 345.0
-offset_bottom = 42.36
-show_percentage = false
+offset_left = 36.000004
+offset_top = 22.0
+offset_right = 262.4816
+offset_bottom = 57.18271
+rotation = 0.0013196904
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 10
+stretch_margin_right = 8
+texture_under = ExtResource("6_roqkg")
+texture_progress = ExtResource("7_aiax6")
 
-[node name="ChromaPointBar" type="ProgressBar" parent="CanvasLayer/Control" unique_id=712499418]
-layout_mode = 0
-offset_left = 37.0
-offset_top = 62.0
-offset_right = 434.0
-offset_bottom = 89.0
-show_percentage = false
+[node name="ChromaPointBar" type="TextureProgressBar" parent="CanvasLayer/Control" unique_id=908374509]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -245.1903
+offset_top = -69.000244
+offset_right = 245.1903
+offset_bottom = -33.817627
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.0013196904
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 10
+stretch_margin_right = 8
+texture_under = ExtResource("6_roqkg")
+texture_progress = ExtResource("8_aiax6")
+tint_progress = Color(1, 0.84313726, 0, 1)

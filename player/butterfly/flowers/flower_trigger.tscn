@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://stns2aupan8t"]
 
 [ext_resource type="Script" uid="uid://cqtaroveve4gt" path="res://player/butterfly/flowers/flower_trigger.gd" id="1_o11o5"]
+[ext_resource type="Texture2D" uid="uid://bk3bp7p5tkkaa" path="res://textures/UI/progress_transparent.png" id="2_774af"]
+[ext_resource type="Texture2D" uid="uid://cfli5gdtuy4g4" path="res://textures/UI/progress_gray.png" id="3_pn85c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w6ncd"]
 radius = 49.010204
@@ -25,13 +27,20 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerAnimation" unique_id=281202476]
 shape = SubResource("CircleShape2D_w6ncd")
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=2066105686]
+[node name="ProgressBar" type="TextureProgressBar" parent="." unique_id=1979457871]
 visible = false
 offset_left = -127.0
-offset_top = -85.0
+offset_top = -82.0
 offset_right = 128.0
 offset_bottom = -73.0
-show_percentage = false
+nine_patch_stretch = true
+stretch_margin_left = 25
+stretch_margin_top = 20
+stretch_margin_right = 24
+stretch_margin_bottom = 11
+texture_under = ExtResource("2_774af")
+texture_progress = ExtResource("3_pn85c")
+tint_progress = Color(1, 0.54990745, 0.61614, 1)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=339426789]
 amount = 17
