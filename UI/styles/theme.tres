@@ -1,31 +1,146 @@
 [gd_resource type="Theme" format=3 uid="uid://6tan20pvkgul"]
 
 [ext_resource type="FontFile" uid="uid://b6smblm40nxqo" path="res://fonts/kaph/Kaph-Regular.otf" id="1_go05t"]
-[ext_resource type="Texture2D" uid="uid://o7xhbc00mbtj" path="res://textures/UI/UIButtonLong.png" id="1_wsa4l"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oieh5"]
-load_path = "res://.godot/imported/UIButtonLong.png-79541c92a44e6398ec62421171a79bf6.ctex"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlacm"]
+bg_color = Color(0.5290664, 0.52906686, 0.5290663, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eovu6"]
-texture = SubResource("CompressedTexture2D_oieh5")
-modulate_color = Color(1.0196761, 1.224127, 0.81047016, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pqko"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oieh5"]
-texture = ExtResource("1_wsa4l")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8vdu2"]
+bg_color = Color(0.7162962, 0.71629626, 0.7162961, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wsa4l"]
-load_path = "res://.godot/imported/UIButtonLong.png-79541c92a44e6398ec62421171a79bf6.ctex"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y37gd"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t3rxx"]
-texture = SubResource("CompressedTexture2D_wsa4l")
-modulate_color = Color(0.36282945, 0.36282945, 0.36282945, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndtd3"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyfdf"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ue0gc"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7kbp"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 
 [resource]
 default_font = ExtResource("1_go05t")
 default_font_size = 32
-Button/styles/hover = SubResource("StyleBoxTexture_eovu6")
-Button/styles/normal = SubResource("StyleBoxTexture_oieh5")
-Button/styles/pressed = SubResource("StyleBoxTexture_t3rxx")
+Button/styles/hover = SubResource("StyleBoxFlat_qlacm")
+Button/styles/normal = SubResource("StyleBoxFlat_7pqko")
+Button/styles/pressed = SubResource("StyleBoxFlat_8vdu2")
+CheckButton/styles/disabled = SubResource("StyleBoxFlat_y37gd")
+CheckButton/styles/hover = SubResource("StyleBoxFlat_ndtd3")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxFlat_fyfdf")
+CheckButton/styles/normal = SubResource("StyleBoxFlat_ue0gc")
+CheckButton/styles/pressed = SubResource("StyleBoxFlat_f7kbp")
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 10
 Label/font_sizes/font_size = 32
