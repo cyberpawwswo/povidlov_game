@@ -44,6 +44,8 @@ shader_parameter/wind_phase = 0.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dmhx4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qlst8"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
@@ -234,7 +236,7 @@ offset_top = 1074.0
 offset_right = 2007.0
 offset_bottom = 1093.0
 theme = ExtResource("15_qlst8")
-text = "Собирай пылцу!"
+text = "Собирай пыльцу!"
 label_settings = SubResource("LabelSettings_qlst8")
 paragraph_separator = "\\"
 
