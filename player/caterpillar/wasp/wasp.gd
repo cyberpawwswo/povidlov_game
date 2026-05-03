@@ -2,7 +2,8 @@ extends Node2D
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
-
+func _ready() -> void:
+	play_bzz()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("caterpillar"):
@@ -13,3 +14,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		else:
 			dir = -1
 		body.hurt(dir)
+func play_bzz():
+	$bzz.play()
