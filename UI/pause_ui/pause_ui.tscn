@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://4dhcgn3tyikj" path="res://player/butterfly/player/vector-forest-landscape-illustration.jpg" id="2_fselc"]
 [ext_resource type="Shader" uid="uid://ced0n5gl22ppk" path="res://UI/shaders/blur_ui.gdshader" id="2_xcm8o"]
 [ext_resource type="Theme" uid="uid://6tan20pvkgul" path="res://UI/styles/theme.tres" id="4_fselc"]
+[ext_resource type="AudioStream" uid="uid://bb0iodtth0wsy" path="res://music/butterfly/Bird's Song.wav" id="5_v35rl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fselc"]
 shader = ExtResource("2_xcm8o")
@@ -101,8 +102,14 @@ offset_bottom = 31.0
 button_pressed = true
 text = "Звук"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1164598185]
+stream = ExtResource("5_v35rl")
+volume_db = -5.0
+autoplay = true
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="Control/CenterContainer/VBoxContainer/AspectRatioContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Control/CenterContainer/VBoxContainer/AspectRatioContainer/VBoxContainer/RestartLevel" to="." method="_on_restart_level_pressed"]
 [connection signal="pressed" from="Control/CenterContainer/VBoxContainer/AspectRatioContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="toggled" from="Control/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

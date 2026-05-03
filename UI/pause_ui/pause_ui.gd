@@ -4,6 +4,8 @@ extends CanvasLayer
 
 var is_lose := false
 
+var last_pos_audio := 0
+
 func _ready() -> void:
 	hide()
 
@@ -31,6 +33,12 @@ func _process(_delta: float) -> void:
 	if not is_lose and not %Continue.visible:
 		%Continue.visible = true
 		%PauseName.text = 'Пауза'
+	if get_tree().paused and $Control/CheckButton.button_pressed:
+		if not $AudioStreamPlayer.playing:
+			$AudioStreamPlayer.play(last_pos_audio)
+		last_pos_audio += _delta
+	else:
+		$AudioStreamPlayer.stop()
 
 func open_lose_ui():
 	is_lose = true
@@ -64,3 +72,8 @@ func reload_current_scene():
 func _on_visibility_changed() -> void:
 	if not visible:
 		is_lose = false
+
+
+func _on_audio_stream_player_finished() -> void:
+	$Control/CheckButton/AudioStreamPlayer.play()
+	last_pos_audio = 0

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ccn2ojb8e1rve" path="res://player/caterpillar/caterpillar_test.tscn" id="4_lvl1"]
 [ext_resource type="PackedScene" uid="uid://bmp3d1a8ufo8d" path="res://player/cocoon/tutorial.tscn" id="5_lvl2"]
 [ext_resource type="PackedScene" uid="uid://b8lxgl61oab56" path="res://player/butterfly/tutorial_map.tscn" id="6_lvl3"]
+[ext_resource type="AudioStream" uid="uid://bb0iodtth0wsy" path="res://music/butterfly/Bird's Song.wav" id="7_1rvq8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qliqw"]
 font_size = 70
@@ -122,9 +123,15 @@ process_mode = 3
 layout_mode = 2
 text = "Назад в главное меню"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1733484445]
+stream = ExtResource("7_1rvq8")
+volume_db = -5.0
+autoplay = true
+
 [connection signal="pressed" from="MainMenuScreen/CenterContainer/VBoxContainer/PlayRow/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MainMenuScreen/CenterContainer/VBoxContainer/LevelSelectRow/ChooseLevel" to="." method="_on_choose_level_pressed"]
 [connection signal="pressed" from="LevelSelectScreen/CenterContainer/VBoxContainer/Level1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="LevelSelectScreen/CenterContainer/VBoxContainer/Level2" to="." method="_on_level_2_pressed"]
 [connection signal="pressed" from="LevelSelectScreen/CenterContainer/VBoxContainer/Level3" to="." method="_on_level_3_pressed"]
 [connection signal="pressed" from="LevelSelectScreen/CenterContainer/VBoxContainer/BackRow/Back" to="." method="_on_back_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

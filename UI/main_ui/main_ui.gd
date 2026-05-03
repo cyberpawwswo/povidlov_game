@@ -13,6 +13,7 @@ const _BLACK_SCRIN := "res://UI/level_to_level/black_scrin.tscn"
 
 func _ready() -> void:
 	get_tree().paused = false
+	$AudioStreamPlayer.play()
 
 
 func _transition_path() -> String:
@@ -45,3 +46,7 @@ func _on_level_2_pressed() -> void:
 
 func _on_level_3_pressed() -> void:
 	UI.change_level(level_3, _transition_path())
+
+
+func _on_audio_stream_player_finished() -> void:
+	$AudioStreamPlayer.play()

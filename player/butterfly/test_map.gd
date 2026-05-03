@@ -1,6 +1,9 @@
 extends Node2D
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_audio_stream_player_2_finished() -> void:
+	$AudioStreamPlayer2.play()
+
+
+func _on_audio_stream_player_finished() -> void:
+	$AudioStreamPlayer.play()

@@ -23,6 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://cbb2ljwn3b0d8" path="res://textures/grass/rew.png" id="17_03xyf"]
 [ext_resource type="Texture2D" uid="uid://5ycrfb0ocl7l" path="res://textures/grass/r.png" id="18_prjvx"]
 [ext_resource type="Texture2D" uid="uid://b218wvnesenv8" path="res://textures/grass/dds.png" id="21_dj2he"]
+[ext_resource type="AudioStream" uid="uid://osart5l8h4xu" path="res://music/butterfly/Summer2.wav" id="23_s7hbo"]
+[ext_resource type="AudioStream" uid="uid://bru053h084s8r" path="res://sounds/salamisound-1454157-birds-in-the-forest-with-a.mp3" id="24_qe2t4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cl51e"]
 shader = ExtResource("10_dj2he")
@@ -274,7 +276,7 @@ scale = Vector2(500, 7.932)
 color = Color(0.22450691, 0.12090386, 0, 1)
 
 [node name="Butterfly" parent="." unique_id=636950088 instance=ExtResource("2_u3mhw")]
-position = Vector2(3712, 769)
+position = Vector2(1995, 1045)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=213750285]
 layer = -2
@@ -293,3 +295,16 @@ position = Vector2(-100, -396)
 
 [node name="Frog3" parent="Frogs" unique_id=1636223898 instance=ExtResource("4_4c37m")]
 position = Vector2(1724, -298)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1918363291]
+stream = ExtResource("23_s7hbo")
+volume_db = -10.0
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1347940732]
+stream = ExtResource("24_qe2t4")
+volume_db = -10.0
+autoplay = true
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="finished" from="AudioStreamPlayer2" to="." method="_on_audio_stream_player_2_finished"]
