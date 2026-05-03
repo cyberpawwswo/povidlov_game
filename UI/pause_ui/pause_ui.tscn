@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dpiaj7v7fmo4h" path="res://UI/pause_ui/pause_ui.gd" id="1_ydefs"]
 [ext_resource type="Texture2D" uid="uid://4dhcgn3tyikj" path="res://player/butterfly/player/vector-forest-landscape-illustration.jpg" id="2_fselc"]
 [ext_resource type="Shader" uid="uid://ced0n5gl22ppk" path="res://UI/shaders/blur_ui.gdshader" id="2_xcm8o"]
+[ext_resource type="Theme" uid="uid://6tan20pvkgul" path="res://UI/styles/theme.tres" id="4_fselc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fselc"]
 shader = ExtResource("2_xcm8o")
@@ -46,6 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_fselc")
 
 [node name="CenterContainer" type="CenterContainer" parent="Control" unique_id=2002840627]
 layout_mode = 1
@@ -75,6 +77,7 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/VBoxContainer/AspectRatioContainer" unique_id=869649442]
 layout_mode = 2
+theme_override_constants/separation = 12
 
 [node name="Continue" type="Button" parent="Control/CenterContainer/VBoxContainer/AspectRatioContainer/VBoxContainer" unique_id=1732340380]
 unique_name_in_owner = true
@@ -85,11 +88,11 @@ text = "Продолжить"
 [node name="RestartLevel" type="Button" parent="Control/CenterContainer/VBoxContainer/AspectRatioContainer/VBoxContainer" unique_id=1980815770]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Начать уровень заново"
+text = "Уровень заново"
 
 [node name="MainMenu" type="Button" parent="Control/CenterContainer/VBoxContainer/AspectRatioContainer/VBoxContainer" unique_id=662391449]
 layout_mode = 2
-text = "Выйти в главное меню"
+text = "В главное меню"
 
 [node name="CheckButton" type="CheckButton" parent="Control" unique_id=1668500456]
 layout_mode = 0

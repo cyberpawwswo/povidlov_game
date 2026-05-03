@@ -577,7 +577,7 @@ offset = Vector2(111.36, -102.95)
 
 [node name="Area2D" type="Area2D" parent="CanvasGroup/Rsegment/head" unique_id=878644982]
 scale = Vector2(0.99999994, 0.99999994)
-collision_layer = 16
+collision_layer = 48
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasGroup/Rsegment/head/Area2D" unique_id=954195427]
@@ -686,3 +686,7 @@ libraries/ = SubResource("AnimationLibrary_id7i2")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="caterpillar" unique_id=183205134]
 position = Vector2(0.16482735, -0.33296967)
 stream = ExtResource("17_hd0bw")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="caterpillar" unique_id=1299977523]
+position = Vector2(0.16482735, -0.33296967)
+current = true

@@ -14,5 +14,7 @@ func enter_state():
 func update(delta: float):
 	player.handle_gravity(delta)
 func exit_state():
+	var tw = create_tween()
+	tw.tween_property($"../../../../CanvasLayer/Score/ProgressBar","value", CaterpillarGlobal.leaves_eaten, 0.1)
 	player.body.position = Vector2.ZERO
 	player.global_position.x += player.body_pos_left.x

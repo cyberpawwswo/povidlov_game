@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://86wavinnv8cg" path="res://player/caterpillar/wind_sway.gdshader" id="2_bs8w3"]
 [ext_resource type="Shader" uid="uid://nh33wfro05oh" path="res://player/caterpillar/shaders/canvas_group_outline.gdshader" id="2_sitbx"]
 [ext_resource type="Texture2D" uid="uid://dk8m83df7enoe" path="res://player/caterpillar/sprites/leaf (1).png" id="3_sitbx"]
+[ext_resource type="AudioStream" uid="uid://dm68v60125gek" path="res://sounds/collect.wav" id="5_sitbx"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5bvaj"]
 blend_mode = 1
@@ -166,9 +167,11 @@ shader_parameter/wind_phase = 0.0
 atlas = ExtResource("3_sitbx")
 region = Rect2(152, 40, 256, 376)
 
-[node name="leaf" type="Node2D" unique_id=794154945]
+[node name="leaf" type="Node2D" unique_id=794154945 node_paths=PackedStringArray("audio", "sprite")]
 script = ExtResource("1_5bvaj")
 is_final = true
+audio = NodePath("AudioStreamPlayer2D")
+sprite = NodePath("CanvasGroup/Sprite2D")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1759895788]
 material = SubResource("CanvasItemMaterial_5bvaj")
@@ -226,6 +229,9 @@ texture = SubResource("AtlasTexture_otjxb")
 centered = false
 offset = Vector2(-28.829254, -348.7645)
 flip_h = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1983208527]
+stream = ExtResource("5_sitbx")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

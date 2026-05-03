@@ -7,15 +7,46 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_w6ncd"]
 radius = 49.010204
 
+[sub_resource type="Gradient" id="Gradient_o11o5"]
+offsets = PackedFloat32Array(0, 0.47941175, 1)
+colors = PackedColorArray(1, 0.7294118, 0.44705883, 1, 1, 1, 0.19215687, 0.7137255, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_co406"]
+gradient = SubResource("Gradient_o11o5")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.50427353, 0.102564104)
+
+[sub_resource type="Curve" id="Curve_o11o5"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0.5124223, 1.4906845), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_co406"]
+curve = SubResource("Curve_o11o5")
+
+[sub_resource type="Curve" id="Curve_774af"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.1533337, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pn85c"]
+curve = SubResource("Curve_774af")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o11o5"]
 particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 53.9
 angle_min = -47.19999
 angle_max = 39.900013
+spread = 180.0
+initial_velocity_max = 83.34
 gravity = Vector3(0, 98, 0)
-scale_min = 6.04
-scale_max = 6.04
+damping_min = 14.444
+damping_max = 25.833002
+damping_curve = SubResource("CurveTexture_co406")
+scale_min = 0.19999999
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_pn85c")
 color = Color(1, 1, 0, 1)
 
 [node name="Flower" type="Node2D" unique_id=2047706209]
@@ -43,7 +74,10 @@ texture_progress = ExtResource("3_pn85c")
 tint_progress = Color(0.99215686, 1, 0.47843137, 1)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=339426789]
+texture_filter = 1
 amount = 17
+texture = SubResource("GradientTexture2D_co406")
+lifetime = 1.42
 process_material = SubResource("ParticleProcessMaterial_o11o5")
 
 [connection signal="body_entered" from="TriggerAnimation" to="." method="_on_trigger_animation_body_entered"]

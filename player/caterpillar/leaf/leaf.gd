@@ -3,7 +3,7 @@ extends Node2D
 @export var is_final:bool = false
 const LEAVES_DIE_PARTICLES = preload("uid://83ymxxcmoity")
 @export var audio:AudioStreamPlayer2D
-
+@export var sprite:Sprite2D
 
 
 
@@ -15,8 +15,8 @@ const LEAVES_DIE_PARTICLES = preload("uid://83ymxxcmoity")
 		#die()
 
 func die():
-	if $Sprite2D:
-		$Sprite2D.visible = false
+	if sprite:
+		sprite.visible = false
 	$Area2D/CollisionShape2D.set_deferred("disabled",true)
 	var inst = LEAVES_DIE_PARTICLES.instantiate()
 	inst.emitting = true

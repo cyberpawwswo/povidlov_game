@@ -1,0 +1,31 @@
+[gd_resource type="Theme" format=3 uid="uid://6tan20pvkgul"]
+
+[ext_resource type="FontFile" uid="uid://b6smblm40nxqo" path="res://fonts/kaph/Kaph-Regular.otf" id="1_go05t"]
+[ext_resource type="Texture2D" uid="uid://o7xhbc00mbtj" path="res://textures/UI/UIButtonLong.png" id="1_wsa4l"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oieh5"]
+load_path = "res://.godot/imported/UIButtonLong.png-79541c92a44e6398ec62421171a79bf6.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eovu6"]
+texture = SubResource("CompressedTexture2D_oieh5")
+modulate_color = Color(1.0196761, 1.224127, 0.81047016, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oieh5"]
+texture = ExtResource("1_wsa4l")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wsa4l"]
+load_path = "res://.godot/imported/UIButtonLong.png-79541c92a44e6398ec62421171a79bf6.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t3rxx"]
+texture = SubResource("CompressedTexture2D_wsa4l")
+modulate_color = Color(0.36282945, 0.36282945, 0.36282945, 1)
+
+[resource]
+default_font = ExtResource("1_go05t")
+default_font_size = 32
+Button/styles/hover = SubResource("StyleBoxTexture_eovu6")
+Button/styles/normal = SubResource("StyleBoxTexture_oieh5")
+Button/styles/pressed = SubResource("StyleBoxTexture_t3rxx")
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 10
+Label/font_sizes/font_size = 32

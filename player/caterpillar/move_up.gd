@@ -17,4 +17,6 @@ func enter_state():
 		player.change_state(states.idle)
 
 func exit_state():
+	var tw = create_tween()
+	tw.tween_property($"../../../../CanvasLayer/Score/ProgressBar","value", CaterpillarGlobal.leaves_eaten, 0.1)
 	player.animator.play("horiz")
