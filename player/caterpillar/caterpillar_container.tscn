@@ -2,6 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://nh33wfro05oh" path="res://player/caterpillar/shaders/canvas_group_outline.gdshader" id="1_gakhs"]
 [ext_resource type="Texture2D" uid="uid://qaa4n5fhlbam" path="res://player/caterpillar/sprites/segment.png" id="2_wx7ip"]
+[ext_resource type="Texture2D" uid="uid://cpcwcn27453a6" path="res://player/cocoon/sprites/CC.png" id="3_hd0bw"]
 [ext_resource type="Script" uid="uid://cn30tqlxx0shl" path="res://player/caterpillar/caterpillar.gd" id="3_kfal4"]
 [ext_resource type="Texture2D" uid="uid://clh0sfs8p5gmt" path="res://player/caterpillar/sprites/гусеница (4).png" id="4_vis5h"]
 [ext_resource type="Script" uid="uid://dcq618u6kfspo" path="res://player/caterpillar/state_machine_caterpillar.gd" id="5_hi2w6"]
@@ -15,7 +16,6 @@
 [ext_resource type="Script" uid="uid://3f1k1m1uju3o" path="res://player/caterpillar/fall.gd" id="13_wx7ip"]
 [ext_resource type="Script" uid="uid://jpahopxj36ae" path="res://player/caterpillar/die.gd" id="14_kfal4"]
 [ext_resource type="Script" uid="uid://bx7olop3hkwwc" path="res://player/caterpillar/pupa.gd" id="15_vis5h"]
-[ext_resource type="Texture2D" uid="uid://bx40bofn7yy27" path="res://icon.svg" id="16_hi2w6"]
 [ext_resource type="AudioStream" uid="uid://coejvx870wx1m" path="res://sounds/stretch.wav" id="17_hd0bw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5fres"]
@@ -589,10 +589,9 @@ target_position = Vector2(358.43, 0)
 
 [node name="pupa_sprite" type="Sprite2D" parent="." unique_id=995315449]
 visible = false
-modulate = Color(0.44313726, 1, 0.43529412, 1)
 position = Vector2(0, -39)
 scale = Vector2(0.5, 0.8671875)
-texture = ExtResource("16_hi2w6")
+texture = ExtResource("3_hd0bw")
 
 [node name="caterpillar" type="CharacterBody2D" parent="." unique_id=600846969 groups=["caterpillar"]]
 position = Vector2(-0.16482735, 0.33296967)

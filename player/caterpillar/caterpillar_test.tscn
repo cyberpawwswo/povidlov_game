@@ -739,7 +739,7 @@ material = SubResource("ShaderMaterial_id7i2")
 position = Vector2(740, 368)
 
 [node name="platf2" parent="platforms/platforms" unique_id=1472457041 instance=ExtResource("8_otjxb")]
-position = Vector2(740, 447)
+position = Vector2(740, 453)
 
 [node name="platf3" parent="platforms/platforms" unique_id=599179312 instance=ExtResource("8_otjxb")]
 position = Vector2(897, 257)
@@ -1048,7 +1048,7 @@ position = Vector2(1704, -108.999985)
 rotation = -0.1922983
 
 [node name="caterpillar_container" parent="." unique_id=1297587781 instance=ExtResource("2_4g6k1")]
-position = Vector2(1743, -175)
+position = Vector2(143, 128)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1613938633]
 position = Vector2(492, 51)
@@ -1069,6 +1069,7 @@ texture = ExtResource("22_0rfbj")
 layer = -1
 
 [node name="camera_switches" type="Node2D" parent="." unique_id=1036652181]
+visible = false
 
 [node name="1" type="Area2D" parent="camera_switches" unique_id=1409538889]
 position = Vector2(230, 449)

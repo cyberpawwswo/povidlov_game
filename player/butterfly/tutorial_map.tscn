@@ -234,7 +234,7 @@ offset_top = 1074.0
 offset_right = 2007.0
 offset_bottom = 1093.0
 theme = ExtResource("15_qlst8")
-text = "Соберай пылцу чтобы снова появилась гусеница"
+text = "Собирай пылцу!"
 label_settings = SubResource("LabelSettings_qlst8")
 paragraph_separator = "\\"
 

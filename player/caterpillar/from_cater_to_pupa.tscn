@@ -11,7 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://cqwi6ssvs6e1p" path="res://player/cocoon/sprites/dd.png" id="8_wt84o"]
 [ext_resource type="Texture2D" uid="uid://5nuucc7xkq7" path="res://player/cocoon/sprites/erfff.png" id="9_3y6x3"]
 [ext_resource type="Texture2D" uid="uid://dul1q5nc0wwqx" path="res://player/cocoon/sprites/232.png" id="10_vhmds"]
-[ext_resource type="Texture2D" uid="uid://bx40bofn7yy27" path="res://icon.svg" id="11_r5fdq"]
+[ext_resource type="Texture2D" uid="uid://cpcwcn27453a6" path="res://player/cocoon/sprites/CC.png" id="12_l2efn"]
+[ext_resource type="Texture2D" uid="uid://17xf6x4wg1tx" path="res://player/cocoon/sprites/ddP.png" id="13_sc3xy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yil15"]
 size = Vector2(1014, 28)
@@ -157,7 +158,7 @@ tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.16666667, 31.18198, 852.305, -0.03333336, -557.93823, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.16666667, 31.18198, 825.555, -0.03333336, -557.93823, 0, 0),
 "times": PackedFloat32Array(0, 0.5)
 }
 
@@ -261,15 +262,22 @@ scale = Vector2(1.918082, 1.9217083)
 texture = ExtResource("10_vhmds")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=678230027]
+z_index = 1
 position = Vector2(966, 1)
 scale = Vector2(0.6, 1.5)
 
 [node name="pupa_sprite" type="Sprite2D" parent="Node2D" unique_id=1035829799]
-modulate = Color(0.44313726, 1, 0.43529412, 1)
+visible = false
 position = Vector2(1.6667075, 1)
 scale = Vector2(0.5, 0.8671875)
-texture = ExtResource("11_r5fdq")
+texture = ExtResource("12_l2efn")
 offset = Vector2(3.333496, -61.11712)
+
+[node name="Icon" type="Sprite2D" parent="Node2D" unique_id=1745270318]
+position = Vector2(-5.999999, -52.666668)
+rotation = -0.34906584
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("12_l2efn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=922690823]
 libraries/ = SubResource("AnimationLibrary_jj5k2")
@@ -277,3 +285,9 @@ autoplay = &"fall"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=351364329]
 position = Vector2(960, 542)
+
+[node name="DdP" type="Sprite2D" parent="." unique_id=13274763]
+position = Vector2(811, 796)
+rotation = -0.61086524
+scale = Vector2(1.2, 1.3)
+texture = ExtResource("13_sc3xy")
