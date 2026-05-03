@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://5nuucc7xkq7" path="res://player/cocoon/sprites/erfff.png" id="10_8qne8"]
 [ext_resource type="Texture2D" uid="uid://dul1q5nc0wwqx" path="res://player/cocoon/sprites/232.png" id="12_n8oel"]
 [ext_resource type="FontFile" uid="uid://b6smblm40nxqo" path="res://fonts/kaph/Kaph-Regular.otf" id="14_8qne8"]
+[ext_resource type="Theme" uid="uid://6tan20pvkgul" path="res://UI/styles/theme.tres" id="14_gngpw"]
 [ext_resource type="AudioStream" uid="uid://dh7vfioyjqdbl" path="res://player/cocoon/sound/Moving Fast - 2013.wav" id="15_bgm"]
 [ext_resource type="AudioStream" uid="uid://dk0rq72usnist" path="res://sounds/air swoosh.wav" id="16_pshik_sfx"]
 [ext_resource type="AudioStream" uid="uid://xf1pdjhwyjwo" path="res://sounds/hurt.wav" id="17_scissors_sfx"]
@@ -145,6 +146,7 @@ offset_left = 1850.0
 offset_top = 15.0
 offset_right = 1906.0
 offset_bottom = 69.0
+theme = ExtResource("14_gngpw")
 text = "I I"
 icon_alignment = 1
 
@@ -154,6 +156,7 @@ offset_left = 1849.0
 offset_top = 146.0
 offset_right = 1906.0
 offset_bottom = 200.0
+theme = ExtResource("14_gngpw")
 text = "♫"
 
 [node name="SfxButton" type="Button" parent="pauseButton" unique_id=695720155]
@@ -162,6 +165,7 @@ offset_left = 1849.0
 offset_top = 80.0
 offset_right = 1905.0
 offset_bottom = 134.0
+theme = ExtResource("14_gngpw")
 text = "🔊"
 
 [node name="Help" type="Label" parent="." unique_id=395176600]

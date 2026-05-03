@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://k3gqtnuowjn0" path="res://player/caterpillar/sprites/props etc/ass (1).png" id="23_1h3i4"]
 [ext_resource type="Texture2D" uid="uid://ukjmemerg2i" path="res://player/caterpillar/sprites/props etc/ввы (1).png" id="26_1h3i4"]
 [ext_resource type="PackedScene" uid="uid://byj5el78mnxwx" path="res://player/caterpillar/leaf/leaf_finish.tscn" id="26_8kssm"]
+[ext_resource type="AudioStream" uid="uid://b42bhf5aygcbk" path="res://music/test/caterpillar/blossom.wav" id="35_j54nm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_otjxb"]
 font = ExtResource("13_g3dt3")
@@ -1169,11 +1170,39 @@ occluder = SubResource("OccluderPolygon2D_o205u")
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=10471912]
 color = Color(0.73300546, 0.7330054, 0.7330054, 1)
 
+[node name="music" type="AudioStreamPlayer2D" parent="." unique_id=1987984010]
+stream = ExtResource("35_j54nm")
+autoplay = true
+
+[node name="pauseButton" type="CanvasLayer" parent="." unique_id=1882590176]
+layer = 50
+
+[node name="Button" type="Button" parent="pauseButton" unique_id=1019073512]
+process_mode = 3
+offset_left = 1850.0
+offset_top = 15.0
+offset_right = 1906.0
+offset_bottom = 69.0
+theme = ExtResource("13_w5hvd")
+text = "I I"
+icon_alignment = 1
+
+[node name="MusicButton" type="Button" parent="pauseButton" unique_id=2120848928]
+process_mode = 3
+offset_left = 1849.0
+offset_top = 146.0
+offset_right = 1906.0
+offset_bottom = 200.0
+theme = ExtResource("13_w5hvd")
+text = "♫"
+
 [connection signal="body_entered" from="camera_switches/1" to="Camera2D" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="camera_switches/2" to="Camera2D" method="_on_second_body_entered"]
 [connection signal="body_entered" from="camera_switches/3" to="Camera2D" method="_on_third_body_entered"]
 [connection signal="body_entered" from="camera_switches/4" to="Camera2D" method="_on_fourth_body_entered"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="pressed" from="pauseButton/Button" to="." method="_on_pause_menu_button_pressed"]
+[connection signal="pressed" from="pauseButton/MusicButton" to="." method="_on_music_button_pressed"]
 
 [editable path="branches/door2"]
 [editable path="caterpillar_container"]
