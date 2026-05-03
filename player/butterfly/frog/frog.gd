@@ -73,6 +73,8 @@ func attack(player_pos: Vector2):
 
 		cast_tongue.look_at(player_pos)
 		create_tween().tween_callback(test_keep_player).set_delay(0.1)
+		
+		create_tween().tween_property(sprite, 'scale', sprite.scale/1.3, 0.1)
 
 		var tween_at = create_tween()
 		tween_at.tween_callback(tongue.hide).set_delay(0.2)
@@ -113,10 +115,14 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _on_timer_attack_timeout() -> void:
 	if player and _number_unsec_attack < 3:
 		sprite.animation = 'ready_attack'
+		
+		var delay = randf_range(1, 2)
 
-		create_tween().tween_callback(attack.bind(player.global_position)).set_delay(randf_range(1, 2))
+		create_tween().tween_callback(attack.bind(player.global_position)).set_delay(delay)
+		create_tween().tween_property(sprite, 'scale', sprite.scale * 1.3, delay)
 		print("ready attack frog")
-		create_tween().tween_callback($TimerAttack.start).set_delay(randf_range(1, 2))
+
+		create_tween().tween_callback($TimerAttack.start).set_delay(delay)
 
 		can_jump = false
 		_number_unsec_attack += 1
