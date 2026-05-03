@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://dapbscxj5pqni" path="res://player/butterfly/player/butterfly.tscn" id="15_dmhx4"]
 [ext_resource type="Theme" uid="uid://5csefvu52i6y" path="res://UI/styles/simple_theme.tres" id="15_qlst8"]
 [ext_resource type="PackedScene" uid="uid://ckb1rhicrqso" path="res://player/butterfly/flowers/types/tulip.tscn" id="16_qea6c"]
+[ext_resource type="PackedScene" uid="uid://d0d7c0n874qmm" path="res://player/butterfly/frog/frog.tscn" id="19_f3fb7"]
+[ext_resource type="Texture2D" uid="uid://llb438uvuy3e" path="res://textures/mouse-left-button.svg" id="20_wyvus"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wwvax"]
 shader = ExtResource("10_4fpgt")
@@ -217,11 +219,8 @@ position = Vector2(993.37506, 559.56256)
 scale = Vector2(0.90146405, 0.94901043)
 texture = ExtResource("14_olpgi")
 
-[node name="Butterfly" parent="." unique_id=636950088 instance=ExtResource("15_dmhx4")]
-position = Vector2(1290, 1168)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=702987049]
-position = Vector2(1016, 1789)
+position = Vector2(1009, 1741)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1357171487]
 shape = SubResource("WorldBoundaryShape2D_dmhx4")
@@ -229,12 +228,33 @@ shape = SubResource("WorldBoundaryShape2D_dmhx4")
 [node name="Tulip" parent="." unique_id=119960863 instance=ExtResource("16_qea6c")]
 position = Vector2(1733, 1667)
 
-[node name="Label" type="Label" parent="." unique_id=1280465011]
-offset_left = 1466.0
-offset_top = 1010.0
-offset_right = 2444.0
-offset_bottom = 1063.0
+[node name="ChromaLabel" type="Label" parent="." unique_id=1280465011]
+offset_left = 1433.0
+offset_top = 1074.0
+offset_right = 2007.0
+offset_bottom = 1093.0
 theme = ExtResource("15_qlst8")
-text = "Собери достаточное количество пыльцы \\ чтобы на свет появилась новая гусеница"
+text = "Соберай пылцу чтобы снова появилась гусеница"
 label_settings = SubResource("LabelSettings_qlst8")
 paragraph_separator = "\\"
+
+[node name="Frog" parent="." unique_id=1394785451 instance=ExtResource("19_f3fb7")]
+position = Vector2(1218, 1414)
+
+[node name="FrogLabel" type="Label" parent="Frog" unique_id=990774946]
+offset_left = -60.0
+offset_top = -161.0
+offset_right = 150.0
+offset_bottom = -142.0
+theme = ExtResource("15_qlst8")
+text = "Опасайся лягушек"
+label_settings = SubResource("LabelSettings_qlst8")
+paragraph_separator = "\\"
+
+[node name="Butterfly" parent="." unique_id=636950088 instance=ExtResource("15_dmhx4")]
+position = Vector2(1290, 1168)
+
+[node name="MouseLeftButton" type="Sprite2D" parent="Butterfly" unique_id=326989330]
+position = Vector2(-9, -88)
+scale = Vector2(0.10749995, 0.10749995)
+texture = ExtResource("20_wyvus")

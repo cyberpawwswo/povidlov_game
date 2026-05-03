@@ -5,6 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://bx40bofn7yy27" path="res://icon.svg" id="2_wwx0m"]
 [ext_resource type="Texture2D" uid="uid://bvo654kx25neo" path="res://player/butterfly/frog/ggg1_to_tile_set.png" id="3_nlfhn"]
 
+[sub_resource type="Curve" id="Curve_cl51e"]
+_limits = [0.0, 1.0, 0.0, 2.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6830227, 0.52780765), -1.552487, -1.552487, 0, 0, Vector2(1.0019629, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_wwx0m"]
 radius = 394.88477
 
@@ -84,6 +89,7 @@ animations = [{
 [node name="Frog" type="CharacterBody2D" unique_id=1394785451]
 collision_layer = 8
 script = ExtResource("1_3l2fg")
+shake_camera_dis = SubResource("Curve_cl51e")
 
 [node name="PlayerDetection" type="Area2D" parent="." unique_id=473556551]
 scale = Vector2(2.765625, 2.765625)
