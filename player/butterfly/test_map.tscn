@@ -216,7 +216,7 @@ position = Vector2(2641, 1748)
 [node name="Tulip" parent="Flowers" unique_id=119960863 instance=ExtResource("14_uqu8w")]
 
 [node name="Tulip2" parent="Flowers" unique_id=670652517 instance=ExtResource("14_uqu8w")]
-position = Vector2(-969, -19)
+position = Vector2(-1070, -66)
 rotation = -0.078287825
 
 [node name="Chamomile" parent="Flowers" unique_id=1191199222 instance=ExtResource("3_s2hvg")]
@@ -262,5 +262,13 @@ texture = ExtResource("5_4c37m")
 position = Vector2(1522, 1916)
 
 [node name="Frog" parent="Frogs" unique_id=1394785451 instance=ExtResource("4_4c37m")]
-position = Vector2(0, -442)
+position = Vector2(-130, -313)
+shake_camera_dis = SubResource("Curve_cl51e")
+
+[node name="Frog2" parent="Frogs" unique_id=137603289 instance=ExtResource("4_4c37m")]
+position = Vector2(417, -316)
+shake_camera_dis = SubResource("Curve_cl51e")
+
+[node name="Frog3" parent="Frogs" unique_id=1636223898 instance=ExtResource("4_4c37m")]
+position = Vector2(1724, -298)
 shake_camera_dis = SubResource("Curve_cl51e")

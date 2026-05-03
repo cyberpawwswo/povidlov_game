@@ -30,17 +30,17 @@ shape = SubResource("CircleShape2D_w6ncd")
 [node name="ProgressBar" type="TextureProgressBar" parent="." unique_id=1979457871]
 visible = false
 offset_left = -127.0
-offset_top = -82.0
+offset_top = -84.0
 offset_right = 128.0
-offset_bottom = -73.0
+offset_bottom = -54.0
 nine_patch_stretch = true
-stretch_margin_left = 25
-stretch_margin_top = 20
-stretch_margin_right = 24
-stretch_margin_bottom = 11
+stretch_margin_left = 15
+stretch_margin_top = 15
+stretch_margin_right = 15
+stretch_margin_bottom = 15
 texture_under = ExtResource("2_774af")
 texture_progress = ExtResource("3_pn85c")
-tint_progress = Color(1, 0.54990745, 0.61614, 1)
+tint_progress = Color(0.99215686, 1, 0.47843137, 1)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=339426789]
 amount = 17

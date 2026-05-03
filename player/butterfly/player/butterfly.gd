@@ -52,13 +52,13 @@ func _physics_process(delta: float) -> void:
 
 	var direction := signf(get_local_mouse_position().x)
 
-	if Input.is_action_just_pressed("ui_accept"):
+	#if Input.is_action_just_pressed("ui_accept"):
 		#chroma_point = max_chroma_point
 		#health = 0
-		shake_camera()
+		#shake_camera()
 
 	# Handle jump.
-	if Input.is_action_just_pressed("but_fly_up"):
+	if Input.is_action_just_pressed("but_fly_up") or Input.is_action_just_pressed("ui_accept"):
 		#tween = create_tween()
 		#tween.set_trans(Tween.TRANS_QUINT)
 		#tween.tween_property($Camera2D, 'zoom', Vector2(0.95, 0.95), 0.05)
