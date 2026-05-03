@@ -19,6 +19,7 @@
 [ext_resource type="Theme" uid="uid://5csefvu52i6y" path="res://UI/styles/simple_theme.tres" id="15_qlst8"]
 [ext_resource type="PackedScene" uid="uid://ckb1rhicrqso" path="res://player/butterfly/flowers/types/tulip.tscn" id="16_qea6c"]
 [ext_resource type="PackedScene" uid="uid://d0d7c0n874qmm" path="res://player/butterfly/frog/frog.tscn" id="19_f3fb7"]
+[ext_resource type="Texture2D" uid="uid://llb438uvuy3e" path="res://textures/mouse-left-button.svg" id="20_wyvus"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wwvax"]
 shader = ExtResource("10_4fpgt")
@@ -252,3 +253,8 @@ paragraph_separator = "\\"
 
 [node name="Butterfly" parent="." unique_id=636950088 instance=ExtResource("15_dmhx4")]
 position = Vector2(1290, 1168)
+
+[node name="MouseLeftButton" type="Sprite2D" parent="Butterfly" unique_id=326989330]
+position = Vector2(-9, -88)
+scale = Vector2(0.10749995, 0.10749995)
+texture = ExtResource("20_wyvus")
