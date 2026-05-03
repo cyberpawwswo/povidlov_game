@@ -632,9 +632,9 @@ grow_vertical = 2
 texture = ExtResource("2_ksnq2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=339015903]
-visible = false
 
 [node name="Score" type="Control" parent="CanvasLayer" unique_id=337093336]
+modulate = Color(1, 1, 1, 0.6)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1048,7 +1048,7 @@ position = Vector2(1704, -108.999985)
 rotation = -0.1922983
 
 [node name="caterpillar_container" parent="." unique_id=1297587781 instance=ExtResource("2_4g6k1")]
-position = Vector2(143, 128)
+position = Vector2(145, 142)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1613938633]
 position = Vector2(492, 51)
