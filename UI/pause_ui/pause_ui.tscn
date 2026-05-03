@@ -105,3 +105,4 @@ text = "Звук"
 [connection signal="pressed" from="Control/CenterContainer/VBoxContainer/AspectRatioContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Control/CenterContainer/VBoxContainer/AspectRatioContainer/VBoxContainer/RestartLevel" to="." method="_on_restart_level_pressed"]
 [connection signal="pressed" from="Control/CenterContainer/VBoxContainer/AspectRatioContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="toggled" from="Control/CheckButton" to="." method="_on_check_button_toggled"]

@@ -6,8 +6,10 @@
 script = ExtResource("1_ly3sy")
 
 [node name="CurrentMusic" type="AudioStreamPlayer" parent="." unique_id=1049921466]
+bus = &"Music"
 
 [node name="NextMusic" type="AudioStreamPlayer" parent="." unique_id=279807231]
+bus = &"Music"
 
 [connection signal="finished" from="CurrentMusic" to="." method="_on_current_music_finished"]
 [connection signal="finished" from="NextMusic" to="." method="_on_next_music_finished"]
