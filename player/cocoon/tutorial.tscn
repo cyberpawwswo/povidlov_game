@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://5ycrfb0ocl7l" path="res://textures/grass/r.png" id="5_jbbag"]
 [ext_resource type="Script" uid="uid://ctyf1npg8ij3j" path="res://player/cocoon/tutorial_spawn.gd" id="6_tutorial_spawn"]
 [ext_resource type="FontFile" uid="uid://b6smblm40nxqo" path="res://fonts/kaph/Kaph-Regular.otf" id="8_5oqpi"]
+[ext_resource type="AudioStream" uid="uid://bru053h084s8r" path="res://sounds/salamisound-1454157-birds-in-the-forest-with-a.mp3" id="9_tutorial_bgm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1l0aq"]
 font = ExtResource("8_5oqpi")
@@ -88,3 +89,8 @@ offset_right = 1496.0
 offset_bottom = 985.0
 text = "НАЖИМАЯ ПКМ СДУЙТЕ ОС ЗА ПРЕДЕЛЫ ЭКРАНА"
 label_settings = SubResource("LabelSettings_5oqpi")
+
+[node name="BgmPlayer" type="AudioStreamPlayer" parent="." unique_id=355053495]
+stream = ExtResource("9_tutorial_bgm")
+volume_db = -15.0
+autoplay = true
