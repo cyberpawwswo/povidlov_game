@@ -30,7 +30,7 @@ font_size = 32
 
 [node name="CocoonDefence" type="Node2D" unique_id=1072979385]
 script = ExtResource("2_cocoon_script")
-survival_seconds = 120.0
+survival_seconds = 90.0
 
 [node name="Reww" type="Sprite2D" parent="." unique_id=2013249694]
 position = Vector2(772, 869)

@@ -9,7 +9,7 @@ signal died
 var hp := 100
 var _dead := false
 
-@onready var hp_bar: ProgressBar = $HpBar
+@onready var hp_bar: TextureProgressBar = $HpBar
 
 
 func _ready() -> void:

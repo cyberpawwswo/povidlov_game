@@ -2,24 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://cpcwcn27453a6" path="res://player/cocoon/sprites/CC.png" id="2_g6jpx"]
 [ext_resource type="Script" uid="uid://bvwy02e5dj0aa" path="res://player/cocoon/pupa.gd" id="2_pupa_script"]
+[ext_resource type="Texture2D" uid="uid://bk3bp7p5tkkaa" path="res://textures/UI/progress_transparent.png" id="3_prog_under"]
+[ext_resource type="Texture2D" uid="uid://b6ndq516x0my4" path="res://textures/UI/progress_red.png" id="4_prog_red"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g6jpx"]
 radius = 31.0
 height = 108.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp_bg"]
-bg_color = Color(0.12, 0.12, 0.14, 0.9)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp_fill"]
-bg_color = Color(0.88, 0.21120001, 0.21120001, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
 
 [node name="Pupa" type="Node2D" unique_id=2096588259]
 script = ExtResource("2_pupa_script")
@@ -35,13 +23,15 @@ texture = ExtResource("2_g6jpx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=998068732]
 shape = SubResource("CapsuleShape2D_g6jpx")
 
-[node name="HpBar" type="ProgressBar" parent="." unique_id=284739201]
-offset_left = -70.0
-offset_top = -121.0
-offset_right = 70.0
-offset_bottom = -105.0
+[node name="HpBar" type="TextureProgressBar" parent="." unique_id=284739201]
+offset_left = -69.0
+offset_top = -145.0
+offset_right = 69.0
+offset_bottom = -119.0
 mouse_filter = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_hp_bg")
-theme_override_styles/fill = SubResource("StyleBoxFlat_hp_fill")
 value = 100.0
-show_percentage = false
+nine_patch_stretch = true
+stretch_margin_left = 10
+stretch_margin_right = 8
+texture_under = ExtResource("3_prog_under")
+texture_progress = ExtResource("4_prog_red")
