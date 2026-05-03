@@ -4,7 +4,7 @@ extends CaterpillarState
 @onready var caterpillar: Caterpillar = $"../.."
 
 const HURT = preload("uid://xf1pdjhwyjwo")
-
+var rotating:bool = false
 
 func enter_state():
 	player.audio.stop()
@@ -39,6 +39,9 @@ func enter_state():
 
 func update(delta: float):
 	player.handle_gravity(delta)
+	if rotating:
+		$"../../../pupa_sprite".rotate(delta)
+		$"../../../pupa_sprite".global_position = caterpillar.global_position
 func pupa():
 	player.cutscene = true
 	player.animator.play("vert")
@@ -57,5 +60,8 @@ func pupa():
 	$"../../../CanvasGroup".set_deferred("visible", false)
 	$"../../../pupa_sprite".global_position = player.global_position+Vector2(0, -50)
 	$"../../../pupa_sprite".set_deferred("visible",true)
-	await get_tree().create_timer(2).timeout
-	UI.change_level("res://player/cocoon/tutorial.tscn")
+	await get_tree().create_timer(0.5).timeout
+	%CollisionShape2D.set_deferred("disabled", true)
+	rotating = true
+	await get_tree().create_timer(1).timeout
+	UI.change_level("res://player/caterpillar/from_cater_to_pupa.tscn")

@@ -1048,7 +1048,7 @@ position = Vector2(1704, -108.999985)
 rotation = -0.1922983
 
 [node name="caterpillar_container" parent="." unique_id=1297587781 instance=ExtResource("2_4g6k1")]
-position = Vector2(146, 132)
+position = Vector2(1743, -175)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1613938633]
 position = Vector2(492, 51)
