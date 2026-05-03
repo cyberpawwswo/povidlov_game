@@ -20,12 +20,14 @@ config/icon="res://icon.svg"
 CaterpillarGlobal="*uid://c4tn71nilxwhh"
 PauseUi="*uid://cvbhpjpf27kvr"
 UI="*uid://b1mc2o11jpukq"
+MusicManadger="*uid://bpq50164impg1"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [editor]
 

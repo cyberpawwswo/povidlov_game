@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bpq50164impg1"]
+
+[ext_resource type="Script" uid="uid://bw3vjbrp7ib6v" path="res://music_manadger/music_manadger.gd" id="1_ly3sy"]
+
+[node name="MusicManadger" type="Node" unique_id=66725566]
+script = ExtResource("1_ly3sy")
+
+[node name="CurrentMusic" type="AudioStreamPlayer" parent="." unique_id=1049921466]
+
+[node name="NextMusic" type="AudioStreamPlayer" parent="." unique_id=279807231]
+
+[connection signal="finished" from="CurrentMusic" to="." method="_on_current_music_finished"]
+[connection signal="finished" from="NextMusic" to="." method="_on_next_music_finished"]

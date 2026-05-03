@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d28gpixrx8jg6"]
 
+[ext_resource type="Script" uid="uid://btwhypehlb7ue" path="res://player/butterfly/test_map.gd" id="1_r81sy"]
 [ext_resource type="Texture2D" uid="uid://c77ovqhn3j742" path="res://textures/grass/ddss.png" id="2_jpnwx"]
 [ext_resource type="PackedScene" uid="uid://dapbscxj5pqni" path="res://player/butterfly/player/butterfly.tscn" id="2_u3mhw"]
 [ext_resource type="Texture2D" uid="uid://bhvap01ybkbgi" path="res://textures/sky/cloude_sprite/cloude_ground.png" id="3_03xyf"]
@@ -48,6 +49,7 @@ shader_parameter/wind_phase = 0.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8ftm8"]
 
 [node name="TestMap" type="Node2D" unique_id=1487573391]
+script = ExtResource("1_r81sy")
 
 [node name="ParallaxSky" type="Node2D" parent="." unique_id=1943001644]
 
