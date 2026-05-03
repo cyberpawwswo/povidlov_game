@@ -43,7 +43,7 @@ var _fade_rect: ColorRect
 
 var _survival_left: float
 var _spawn_stopped := false
-var _victory_started := false
+var _level_ended := false
 var _countdown_layer: CanvasLayer
 var _countdown_label: Label
 
@@ -56,10 +56,17 @@ func _ready() -> void:
 	_cut_has_prev = false
 	_setup_scissors()
 	_setup_countdown_ui()
+	if pupa.has_signal("died"):
+		pupa.died.connect(_on_pupa_died)
+	var pause_menu_button := get_node_or_null("pauseButton/Button") as Button
+	if pause_menu_button != null:
+		pause_menu_button.pressed.connect(_on_pause_menu_button_pressed)
 	_play_fade_in()
 
 
 func _process(delta: float) -> void:
+	if _level_ended:
+		return
 	_tick_survival(delta)
 	if not _spawn_stopped:
 		_ramp_difficulty(delta)
@@ -186,15 +193,28 @@ func _count_hostile_enemies() -> int:
 
 
 func _try_complete_victory() -> void:
-	if not _spawn_stopped or _victory_started:
+	if not _spawn_stopped or _level_ended:
 		return
 	if _count_hostile_enemies() > 0:
 		return
-	_victory_started = true
-	_play_fade_out_and_win()
+	_level_ended = true
+	_play_fade_out_to_scene(victory_scene, "res://player/butterfly/test_map.tscn")
 
 
-func _play_fade_out_and_win() -> void:
+func _on_pause_menu_button_pressed() -> void:
+	if _level_ended:
+		return
+	PauseUi.request_open_pause()
+
+
+func _on_pupa_died() -> void:
+	if _level_ended:
+		return
+	_level_ended = true
+	UI.open_lose_ui()
+
+
+func _play_fade_out_to_scene(next: PackedScene, fallback_path: String) -> void:
 	var layer := CanvasLayer.new()
 	layer.layer = 200
 	add_child(layer)
@@ -209,10 +229,10 @@ func _play_fade_out_and_win() -> void:
 	var tween := create_tween()
 	tween.tween_property(rect, "modulate:a", 1.0, victory_fade_out_duration)
 	tween.finished.connect(func() -> void:
-		if victory_scene != null:
-			get_tree().change_scene_to_packed(victory_scene)
+		if next != null:
+			get_tree().change_scene_to_packed(next)
 		else:
-			get_tree().change_scene_to_file("res://player/butterfly/test_map.tscn")
+			get_tree().change_scene_to_file(fallback_path)
 	, CONNECT_ONE_SHOT)
 
 

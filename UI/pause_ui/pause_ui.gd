@@ -7,13 +7,27 @@ var is_lose := false
 func _ready() -> void:
 	hide()
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed('open_pause') and get_tree().current_scene.name != 'MainUI' and not get_tree().paused:
-		get_tree().paused = true
-		show()
-	elif Input.is_action_just_pressed('open_pause') and get_tree().paused:
-		get_tree().paused = false
-		hide()
+func request_open_pause() -> void:
+	if get_tree().current_scene == null or get_tree().current_scene.name == "MainUI":
+		return
+	if get_tree().paused:
+		return
+	get_tree().paused = true
+	show()
+	if not is_lose:
+		%Continue.visible = true
+		%PauseName.text = "Пауза"
+
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("open_pause"):
+		if get_tree().current_scene == null or get_tree().current_scene.name == "MainUI":
+			return
+		if not get_tree().paused:
+			request_open_pause()
+		else:
+			get_tree().paused = false
+			hide()
 	if not is_lose and not %Continue.visible:
 		%Continue.visible = true
 		%PauseName.text = 'Пауза'

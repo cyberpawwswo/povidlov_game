@@ -2,10 +2,12 @@ extends Node2D
 
 signal hp_changed(current: int, max_hp: int)
 signal damaged(amount: int, current: int, max_hp: int)
+signal died
 
 @export var max_hp := 100
 
 var hp := 100
+var _dead := false
 
 @onready var hp_bar: ProgressBar = $HpBar
 
@@ -19,7 +21,7 @@ func _ready() -> void:
 
 
 func take_damage(amount: int) -> void:
-	if amount <= 0:
+	if amount <= 0 or _dead:
 		return
 	hp -= amount
 	if hp < 0:
@@ -28,3 +30,6 @@ func take_damage(amount: int) -> void:
 	hp_changed.emit(hp, max_hp)
 	if hp_bar:
 		hp_bar.value = hp
+	if hp <= 0:
+		_dead = true
+		died.emit()

@@ -24,6 +24,7 @@ size = Vector2(458, 20)
 
 [node name="CocoonDefence" type="Node2D" unique_id=1072979385]
 script = ExtResource("2_cocoon_script")
+survival_seconds = 120.0
 
 [node name="Reww" type="Sprite2D" parent="." unique_id=2013249694]
 position = Vector2(772, 869)
@@ -115,3 +116,15 @@ position = Vector2(966, 795)
 position = Vector2(959.99994, 540)
 scale = Vector2(1.918082, 1.9217083)
 texture = ExtResource("12_n8oel")
+
+[node name="pauseButton" type="CanvasLayer" parent="." unique_id=18425846]
+layer = 50
+
+[node name="Button" type="Button" parent="pauseButton" unique_id=581422141]
+process_mode = 3
+offset_left = 1850.0
+offset_top = 15.0
+offset_right = 1906.0
+offset_bottom = 69.0
+text = "I I"
+icon_alignment = 1
