@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://blqbn0vmqc1kt"]
 
-[ext_resource type="Texture2D" uid="uid://bx40bofn7yy27" path="res://icon.svg" id="1_6agdk"]
+[ext_resource type="Texture2D" uid="uid://cpcwcn27453a6" path="res://player/cocoon/sprites/CC.png" id="2_g6jpx"]
 [ext_resource type="Script" uid="uid://bvwy02e5dj0aa" path="res://player/cocoon/pupa.gd" id="2_pupa_script"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g6jpx"]
@@ -25,9 +25,10 @@ corner_radius_bottom_left = 8
 script = ExtResource("2_pupa_script")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1685953005]
-modulate = Color(0.44313726, 1, 0.43529412, 1)
-scale = Vector2(0.5, 0.8671875)
-texture = ExtResource("1_6agdk")
+position = Vector2(-6, -18)
+rotation = -0.34906584
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_g6jpx")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=785991895]
 
@@ -36,9 +37,9 @@ shape = SubResource("CapsuleShape2D_g6jpx")
 
 [node name="HpBar" type="ProgressBar" parent="." unique_id=284739201]
 offset_left = -70.0
-offset_top = -98.0
+offset_top = -121.0
 offset_right = 70.0
-offset_bottom = -82.0
+offset_bottom = -105.0
 mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_hp_bg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_hp_fill")

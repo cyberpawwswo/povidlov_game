@@ -26,9 +26,13 @@
 [ext_resource type="Texture2D" uid="uid://de8n3gn35jyw2" path="res://textures/sky/sk0.png" id="17_jrfm4"]
 [ext_resource type="Texture2D" uid="uid://bhvap01ybkbgi" path="res://textures/sky/cloude_sprite/cloude_ground.png" id="18_8kssm"]
 [ext_resource type="Texture2D" uid="uid://chcdailcte54a" path="res://textures/sky/cloude_sprite/cloude_ground01.png" id="19_ubdc5"]
+[ext_resource type="Texture2D" uid="uid://dg7gnron3vdqr" path="res://player/caterpillar/sprites/props etc/ass.png" id="20_ly1rm"]
 [ext_resource type="PackedScene" uid="uid://bymrl2yoa6itl" path="res://player/caterpillar/wasp/wasp.tscn" id="21_x47cf"]
 [ext_resource type="Texture2D" uid="uid://b5lci1pdnqyf7" path="res://player/caterpillar/sprites/props etc/ll.png" id="22_0rfbj"]
+[ext_resource type="Texture2D" uid="uid://dd7xm84edrli" path="res://player/caterpillar/sprites/props etc/assв.png" id="22_3pj25"]
 [ext_resource type="PackedScene" uid="uid://bo28ykl0jmn31" path="res://player/caterpillar/moving_platform/moving_platorm.tscn" id="23_0clec"]
+[ext_resource type="Texture2D" uid="uid://k3gqtnuowjn0" path="res://player/caterpillar/sprites/props etc/ass (1).png" id="23_1h3i4"]
+[ext_resource type="Texture2D" uid="uid://ukjmemerg2i" path="res://player/caterpillar/sprites/props etc/ввы (1).png" id="26_1h3i4"]
 [ext_resource type="PackedScene" uid="uid://byj5el78mnxwx" path="res://player/caterpillar/leaf/leaf_finish.tscn" id="26_8kssm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_otjxb"]
@@ -467,7 +471,10 @@ size = Vector2(19, 128)
 size = Vector2(264.5, 144)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0clec"]
-size = Vector2(607.5, 414)
+size = Vector2(541.5, 414)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pj25"]
+size = Vector2(366, 529.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x47cf"]
 size = Vector2(3192, 399)
@@ -744,7 +751,7 @@ position = Vector2(1151, 300)
 position = Vector2(1151, 236)
 
 [node name="platf7" parent="platforms/platforms" unique_id=765253918 instance=ExtResource("8_otjxb")]
-position = Vector2(1151, 171)
+position = Vector2(1155, 172)
 
 [node name="platf4" parent="platforms/platforms" unique_id=2051598763 instance=ExtResource("8_otjxb")]
 position = Vector2(870, 171)
@@ -849,6 +856,30 @@ rotation = -11.978352
 scale = Vector2(0.17873184, 0.17873184)
 texture = SubResource("AtlasTexture_1h3i4")
 
+[node name="signs" type="Node2D" parent="branches" unique_id=426952342]
+
+[node name="Assв" type="Sprite2D" parent="branches/signs" unique_id=32531224]
+position = Vector2(141, 486)
+scale = Vector2(0.13242595, 0.13242595)
+texture = ExtResource("22_3pj25")
+
+[node name="Assв2" type="Sprite2D" parent="branches/signs" unique_id=1724162716]
+position = Vector2(971.00006, 431)
+rotation = 0.7261394
+scale = Vector2(0.07444164, 0.07444164)
+texture = ExtResource("22_3pj25")
+
+[node name="As" type="Sprite2D" parent="branches/signs" unique_id=224519362]
+position = Vector2(154, 125.00001)
+scale = Vector2(0.17475726, 0.17475726)
+texture = ExtResource("23_1h3i4")
+
+[node name="Ass" type="Sprite2D" parent="branches/signs" unique_id=163557022]
+position = Vector2(251, 146)
+rotation = 0.49735022
+scale = Vector2(0.16234481, 0.16234481)
+texture = ExtResource("20_ly1rm")
+
 [node name="door2" parent="branches" unique_id=1022031169 instance=ExtResource("7_otjxb")]
 position = Vector2(1000, 372)
 rotation = -1.5707964
@@ -871,10 +902,14 @@ tile_map_data = PackedByteArray("AAAhAAUAAAAAAAEAAAAiAAUAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_tnvyp")
 
 [node name="branches" type="TileMapLayer" parent="branches" unique_id=211459792 groups=["wall"]]
-self_modulate = Color(1, 1, 0.13999999, 1)
+modulate = Color(1, 1, 0.13999999, 1)
 position = Vector2(4, 0)
 tile_map_data = PackedByteArray("AAABAAUAAAADAAYAAAACAAUAAAABAAEAAAADAAUAAAACAAEAAAAEAAUAAAACAAIAAAAFAAUAAAABAAYAAAAHAAUAAAADAAEAAAAEABAAAAADAAQAAAADABAAAAABAAYAAAAFABAAAAABAAEAAAAGABAAAAABAAEAAAAHABAAAAACAAIAAAAIABAAAAABAAQAAAAJABAAAAADAAIAAAAKABAAAAADAAQAAAALABAAAAABAAYAAAABABAAAAABAAYAAAACABAAAAABAAYAAAAAABAAAAABAAEAAAAMABAAAAABAAYAAAANABAAAAADAAQAAAAOABAAAAABAAEAAAAAAAwAAAABAAEAAAABAAwAAAABAAQAAAACAAwAAAACAAEAAAADAAwAAAACAAYAAAAEAAwAAAADAAEAAAAHABEAAAAAAAUAAAAHABIAAAAFAAQAAAATABAAAAACAAEAAAAUABAAAAADAAIAAAAPABAAAAADAAIAAAAVABAAAAACAAEAAAAWABAAAAABAAQAAAANAAsAAAAAAAYAAAAOAAsAAAACAAEAAAAPAAsAAAABAAIAAAAQAAsAAAABAAEAAAARAAsAAAACAAEAAAAVAAsAAAAEAAIAAAANAAYAAAAAAAMAAAAVAA0AAAAEAAQAAAAUAA0AAAADAAQAAAATAA0AAAAAAAEAAAAVAAwAAAAEAAUAAAAXABAAAAACAAIAAAAYABAAAAABAAQAAAAZABAAAAADAAQAAAANAAoAAAAEAAUAAAANAAkAAAAEAAQAAAANAAgAAAAAAAUAAAASABAAAAACAAIAAAAaABAAAAADAAIAAAAbABAAAAADAAQAAAAcABAAAAADAAYAAAAdABAAAAABAAQAAAAdAA4AAAAEAAYAAAAdAA0AAAAEAAMAAAAdAAwAAAACAAMAAAAdAAsAAAAAAAQAAAAdAAoAAAAEAAUAAAAdAAkAAAAAAAQAAAAeAAkAAAADAAEAAAAhAAkAAAAAAAEAAAAiAAkAAAAEAAQAAAAcAA4AAAACAAEAAAAbAA4AAAADAAIAAAAaAA4AAAAAAAEAAAAMAAMAAAACAAYAAAALAAMAAAACAAEAAAASABEAAAAEAAUAAAASABIAAAAEAAQAAAASABMAAAAFAAQAAAAeABAAAAABAAQAAAAfABAAAAABAAEAAAAhAA4AAAAAAAEA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")
 tile_set = SubResource("TileSet_tnvyp")
+
+[node name="Ввы(1)" type="Sprite2D" parent="branches/branches" unique_id=383804250]
+position = Vector2(62, 240)
+texture = ExtResource("26_1h3i4")
 
 [node name="buttons" type="Node2D" parent="branches" unique_id=1042622700]
 
@@ -894,6 +929,7 @@ rotation = -1.5707964
 targets = [NodePath("../../../platforms/platforms/disapparing_platf2")]
 
 [node name="TilesSTRETCHED" type="TileMapLayer" parent="branches" unique_id=1994599854 groups=["wall"]]
+visible = false
 self_modulate = Color(1, 1, 0.13999999, 1)
 position = Vector2(81, 0)
 scale = Vector2(4.045, 1)
@@ -903,8 +939,8 @@ tile_set = SubResource("TileSet_tnvyp")
 [node name="leafs" type="Node2D" parent="branches" unique_id=377383396]
 
 [node name="leaf" parent="branches/leafs" unique_id=794154945 instance=ExtResource("3_qjol6")]
-position = Vector2(468, 386.99997)
-rotation = 2.8253207
+position = Vector2(477.99997, 387.99994)
+rotation = 3.0546007
 
 [node name="leaf15" parent="branches/leafs" unique_id=74692805 instance=ExtResource("3_qjol6")]
 position = Vector2(232, 155)
@@ -931,18 +967,18 @@ rotation = 2.9609857
 scale = Vector2(0.99999994, 0.99999994)
 
 [node name="leaf3" parent="branches/leafs" unique_id=1750239687 instance=ExtResource("3_qjol6")]
-position = Vector2(544, 337)
+position = Vector2(544, 342)
 
 [node name="leaf16" parent="branches/leafs" unique_id=2028622692 instance=ExtResource("3_qjol6")]
-position = Vector2(493.99997, 134.99998)
+position = Vector2(493.99997, 130.00002)
 rotation = 3.6500542
 
 [node name="leaf21" parent="branches/leafs" unique_id=1287765811 instance=ExtResource("3_qjol6")]
-position = Vector2(517, 212.00002)
+position = Vector2(517, 214)
 rotation = -0.17581737
 
 [node name="leaf22" parent="branches/leafs" unique_id=1680015922 instance=ExtResource("3_qjol6")]
-position = Vector2(686.00006, 214.00003)
+position = Vector2(686.00006, 216.00002)
 rotation = 0.17262894
 scale = Vector2(-1, 1)
 
@@ -964,7 +1000,7 @@ rotation = 0.21679372
 scale = Vector2(-1, 1)
 
 [node name="leaf17" parent="branches/leafs" unique_id=694692912 instance=ExtResource("3_qjol6")]
-position = Vector2(673.00006, 147.00002)
+position = Vector2(673, 150)
 rotation = -0.13189459
 
 [node name="leaf9" parent="branches/leafs" unique_id=353570654 instance=ExtResource("3_qjol6")]
@@ -972,9 +1008,11 @@ position = Vector2(913, 503)
 
 [node name="leaf5" parent="branches/leafs" unique_id=145964858 instance=ExtResource("3_qjol6")]
 position = Vector2(672, 392)
+rotation = -0.37630746
 
 [node name="leaf6" parent="branches/leafs" unique_id=631092823 instance=ExtResource("3_qjol6")]
-position = Vector2(927, 284)
+position = Vector2(900, 270.99994)
+rotation = -2.1397305
 
 [node name="leaf7" parent="branches/leafs" unique_id=300889757 instance=ExtResource("3_qjol6")]
 position = Vector2(701.99994, 346)
@@ -986,15 +1024,15 @@ position = Vector2(917.99994, 441)
 rotation = -0.1922983
 
 [node name="leaf11" parent="branches/leafs" unique_id=551119522 instance=ExtResource("3_qjol6")]
-position = Vector2(1097, 434.99997)
+position = Vector2(1094, 437.99994)
 rotation = -0.1922983
 
 [node name="leaf12" parent="branches/leafs" unique_id=146222647 instance=ExtResource("3_qjol6")]
-position = Vector2(1181, 418.99997)
-rotation = -1.8625268
+position = Vector2(1182, 415.99997)
+rotation = -1.3908646
 
 [node name="leaf10" parent="branches/leafs" unique_id=1222740023 instance=ExtResource("3_qjol6")]
-position = Vector2(380, 503.99994)
+position = Vector2(396, 503.99994)
 rotation = -0.1922983
 
 [node name="leaf24" parent="branches/leafs" unique_id=127259397 instance=ExtResource("3_qjol6")]
@@ -1010,7 +1048,7 @@ position = Vector2(1704, -108.999985)
 rotation = -0.1922983
 
 [node name="caterpillar_container" parent="." unique_id=1297587781 instance=ExtResource("2_4g6k1")]
-position = Vector2(152, 123)
+position = Vector2(146, 132)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1613938633]
 position = Vector2(492, 51)
@@ -1043,15 +1081,15 @@ shape = SubResource("RectangleShape2D_4g6k1")
 position = Vector2(583, 448)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="camera_switches/2" unique_id=59154539]
-position = Vector2(198.25, -135)
+position = Vector2(165.25, -135)
 shape = SubResource("RectangleShape2D_0clec")
 
 [node name="3" type="Area2D" parent="camera_switches" unique_id=675151762]
 position = Vector2(1221, 92)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="camera_switches/3" unique_id=905721863]
-position = Vector2(26.75, 0)
-shape = SubResource("RectangleShape2D_4g6k1")
+position = Vector2(86, -3.25)
+shape = SubResource("RectangleShape2D_3pj25")
 
 [node name="4" type="Area2D" parent="camera_switches" unique_id=1836276632]
 position = Vector2(1783, -149)
@@ -1079,13 +1117,16 @@ position = Vector2(604, 204.5)
 shape = SubResource("RectangleShape2D_x47cf")
 
 [node name="moving_platorm" parent="." unique_id=335974107 instance=ExtResource("23_0clec")]
+z_index = -1
 position = Vector2(1346, 171)
 play_offset = 3.0
 
 [node name="moving_platorm2" parent="." unique_id=905793447 instance=ExtResource("23_0clec")]
+z_index = -1
 position = Vector2(1480, 60)
 
 [node name="moving_platorm3" parent="." unique_id=960729073 instance=ExtResource("23_0clec")]
+z_index = -1
 position = Vector2(1607, -79)
 play_offset = 3.0
 
