@@ -1,6 +1,9 @@
 [gd_resource type="Theme" format=3 uid="uid://5csefvu52i6y"]
 
+[ext_resource type="FontFile" uid="uid://b6smblm40nxqo" path="res://fonts/kaph/Kaph-Regular.otf" id="1_1ukf5"]
+
 [sub_resource type="FontVariation" id="FontVariation_uswpk"]
+base_font = ExtResource("1_1ukf5")
 
 [resource]
 default_font = SubResource("FontVariation_uswpk")

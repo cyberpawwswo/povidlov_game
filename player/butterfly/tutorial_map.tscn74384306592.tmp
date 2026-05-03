@@ -1,0 +1,240 @@
+[gd_scene format=3 uid="uid://b8lxgl61oab56"]
+
+[ext_resource type="Texture2D" uid="uid://dl8a8f8q1xolf" path="res://textures/sky/cloude_sprite/cloude_small02.png" id="1_bqfg2"]
+[ext_resource type="Script" uid="uid://c1m6nb71avlng" path="res://player/butterfly/tutorial_map.gd" id="1_hl3gh"]
+[ext_resource type="Texture2D" uid="uid://dckbh2483ti7n" path="res://textures/sky/cloude_sprite/double_cloude_01.png" id="2_dmhx4"]
+[ext_resource type="Texture2D" uid="uid://bh2c0ft35h27f" path="res://textures/sky/cloude_sprite/cloude_small01.png" id="3_qea6c"]
+[ext_resource type="Texture2D" uid="uid://dqcxnmfa0bjmb" path="res://textures/sky/cloude_sprite/cloude_small.png" id="4_qlst8"]
+[ext_resource type="Texture2D" uid="uid://wjchxmsst46" path="res://textures/sky/cloude_sprite/cloud_big.png" id="5_hl3gh"]
+[ext_resource type="Texture2D" uid="uid://d2b1yrs5nvwy" path="res://textures/sky/cloude_sprite/Без имени.png" id="6_f3fb7"]
+[ext_resource type="Texture2D" uid="uid://de8n3gn35jyw2" path="res://textures/sky/sk0.png" id="7_wyvus"]
+[ext_resource type="Texture2D" uid="uid://bhvap01ybkbgi" path="res://textures/sky/cloude_sprite/cloude_ground.png" id="8_eflf7"]
+[ext_resource type="Texture2D" uid="uid://chcdailcte54a" path="res://textures/sky/cloude_sprite/cloude_ground01.png" id="9_x2k5j"]
+[ext_resource type="Shader" uid="uid://86wavinnv8cg" path="res://player/caterpillar/wind_sway.gdshader" id="10_4fpgt"]
+[ext_resource type="Texture2D" uid="uid://86pq6gs3v062" path="res://textures/grass/reww.png" id="11_f5ydp"]
+[ext_resource type="Texture2D" uid="uid://5ycrfb0ocl7l" path="res://textures/grass/r.png" id="12_rh8qg"]
+[ext_resource type="Texture2D" uid="uid://cbb2ljwn3b0d8" path="res://textures/grass/rew.png" id="13_joguq"]
+[ext_resource type="Texture2D" uid="uid://csifpp5v552u" path="res://textures/sky/sk.png" id="14_olpgi"]
+[ext_resource type="PackedScene" uid="uid://dapbscxj5pqni" path="res://player/butterfly/player/butterfly.tscn" id="15_dmhx4"]
+[ext_resource type="Theme" uid="uid://5csefvu52i6y" path="res://UI/styles/simple_theme.tres" id="15_qlst8"]
+[ext_resource type="PackedScene" uid="uid://ckb1rhicrqso" path="res://player/butterfly/flowers/types/tulip.tscn" id="16_qea6c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wwvax"]
+shader = ExtResource("10_4fpgt")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 2.0
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.0290000013775
+shader_parameter/wind_speed = 1.0
+shader_parameter/scale = 2.0
+shader_parameter/wind_phase = 0.5450000258875
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rae73"]
+shader = ExtResource("10_4fpgt")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 2.0
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.0290000013775
+shader_parameter/wind_speed = 1.0
+shader_parameter/scale = 2.0
+shader_parameter/wind_phase = 0.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dmhx4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qlst8"]
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="TutorialMap" type="Node2D" unique_id=773139129]
+script = ExtResource("1_hl3gh")
+
+[node name="ParallaxSky" type="Node2D" parent="." unique_id=1476378422]
+
+[node name="ParallaxBack" type="Parallax2D" parent="ParallaxSky" unique_id=1518516602]
+modulate = Color(0.69, 0.9379999, 1, 0.70980394)
+z_index = -1
+scroll_scale = Vector2(0.5, 0.5)
+scroll_offset = Vector2(-2941, 56)
+repeat_size = Vector2(3105.27, 0)
+autoscroll = Vector2(10, 0)
+
+[node name="CloudeSmall03" type="Sprite2D" parent="ParallaxSky/ParallaxBack" unique_id=1762989684]
+position = Vector2(909, 49)
+texture = ExtResource("1_bqfg2")
+
+[node name="DoubleCloude01" type="Sprite2D" parent="ParallaxSky/ParallaxBack" unique_id=3342976]
+position = Vector2(2522, 404)
+texture = ExtResource("2_dmhx4")
+
+[node name="CloudeSmall04" type="Sprite2D" parent="ParallaxSky/ParallaxBack" unique_id=2100686223]
+position = Vector2(-636, 1839)
+texture = ExtResource("3_qea6c")
+
+[node name="ParallaxMidlle" type="Parallax2D" parent="ParallaxSky" unique_id=1459744368]
+modulate = Color(1, 1, 1, 0.78039217)
+scroll_scale = Vector2(0.7, 0.7)
+scroll_offset = Vector2(-1196, 535)
+repeat_size = Vector2(2757.51, 0)
+autoscroll = Vector2(5, 0)
+repeat_times = 2
+
+[node name="CloudeSmall" type="Sprite2D" parent="ParallaxSky/ParallaxMidlle" unique_id=229560922]
+position = Vector2(-252, 285)
+texture = ExtResource("4_qlst8")
+
+[node name="CloudBig3" type="Sprite2D" parent="ParallaxSky/ParallaxMidlle" unique_id=1818321793]
+position = Vector2(645.0002, 88.00006)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("5_hl3gh")
+
+[node name="CloudeMini" type="Sprite2D" parent="ParallaxSky/ParallaxMidlle" unique_id=1129417356]
+position = Vector2(199, 54)
+texture = ExtResource("6_f3fb7")
+
+[node name="CloudeSmall03" type="Sprite2D" parent="ParallaxSky/ParallaxMidlle" unique_id=537838986]
+position = Vector2(1342.4, 2098)
+texture = ExtResource("3_qea6c")
+
+[node name="CloudeSmall01" type="Sprite2D" parent="ParallaxSky/ParallaxMidlle" unique_id=1552193315]
+position = Vector2(3602.4, 1143)
+texture = ExtResource("3_qea6c")
+
+[node name="ParrallaxForward" type="Parallax2D" parent="ParallaxSky" unique_id=182621764]
+scroll_scale = Vector2(0.8, 0.8)
+scroll_offset = Vector2(-3322, 1263)
+repeat_size = Vector2(5377.205, 0)
+autoscroll = Vector2(10, 0)
+
+[node name="Sk1" type="Sprite2D" parent="ParallaxSky/ParrallaxForward" unique_id=977999924]
+visible = false
+texture_repeat = 2
+position = Vector2(-3204.2856, 435.71423)
+scale = Vector2(2.1278558, 2.1278558)
+texture = ExtResource("7_wyvus")
+region_enabled = true
+region_rect = Rect2(0, 0, 9538.267, 1238)
+
+[node name="CanvasGroup" type="CanvasGroup" parent="ParallaxSky/ParrallaxForward" unique_id=124469957]
+position = Vector2(6.2050776, 16.999998)
+scale = Vector2(0.7, 0.7)
+
+[node name="CloudeSmall04" type="Sprite2D" parent="ParallaxSky/ParrallaxForward/CanvasGroup" unique_id=1445789610]
+position = Vector2(-3222.857, 334.2858)
+scale = Vector2(1.7719771, 1.7719771)
+texture = ExtResource("1_bqfg2")
+
+[node name="CloudeGround" type="Sprite2D" parent="ParallaxSky/ParrallaxForward/CanvasGroup" unique_id=839993145]
+position = Vector2(109.6275, 97.1427)
+scale = Vector2(1.4285712, 1.4285712)
+texture = ExtResource("8_eflf7")
+
+[node name="CloudeGround2" type="Sprite2D" parent="ParallaxSky/ParrallaxForward/CanvasGroup" unique_id=2008986026]
+position = Vector2(-2666.0864, 245.71411)
+rotation = 3.1415927
+scale = Vector2(0.99999994, -0.99999994)
+texture = ExtResource("8_eflf7")
+
+[node name="CloudeGround01" type="Sprite2D" parent="ParallaxSky/ParrallaxForward/CanvasGroup" unique_id=1738050819]
+texture_repeat = 2
+position = Vector2(-101.42859, -431.42865)
+scale = Vector2(1.3185729, 1.3031385)
+texture = ExtResource("9_x2k5j")
+region_enabled = true
+region_rect = Rect2(-530.104, 0, 5381.7593, 1238)
+
+[node name="CloudeSmall2" type="Sprite2D" parent="ParallaxSky/ParrallaxForward/CanvasGroup" unique_id=1780443395]
+position = Vector2(-2370.3726, 494.28552)
+scale = Vector2(1.4285712, 1.4285712)
+texture = ExtResource("4_qlst8")
+
+[node name="CloudBig" type="Sprite2D" parent="ParallaxSky/ParrallaxForward/CanvasGroup" unique_id=390163315]
+position = Vector2(1422.4844, 241.42859)
+scale = Vector2(1.4285712, 1.4285712)
+texture = ExtResource("5_hl3gh")
+
+[node name="CloudeMini" type="Sprite2D" parent="ParallaxSky/ParrallaxForward/CanvasGroup" unique_id=1621646584]
+position = Vector2(1806.7703, 227.1427)
+scale = Vector2(1.4285713, 1.4285713)
+texture = ExtResource("6_f3fb7")
+
+[node name="CloudeMini2" type="Sprite2D" parent="ParallaxSky/ParrallaxForward/CanvasGroup" unique_id=910140139]
+position = Vector2(-5031.4287, 608.5714)
+scale = Vector2(1.4285713, 1.4285713)
+texture = ExtResource("6_f3fb7")
+
+[node name="CloudeSmall03" type="Sprite2D" parent="ParallaxSky/ParrallaxForward/CanvasGroup" unique_id=1290364887]
+position = Vector2(-1366.0867, -8.571411)
+scale = Vector2(1.4285713, 1.4285713)
+texture = ExtResource("1_bqfg2")
+
+[node name="ParallaxGrass" type="Node2D" parent="." unique_id=1809285289]
+
+[node name="ParallaxBack" type="Parallax2D" parent="ParallaxGrass" unique_id=93575493]
+scroll_scale = Vector2(0.8, 0.8)
+scroll_offset = Vector2(-626, 1436)
+repeat_size = Vector2(1105.615, 0)
+repeat_times = 11
+
+[node name="Node2D" type="Node2D" parent="ParallaxGrass/ParallaxBack" unique_id=1524232189]
+
+[node name="Reww" type="Sprite2D" parent="ParallaxGrass/ParallaxBack/Node2D" unique_id=1389897203]
+material = SubResource("ShaderMaterial_wwvax")
+position = Vector2(67, 2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_f5ydp")
+
+[node name="ParallaxMidlle" type="Parallax2D" parent="ParallaxGrass" unique_id=795642672]
+z_index = 1
+scroll_scale = Vector2(0.9, 0.9)
+scroll_offset = Vector2(-587, 1258)
+repeat_size = Vector2(1105.615, 0)
+repeat_times = 11
+
+[node name="R" type="Sprite2D" parent="ParallaxGrass/ParallaxMidlle" unique_id=1192200288]
+material = SubResource("ShaderMaterial_rae73")
+position = Vector2(28, 287)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_rh8qg")
+
+[node name="ParallaxForward" type="Parallax2D" parent="ParallaxGrass" unique_id=1553333548]
+z_index = 1
+scroll_offset = Vector2(773, 1498)
+repeat_size = Vector2(1105.615, 0)
+repeat_times = 85
+
+[node name="Rew" type="Sprite2D" parent="ParallaxGrass/ParallaxForward" unique_id=61292539]
+material = SubResource("ShaderMaterial_rae73")
+position = Vector2(0, 118)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_joguq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1785967872]
+layer = -2
+
+[node name="Sk0" type="Sprite2D" parent="CanvasLayer" unique_id=2135808602]
+z_index = -4
+position = Vector2(993.37506, 559.56256)
+scale = Vector2(0.90146405, 0.94901043)
+texture = ExtResource("14_olpgi")
+
+[node name="Butterfly" parent="." unique_id=636950088 instance=ExtResource("15_dmhx4")]
+position = Vector2(1290, 1168)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=702987049]
+position = Vector2(1016, 1789)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1357171487]
+shape = SubResource("WorldBoundaryShape2D_dmhx4")
+
+[node name="Tulip" parent="." unique_id=119960863 instance=ExtResource("16_qea6c")]
+position = Vector2(1733, 1667)
+
+[node name="Label" type="Label" parent="." unique_id=1280465011]
+offset_left = 1466.0
+offset_top = 1010.0
+offset_right = 2444.0
+offset_bottom = 1063.0
+theme = ExtResource("15_qlst8")
+text = "Собери достаточное количество пыльцы \\ чтобы на свет появилась новая гусеница"
+label_settings = SubResource("LabelSettings_qlst8")
+paragraph_separator = "\\"
