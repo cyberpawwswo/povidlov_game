@@ -3,16 +3,19 @@
 [ext_resource type="Texture2D" uid="uid://csifpp5v552u" path="res://textures/sky/sk.png" id="1_jei2a"]
 [ext_resource type="Texture2D" uid="uid://c2esq17gw4mug" path="res://textures/sky/sk01.png" id="2_bw7as"]
 [ext_resource type="Texture2D" uid="uid://de8n3gn35jyw2" path="res://textures/sky/sk0.png" id="3_1l0aq"]
-[ext_resource type="Script" path="res://player/cocoon/parallax_background.gd" id="3_bw7as"]
+[ext_resource type="Script" uid="uid://ckvdwbfj34ixj" path="res://player/cocoon/parallax_background.gd" id="3_bw7as"]
 [ext_resource type="Texture2D" uid="uid://86pq6gs3v062" path="res://textures/grass/reww.png" id="4_5oqpi"]
 [ext_resource type="Texture2D" uid="uid://5ycrfb0ocl7l" path="res://textures/grass/r.png" id="5_jbbag"]
 [ext_resource type="Script" uid="uid://ctyf1npg8ij3j" path="res://player/cocoon/tutorial_spawn.gd" id="6_tutorial_spawn"]
+[ext_resource type="FontFile" uid="uid://b6smblm40nxqo" path="res://fonts/kaph/Kaph-Regular.otf" id="8_5oqpi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1l0aq"]
+font = ExtResource("8_5oqpi")
 font_size = 32
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_5oqpi"]
+font = ExtResource("8_5oqpi")
 font_size = 32
 font_color = Color(0, 0, 0, 1)
 
@@ -70,18 +73,18 @@ texture = ExtResource("3_1l0aq")
 
 [node name="LBM" type="Label" parent="." unique_id=1802884720]
 modulate = Color(1, 1, 1, 0)
-offset_left = 1142.0
-offset_top = 586.0
-offset_right = 1797.0
-offset_bottom = 631.0
+offset_left = 1017.0
+offset_top = 584.0
+offset_right = 1899.0
+offset_bottom = 629.0
 text = "ЗАЖАВ ЛКМ ПЕРЕРЕЖЬТЕ НИТЬ ПАУТИНЫ "
 label_settings = SubResource("LabelSettings_1l0aq")
 
 [node name="RBM" type="Label" parent="." unique_id=423653001]
 modulate = Color(1, 1, 1, 0)
-offset_left = 630.0
-offset_top = 952.0
-offset_right = 1417.0
-offset_bottom = 997.0
+offset_left = 482.0
+offset_top = 940.0
+offset_right = 1496.0
+offset_bottom = 985.0
 text = "НАЖИМАЯ ПКМ СДУЙТЕ ОС ЗА ПРЕДЕЛЫ ЭКРАНА"
 label_settings = SubResource("LabelSettings_5oqpi")

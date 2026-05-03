@@ -18,8 +18,9 @@ extends Node2D
 
 ## Survive this long; then spawning stops and clearing all bees/spiders wins the level.
 @export var survival_seconds := 150.0
-@export var victory_scene: PackedScene = preload("res://player/butterfly/test_map.tscn")
+@export var victory_scene: PackedScene = preload("res://player/butterfly/tutorial_map.tscn")
 @export var victory_fade_out_duration := 1.0
+@export var countdown_hide_duration := 0.6
 
 @onready var pupa: Node2D = $Pupa
 @onready var platform: Node2D = $Platform
@@ -46,6 +47,11 @@ var _spawn_stopped := false
 var _level_ended := false
 var _countdown_layer: CanvasLayer
 var _countdown_label: Label
+
+var _help_hint_started := false
+var _help_pulse_tween: Tween
+
+var _countdown_hide_started := false
 
 func _ready() -> void:
 	_survival_left = survival_seconds
@@ -95,6 +101,8 @@ func _tick_survival(delta: float) -> void:
 		if _survival_left <= 0.0:
 			_survival_left = 0.0
 			_spawn_stopped = true
+			_start_help_hint()
+			_hide_countdown_timer()
 	_update_countdown_label()
 
 
@@ -166,8 +174,8 @@ func _setup_countdown_ui() -> void:
 	_countdown_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
 	_countdown_label.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	_countdown_label.offset_top = 12.0
-	_countdown_label.offset_bottom = 52.0
-	_countdown_label.add_theme_font_size_override("font_size", 32)
+	_countdown_label.offset_bottom = 96.0
+	_countdown_label.add_theme_font_size_override("font_size", 64)
 	root.add_child(_countdown_label)
 	_update_countdown_label()
 
@@ -175,10 +183,44 @@ func _setup_countdown_ui() -> void:
 func _update_countdown_label() -> void:
 	if _countdown_label == null:
 		return
+	if _countdown_layer != null and not _countdown_layer.visible:
+		return
 	var secs := maxi(0, int(ceilf(_survival_left)))
 	var m: int = int(secs / 60.0)
 	var s: int = secs % 60
 	_countdown_label.text = "%d:%02d" % [m, s]
+
+
+func _hide_countdown_timer() -> void:
+	if _countdown_hide_started:
+		return
+	if _countdown_label == null or _countdown_layer == null:
+		return
+	_countdown_hide_started = true
+	var tween := create_tween()
+	tween.tween_property(_countdown_label, "modulate:a", 0.0, countdown_hide_duration)
+	tween.finished.connect(func() -> void:
+		if is_instance_valid(_countdown_layer):
+			_countdown_layer.visible = false
+	, CONNECT_ONE_SHOT)
+
+
+func _start_help_hint() -> void:
+	if _help_hint_started:
+		return
+	var help := get_node_or_null("Help") as Label
+	if help == null:
+		return
+	_help_hint_started = true
+	help.scale = Vector2.ONE
+	var fade_tween := create_tween()
+	fade_tween.tween_property(help, "modulate:a", 1.0, 2.0)
+	_help_pulse_tween = create_tween()
+	_help_pulse_tween.set_loops()
+	_help_pulse_tween.tween_property(help, "scale", Vector2(1.05, 1.05), 0.6)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	_help_pulse_tween.tween_property(help, "scale", Vector2(1.0, 1.0), 0.6)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 
 func _count_hostile_enemies() -> int:
@@ -198,7 +240,7 @@ func _try_complete_victory() -> void:
 	if _count_hostile_enemies() > 0:
 		return
 	_level_ended = true
-	_play_fade_out_to_scene(victory_scene, "res://player/butterfly/test_map.tscn")
+	_play_fade_out_to_scene(victory_scene, "res://player/butterfly/tutorial_map.tscn")
 
 
 func _on_pause_menu_button_pressed() -> void:
